@@ -6,7 +6,7 @@ public partial class PlayerController : Node
 	[Export]
 	private float _maxFreeFallVelocity = 9.0f;
 	[Export]
-	private float _maxWalkVelocity = 10.0f;
+	private float _maxWalkVelocity = 7.5f;
 
 	public enum CharLocoState
 	{
@@ -69,13 +69,13 @@ public partial class PlayerController : Node
 		if (!_playerBody.IsOnFloor())
 		{
 			newVelocity.Y = Mathf.MoveToward(newVelocity.Y, -_maxFreeFallVelocity, 9.8f * delta);
+		} else {
+			Vector3 rotatedInputDirection = CameraMaster.Instance.GetCameraYawQuat() * playerInputDirection;
+			Vector3 maxDirection = rotatedInputDirection * _maxWalkVelocity;
+
+			newVelocity.X = Mathf.Lerp(newVelocity.X, maxDirection.X, 10.00f * delta);
+			newVelocity.Z = Mathf.Lerp(newVelocity.Z, maxDirection.Z, 10.00f * delta);
 		}
-
-		Vector3 rotatedInputDirection = CameraMaster.Instance.GetCameraYawQuat() * playerInputDirection;
-		Vector3 maxDirection = rotatedInputDirection * _maxWalkVelocity;
-
-		newVelocity.X = Mathf.Lerp(newVelocity.X, maxDirection.X, 10.00f * delta);
-		newVelocity.Z = Mathf.Lerp(newVelocity.Z, maxDirection.Z, 10.00f * delta);
 
 		_playerBody.Velocity = newVelocity;
 	}
@@ -126,15 +126,15 @@ public partial class PlayerController : Node
 				break;
 
 			case CharLocoState.IDLE:
-				_animPlayer.Play("Anim_char/Root_Idle");
+				_animPlayer.Play("Anim_char/CharIdle");
 				break;
 
 			case CharLocoState.FALLING:
-				_animPlayer.Stop();
+				_animPlayer.Play("Anim_char/CharJump");
 				break;
 
 			case CharLocoState.WALKING:
-				_animPlayer.Play("Anim_char/Root_Run");
+				_animPlayer.Play("Anim_char/CharRun");
 				break;
 
 			default:
