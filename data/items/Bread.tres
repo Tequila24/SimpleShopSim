@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dqru0nhmdqovd"]
+
+[ext_resource type="Script" uid="uid://cimo1fnt81gtv" path="res://data_templates/ItemData.cs" id="1_twxn5"]
+[ext_resource type="PackedScene" uid="uid://bfja372o2i2ye" path="res://scenes/items/bread.tscn" id="2_klte7"]
+
+[resource]
+script = ExtResource("1_twxn5")
+name = "Bread"
+price = 2
+subScene = ExtResource("2_klte7")
+metadata/_custom_type_script = "uid://cimo1fnt81gtv"

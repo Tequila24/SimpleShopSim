@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw6vdlffldk6i"]
+
+[ext_resource type="Script" uid="uid://pnkvdxvjkjgq" path="res://scripts/GUI/utility/ItemButtonLogic.cs" id="1_gunhi"]
+
+[node name="ItemButton" type="MarginContainer" node_paths=PackedStringArray("itemNameLabel", "itemCountLabel")]
+anchors_preset = -1
+anchor_left = 0.42404515
+anchor_top = 0.47685185
+anchor_right = 0.57595485
+anchor_bottom = 0.5231481
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gunhi")
+itemNameLabel = NodePath("HBoxContainer/ItemName")
+itemCountLabel = NodePath("HBoxContainer/ItemCount")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ItemName" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+text = "Item name"
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ItemName"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemCount" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Item Count"
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ItemCount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+flat = true

@@ -68,4 +68,15 @@ public partial class Utils
 	{
 		return ((timer.WaitTime - timer.TimeLeft) / timer.WaitTime);
 	}
+
+	public static void ClearChildren(Node node)
+	{
+		if (node == null)
+			return;
+
+		foreach (var child in node.GetChildren())
+		{
+			child.QueueFree();
+		}
+	}
 }

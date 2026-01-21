@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AccountData" load_steps=2 format=3 uid="uid://yntdv36d38a0"]
+
+[ext_resource type="Script" uid="uid://c4trck4r2o2re" path="res://data_templates/AccountData.cs" id="1_m0y6h"]
+
+[resource]
+script = ExtResource("1_m0y6h")
+allBuildings = Array[Resource]([null, null, null])
+metadata/_custom_type_script = "uid://c4trck4r2o2re"

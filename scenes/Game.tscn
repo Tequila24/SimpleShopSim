@@ -1,12 +1,20 @@
-[gd_scene load_steps=16 format=3 uid="uid://cx31e8ojfteo7"]
+[gd_scene load_steps=25 format=3 uid="uid://cx31e8ojfteo7"]
 
-[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_vh257"]
-[ext_resource type="Script" uid="uid://bi7khum6bi5qa" path="res://scripts/InputMaster.cs" id="2_xy3my"]
-[ext_resource type="Texture2D" uid="uid://dcycgxa2yovdd" path="res://assets/packs/kenney_animated-characters-2/Skins/skaterFemaleA.png" id="3_6ytau"]
-[ext_resource type="Script" uid="uid://bgxuknd15xwjh" path="res://scripts/PlayerController.cs" id="3_cxv17"]
-[ext_resource type="ArrayMesh" uid="uid://8j8nr1n1bflf" path="res://assets/packs/kenney_animated-characters-2/Model/characterMedium.res" id="3_xs4ih"]
-[ext_resource type="Script" uid="uid://bb2bogqswcxy" path="res://scripts/CameraMaster.cs" id="4_18ig4"]
-[ext_resource type="AnimationLibrary" uid="uid://cjhx1mppa0etn" path="res://assets/animation/Anim_char.res" id="4_xs4ih"]
+[ext_resource type="PackedScene" uid="uid://6yf11rk4crfw" path="res://scenes/levels/LevelScene.tscn" id="1_r7sob"]
+[ext_resource type="Script" uid="uid://bi7khum6bi5qa" path="res://scripts/InputMaster.cs" id="2_y5y3l"]
+[ext_resource type="Script" uid="uid://bb2bogqswcxy" path="res://scripts/CameraMaster.cs" id="3_vjgi4"]
+[ext_resource type="Script" uid="uid://cxel1rqht611w" path="res://scripts/PickupController.cs" id="4_kyk2p"]
+[ext_resource type="Script" uid="uid://bgxuknd15xwjh" path="res://scripts/PlayerController.cs" id="5_45i86"]
+[ext_resource type="Texture2D" uid="uid://dcycgxa2yovdd" path="res://assets/packs/kenney_animated-characters-2/Skins/skaterFemaleA.png" id="6_sv1m6"]
+[ext_resource type="ArrayMesh" uid="uid://8j8nr1n1bflf" path="res://assets/packs/kenney_animated-characters-2/Model/characterMedium.res" id="7_a8wo8"]
+[ext_resource type="AnimationLibrary" uid="uid://cjhx1mppa0etn" path="res://assets/animation/Anim_char.res" id="8_attvq"]
+[ext_resource type="PackedScene" uid="uid://ra8rc6ck5udh" path="res://scenes/world_objects/dropped_item.tscn" id="9_bneo8"]
+[ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="10_ocgqw"]
+[ext_resource type="Resource" uid="uid://dqru0nhmdqovd" path="res://data/items/Bread.tres" id="11_jbgew"]
+[ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="12_a85ww"]
+[ext_resource type="Script" uid="uid://dvfxsch5jk0q8" path="res://data_templates/ItemsBoxData.cs" id="13_jhsr3"]
+[ext_resource type="PackedScene" uid="uid://ca5shgyut3o7" path="res://scenes/items/box_open.tscn" id="14_0bq3a"]
+[ext_resource type="PackedScene" uid="uid://c8ey84heour7x" path="res://scenes/buildings/shelf.tscn" id="15_754j2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s5hy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -25,16 +33,10 @@ fog_mode = 1
 fog_density = 0.4294
 fog_depth_curve = 0.5176333
 
-[sub_resource type="BoxMesh" id="BoxMesh_b7mj4"]
-size = Vector3(100, 1, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_b7mj4"]
-size = Vector3(100, 1, 100)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vh257"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vijgj"]
-albedo_texture = ExtResource("3_6ytau")
+albedo_texture = ExtResource("6_sv1m6")
 
 [sub_resource type="Skin" id="Skin_0xwob"]
 resource_name = "Skin"
@@ -175,7 +177,27 @@ bind/44/name = &"RightToes"
 bind/44/bone = -1
 bind/44/pose = Transform3D(-0.99280274, 0.11937319, 0.009585102, -0.11966439, -0.992026, -0.039573982, 0.004782783, -0.040435933, 0.99917066, -0.003406178, -0.0012833491, -0.00014981334)
 
-[node name="GameScene" type="Node3D"]
+[sub_resource type="Resource" id="Resource_21xg8"]
+script = ExtResource("10_ocgqw")
+item = ExtResource("11_jbgew")
+count = 3
+metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
+
+[sub_resource type="Resource" id="Resource_icif4"]
+script = ExtResource("10_ocgqw")
+item = ExtResource("12_a85ww")
+count = 3
+metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
+
+[sub_resource type="Resource" id="Resource_kxqg4"]
+script = ExtResource("13_jhsr3")
+content = Array[ExtResource("10_ocgqw")]([SubResource("Resource_21xg8"), SubResource("Resource_icif4")])
+subScene = ExtResource("14_0bq3a")
+metadata/_custom_type_script = "uid://dvfxsch5jk0q8"
+
+[node name="Game" type="Node3D"]
+
+[node name="LevelScene" parent="." instance=ExtResource("1_r7sob")]
 
 [node name="ENV" type="Node" parent="."]
 
@@ -187,30 +209,37 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="InputMaster" type="Node" parent="."]
-script = ExtResource("2_xy3my")
+script = ExtResource("2_y5y3l")
 
-[node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+[node name="CameraMaster" type="Node" parent="." node_paths=PackedStringArray("_mainCamera", "_cameraDolly")]
+script = ExtResource("3_vjgi4")
+_mainCamera = NodePath("Dolly/Camera3D")
+_cameraDolly = NodePath("Dolly")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-material_override = ExtResource("1_vh257")
-mesh = SubResource("BoxMesh_b7mj4")
+[node name="Dolly" type="Node3D" parent="CameraMaster"]
+transform = Transform3D(0.7071067, -0.5416752, 0.45451948, 0, 0.64278764, 0.76604444, -0.7071067, -0.5416752, 0.45451948, -0.30734158, 0, -0.07539177)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-shape = SubResource("BoxShape3D_b7mj4")
+[node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 5.5)
 
 [node name="Character" type="CharacterBody3D" parent="." groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3751163, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0086309, 0)
+
+[node name="PickupController" type="Node" parent="Character" node_paths=PackedStringArray("_pickupArea", "_itemVisualHolder")]
+script = ExtResource("4_kyk2p")
+_pickupArea = NodePath("../Area3D")
+_itemVisualHolder = NodePath("../Picked Item Holder")
+
+[node name="PlayerController" type="Node" parent="Character" node_paths=PackedStringArray("_animPlayer")]
+script = ExtResource("5_45i86")
+_maxWalkVelocity = 5.0
+_animPlayer = NodePath("../Root/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Character"]
 shape = SubResource("CapsuleShape3D_vh257")
 
-[node name="PlayerController" type="Node" parent="Character" node_paths=PackedStringArray("_animPlayer")]
-script = ExtResource("3_cxv17")
-_animPlayer = NodePath("../Root/AnimationPlayer")
-
 [node name="Root" type="Node3D" parent="Character"]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, -1, 0)
+transform = Transform3D(50, 0, 0, 0, -2.1855694e-06, 50, 0, -50, -2.1855694e-06, 0, -1, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Character/Root"]
 bones/0/name = "LeftFootCtrl"
@@ -622,22 +651,26 @@ bones/57/scale = Vector3(1, 1, 1)
 
 [node name="characterMedium" type="MeshInstance3D" parent="Character/Root/Skeleton3D"]
 material_override = SubResource("StandardMaterial3D_vijgj")
-mesh = ExtResource("3_xs4ih")
+mesh = ExtResource("7_a8wo8")
 skin = SubResource("Skin_0xwob")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character/Root"]
 root_node = NodePath("../..")
 libraries = {
-&"Anim_char": ExtResource("4_xs4ih")
+&"Anim_char": ExtResource("8_attvq")
 }
 
-[node name="CameraMaster" type="Node" parent="." node_paths=PackedStringArray("_mainCamera", "_cameraDolly")]
-script = ExtResource("4_18ig4")
-_mainCamera = NodePath("Dolly/Camera3D")
-_cameraDolly = NodePath("Dolly")
+[node name="Area3D" type="Area3D" parent="Character"]
 
-[node name="Dolly" type="Node3D" parent="CameraMaster"]
-transform = Transform3D(0.7071067, -0.5416752, 0.45451948, 0, 0.64278764, 0.76604444, -0.7071067, -0.5416752, 0.45451948, -0.30734158, 0, -0.07539177)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character/Area3D"]
+shape = SubResource("CapsuleShape3D_vh257")
 
-[node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 9.999999)
+[node name="Picked Item Holder" type="Node3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 0.98616725, -0.16575333, 0, 0.16575333, 0.98616725, 0, -0.33091593, 0.5050606)
+
+[node name="TestDrop" parent="." instance=ExtResource("9_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3561972, 0, 2.971359)
+_item = SubResource("Resource_kxqg4")
+
+[node name="Test Shelf" parent="." instance=ExtResource("15_754j2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6736608, -4.7683716e-07, -0.9651079)

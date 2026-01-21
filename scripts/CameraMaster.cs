@@ -14,7 +14,7 @@ public partial class CameraMaster : Node
 	private Node3D _cameraDolly;
 
 	public Node3D NodeToFollow;
-
+	private Vector3 _cameraPosition = Vector3.One;
 
 
 
@@ -26,16 +26,30 @@ public partial class CameraMaster : Node
 
 	public override void _Ready()
 	{	
+		_cameraPosition = _mainCamera.Position;
+		InputMaster.Instance.OnZoomCamera += DoCameraZoom;
+
 		NodeToFollow = GetTree().GetNodesInGroup("Player")[0] as Node3D;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public void DoCameraZoom(float zoomDelta)
+	{
+		_cameraPosition.Z = Mathf.Clamp(_cameraPosition.Z + zoomDelta * 0.1f, 4.0f, 10.0f);
+		GD.Print($"new camera position {_cameraPosition}");
+	}
+
 	public override void _Process(double delta)
 	{
 		if (NodeToFollow == null)
 			return;
 		
 		_cameraDolly.Position = _cameraDolly.Position.Lerp(NodeToFollow.GlobalPosition, 5.0f * (float)delta);
+		_mainCamera.Position = _mainCamera.Position.Lerp(_cameraPosition, 10.0f * (float)delta);
+	}
+
+	static public Camera3D GetCurrentCamera()
+	{
+		return Instance._mainCamera;
 	}
 
 	public Quaternion GetCameraYawQuat()

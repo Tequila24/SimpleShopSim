@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://6yf11rk4crfw"]
+
+[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_in5yg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dfg5a"]
+size = Vector3(10, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8gwd"]
+size = Vector3(10, 1, 6)
+
+[node name="LevelScene" type="Node3D"]
+
+[node name="Areas" type="Node" parent="."]
+
+[node name="Area_1" type="Node3D" parent="Areas"]
+
+[node name="floor" type="StaticBody3D" parent="Areas/Area_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Areas/Area_1/floor"]
+material_override = ExtResource("1_in5yg")
+mesh = SubResource("BoxMesh_dfg5a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Area_1/floor"]
+shape = SubResource("BoxShape3D_y8gwd")

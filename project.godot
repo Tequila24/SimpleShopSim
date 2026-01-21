@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="FarmConcept"
+config/name="ShopConcept"
 run/main_scene="uid://cx31e8ojfteo7"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"

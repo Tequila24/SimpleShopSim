@@ -10,6 +10,8 @@ public partial class InputMaster : Node
 	}
 	
 	public Action<Vector3> OnPlayerDirectionUpdated;
+	public Action<float> OnZoomCamera;
+	public Action OnDropKeyPressed;
 
 	[Signal]
 	public delegate void OnPlayerRotationUpdatedEventHandler(Vector2 deltaRotationVector);
@@ -20,9 +22,8 @@ public partial class InputMaster : Node
 	{
 		base._EnterTree();
 
-		Input.MouseMode = Input.MouseModeEnum.Captured;
-
-		GD.Print($" Input Mode {Input.MouseMode}");
+		// Input.MouseMode = Input.MouseModeEnum.Captured;
+		// GD.Print($" Input Mode {Input.MouseMode}");
 
 		Instance ??= this;
 	}
@@ -53,8 +54,11 @@ public partial class InputMaster : Node
 
 		if (IsReleaseEvent(eventKey, Key.Escape))
 		{
-			Input.MouseMode = Input.MouseModeEnum.Visible;
+			// Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
+
+		if (IsReleaseEvent(eventKey, Key.Ctrl))
+			OnDropKeyPressed();
 
 		// if (IsTapEvent(eventKey, Key.E))
 		// {
@@ -74,8 +78,16 @@ public partial class InputMaster : Node
 
 	private void ProcessMouseButtonEvent(InputEventMouseButton eventMouseButton)
 	{
-		if (Input.MouseMode == Input.MouseModeEnum.Visible)
-			Input.MouseMode = Input.MouseModeEnum.Captured;
+		if (eventMouseButton.ButtonIndex == MouseButton.WheelUp)
+		{
+			OnZoomCamera(-1.0f);
+		}
+		if (eventMouseButton.ButtonIndex == MouseButton.WheelDown)
+		{
+			OnZoomCamera(+1.0f);
+		}
+		// if (Input.MouseMode == Input.MouseModeEnum.Visible)
+		// 	Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
 	private void ProcessMouseMotionEvent(InputEventMouseMotion eventMouseMotion)
