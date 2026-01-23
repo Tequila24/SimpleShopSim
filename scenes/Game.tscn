@@ -1,8 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://cx31e8ojfteo7"]
+[gd_scene load_steps=33 format=3 uid="uid://cx31e8ojfteo7"]
 
+[ext_resource type="PackedScene" uid="uid://qa8bdlgk3bij" path="res://scenes/GUI/HUD.tscn" id="1_45i86"]
 [ext_resource type="PackedScene" uid="uid://6yf11rk4crfw" path="res://scenes/levels/LevelScene.tscn" id="1_r7sob"]
+[ext_resource type="Script" uid="uid://ddngn7t0yxjen" path="res://scripts/data_wrappers/AccountWrapper.cs" id="1_y5y3l"]
+[ext_resource type="Resource" uid="uid://dsofeqowda688" path="res://data/items/Money.tres" id="2_kyk2p"]
 [ext_resource type="Script" uid="uid://bi7khum6bi5qa" path="res://scripts/InputMaster.cs" id="2_y5y3l"]
+[ext_resource type="Resource" uid="uid://cgtj3bpan844f" path="res://data/furniture/Shelf.tres" id="3_sv1m6"]
 [ext_resource type="Script" uid="uid://bb2bogqswcxy" path="res://scripts/CameraMaster.cs" id="3_vjgi4"]
+[ext_resource type="Script" uid="uid://c4trck4r2o2re" path="res://data_templates/AccountData.cs" id="4_45i86"]
+[ext_resource type="Resource" uid="uid://bs61cxp7y5nyo" path="res://data/furniture/CashRegister.tres" id="4_a8wo8"]
 [ext_resource type="Script" uid="uid://cxel1rqht611w" path="res://scripts/PickupController.cs" id="4_kyk2p"]
 [ext_resource type="Script" uid="uid://bgxuknd15xwjh" path="res://scripts/PlayerController.cs" id="5_45i86"]
 [ext_resource type="Texture2D" uid="uid://dcycgxa2yovdd" path="res://assets/packs/kenney_animated-characters-2/Skins/skaterFemaleA.png" id="6_sv1m6"]
@@ -14,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="12_a85ww"]
 [ext_resource type="Script" uid="uid://dvfxsch5jk0q8" path="res://data_templates/ItemsBoxData.cs" id="13_jhsr3"]
 [ext_resource type="PackedScene" uid="uid://ca5shgyut3o7" path="res://scenes/items/box_open.tscn" id="14_0bq3a"]
-[ext_resource type="PackedScene" uid="uid://c8ey84heour7x" path="res://scenes/buildings/shelf.tscn" id="15_754j2"]
+[ext_resource type="PackedScene" uid="uid://c8ey84heour7x" path="res://scenes/furniture/shelf.tscn" id="15_754j2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s5hy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,6 +38,21 @@ fog_enabled = true
 fog_mode = 1
 fog_density = 0.4294
 fog_depth_curve = 0.5176333
+
+[sub_resource type="Resource" id="Resource_sv1m6"]
+script = ExtResource("10_ocgqw")
+item = ExtResource("2_kyk2p")
+count = 998
+metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
+
+[sub_resource type="Resource" id="Resource_a8wo8"]
+script = ExtResource("4_45i86")
+money = SubResource("Resource_sv1m6")
+furnitureUnlocks = Dictionary[Object, bool]({
+ExtResource("3_sv1m6"): true,
+ExtResource("4_a8wo8"): true
+})
+metadata/_custom_type_script = "uid://c4trck4r2o2re"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vh257"]
 
@@ -197,7 +218,7 @@ metadata/_custom_type_script = "uid://dvfxsch5jk0q8"
 
 [node name="Game" type="Node3D"]
 
-[node name="LevelScene" parent="." instance=ExtResource("1_r7sob")]
+[node name="HUD" parent="." instance=ExtResource("1_45i86")]
 
 [node name="ENV" type="Node" parent="."]
 
@@ -207,6 +228,10 @@ environment = SubResource("Environment_6ytau")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="ENV"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+
+[node name="AccountWrapper" type="Node" parent="."]
+script = ExtResource("1_y5y3l")
+_accountData = SubResource("Resource_a8wo8")
 
 [node name="InputMaster" type="Node" parent="."]
 script = ExtResource("2_y5y3l")
@@ -221,6 +246,8 @@ transform = Transform3D(0.7071067, -0.5416752, 0.45451948, 0, 0.64278764, 0.7660
 
 [node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly"]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 5.5)
+
+[node name="LevelScene" parent="." instance=ExtResource("1_r7sob")]
 
 [node name="Character" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0086309, 0)

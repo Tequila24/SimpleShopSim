@@ -5,7 +5,11 @@ using Godot;
 public partial class FurnitureData : Resource
 {
 	[Export]
-	PackedScene subScene;
+	public string name;
 	[Export]
-	Vector3 position;
+	public int price;
+	[Export]
+	public Texture2D image2D;
+	[Export]
+	public PackedScene scene3D;
 }

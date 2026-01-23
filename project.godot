@@ -15,9 +15,26 @@ run/main_scene="uid://cx31e8ojfteo7"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=500
+window/size/viewport_height=900
+window/size/initial_position_type=0
+window/size/initial_position=Vector2i(0, 300)
+
 [dotnet]
 
 project/assembly_name="FarmConcept"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://data/": "purple",
+"res://data_templates/": "purple",
+"res://scenes/": "orange",
+"res://scripts/": "blue"
+}
 
 [global_group]
 

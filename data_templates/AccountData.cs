@@ -5,7 +5,8 @@ using Godot;
 public partial class AccountData : Resource
 {
 	[Export]
-	public int MoneyAmount;
+	public ItemCountData money;
+
 	[Export]
-	Godot.Collections.Array<Resource> allBuildings;
+	public Godot.Collections.Dictionary<FurnitureData, bool> furnitureUnlocks;
 }

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FurnitureData" load_steps=4 format=3 uid="uid://cgtj3bpan844f"]
+
+[ext_resource type="Texture2D" uid="uid://ojoe5hgtqat6" path="res://assets/textures/res_money.png" id="1_16b58"]
+[ext_resource type="Script" uid="uid://qc6maaf7n7rk" path="res://data_templates/FurnitureData.cs" id="1_trbrm"]
+[ext_resource type="PackedScene" uid="uid://c8ey84heour7x" path="res://scenes/furniture/shelf.tscn" id="1_v2m47"]
+
+[resource]
+script = ExtResource("1_trbrm")
+name = "Shelf"
+price = 10
+image2D = ExtResource("1_16b58")
+scene3D = ExtResource("1_v2m47")
+metadata/_custom_type_script = "uid://qc6maaf7n7rk"

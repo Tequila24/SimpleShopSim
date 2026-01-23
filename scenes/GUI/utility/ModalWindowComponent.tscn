@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dojjusyoardlv"]
+
+[ext_resource type="Script" uid="uid://cg05o608ksc3h" path="res://scripts/GUI/utility/ModalWindowComponent.cs" id="1_6i40v"]
+
+[node name="ModalWindowComponent" type="Node"]
+script = ExtResource("1_6i40v")

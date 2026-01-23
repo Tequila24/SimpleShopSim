@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwxe3bl4yscng"]
+
+[ext_resource type="Script" uid="uid://bn1dw8tsit3cd" path="res://scripts/GUI/utility/ItemCounterLogic.cs" id="1_1fslm"]
+[ext_resource type="Texture2D" uid="uid://ojoe5hgtqat6" path="res://assets/textures/res_money.png" id="1_gb6ni"]
+
+[node name="ItemCounter" type="MarginContainer" node_paths=PackedStringArray("ItemImage", "ItemCountLabel")]
+offset_right = 100.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_1fslm")
+ItemImage = NodePath("HBoxContainer/TextureRect")
+ItemCountLabel = NodePath("HBoxContainer/Label")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_gb6ni")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "999 999"
+vertical_alignment = 1

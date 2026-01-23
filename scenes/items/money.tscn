@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy2xrwaxghgti"]
+
+[ext_resource type="Texture2D" uid="uid://c3vfwmjsexsjh" path="res://assets/textures/ProtoTexture-1.png" id="1_aiqj7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyfd0"]
+albedo_color = Color(1.1463616, 1.2373077, 2.8920706e-06, 1)
+albedo_texture = ExtResource("1_aiqj7")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_66cm6"]
+top_radius = 0.18
+bottom_radius = 0.18
+height = 0.06
+radial_segments = 12
+rings = 0
+
+[node name="Money" type="Node3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_gyfd0")
+mesh = SubResource("CylinderMesh_66cm6")

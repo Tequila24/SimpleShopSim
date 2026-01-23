@@ -1,14 +1,43 @@
-[gd_scene format=3 uid="uid://qa8bdlgk3bij"]
+[gd_scene load_steps=5 format=3 uid="uid://qa8bdlgk3bij"]
 
-[node name="Hud" type="Control"]
-layout_mode = 3
+[ext_resource type="Script" uid="uid://jndrfqcgbj0m" path="res://scripts/GUI/HUDLogic.cs" id="1_fsbs6"]
+[ext_resource type="PackedScene" uid="uid://cwxe3bl4yscng" path="res://scenes/GUI/utility/ItemCounter.tscn" id="2_0jvll"]
+[ext_resource type="PackedScene" uid="uid://bjb0c0stfu683" path="res://scenes/GUI/FurnitureShop/WindowBuyFurniture.tscn" id="2_s32he"]
+[ext_resource type="PackedScene" uid="uid://ddxfewhswj1" path="res://scenes/GUI/utility/BasicIconButton.tscn" id="3_lfrrd"]
+
+[node name="HUD" type="MarginContainer" node_paths=PackedStringArray("moneyCounter", "buttonOpenFurnitureShop")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fsbs6")
+moneyCounter = NodePath("MarginContainer/VBoxContainer/ItemCounter")
+buttonOpenFurnitureShop = NodePath("Buttons/ButtonBuyFurniture")
+windowFurnitureShop = ExtResource("2_s32he")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="ItemCounter" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_0jvll")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Buttons" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonBuyFurniture" parent="Buttons" instance=ExtResource("3_lfrrd")]
+layout_mode = 2
