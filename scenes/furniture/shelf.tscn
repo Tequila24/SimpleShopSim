@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://c8ey84heour7x"]
+[gd_scene load_steps=12 format=4 uid="uid://c8ey84heour7x"]
 
 [ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/ShelfLogic.cs" id="1_g6k01"]
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_oucxj"]
 [ext_resource type="Script" uid="uid://c28br4nfkbh7j" path="res://scripts/PopupController.cs" id="2_gro8r"]
 [ext_resource type="PackedScene" uid="uid://o88fcq642m4v" path="res://scenes/GUI/WindowShelf.tscn" id="3_bvjvp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwrpm"]
+size = Vector3(1.59375, 1.9, 0.82702637)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ho0"]
 resource_name = "colormap"
@@ -80,9 +83,13 @@ shadow_mesh = SubResource("ArrayMesh_7lhpv")
 [sub_resource type="SphereShape3D" id="SphereShape3D_g6k01"]
 radius = 0.4966996
 
-[node name="Shelf" type="Node3D" node_paths=PackedStringArray("SlotsHolder")]
+[node name="Shelf" type="StaticBody3D" node_paths=PackedStringArray("SlotsHolder")]
 script = ExtResource("1_g6k01")
 SlotsHolder = NodePath("Slots")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9176758, -0.027893066)
+shape = SubResource("BoxShape3D_dwrpm")
 
 [node name="Slots" type="Node3D" parent="."]
 

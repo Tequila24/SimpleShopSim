@@ -47,5 +47,7 @@ public partial class WindowBuyFurnitureLogic : MarginContainer
 	private void DoFurnitureSelected(FurnitureData data)
 	{
 		GD.Print($"Clicked on {data.name}");
+		Global.TryPlaceObject(data);
+		this.QueueFree();
 	}
 }

@@ -1,0 +1,34 @@
+using System;
+using Godot;
+
+
+public partial class Global : Node
+{
+	public static Global Instance
+	{ private set; get; }
+
+
+	[Export]
+	private PackedScene objectPlacer;
+
+
+
+	public override void _EnterTree()
+	{
+		base._EnterTree();
+		Instance ??= this;
+	}
+
+	public static Node3D GetPlayerNode()
+	{
+		return Instance.GetTree().GetNodesInGroup("Player")[0] as Node3D;
+	}
+
+	public static ObjectPlacer TryPlaceObject(FurnitureData data)
+	{
+		var newPlacer = Instance.objectPlacer.Instantiate<ObjectPlacer>();
+		newPlacer.Init(data);
+		Instance.GetTree().Root.AddChild(newPlacer);
+		return newPlacer;
+	}
+}

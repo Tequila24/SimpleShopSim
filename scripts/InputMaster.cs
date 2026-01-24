@@ -8,10 +8,33 @@ public partial class InputMaster : Node
 	{
 		private set; get;
 	}
+
+	public enum InputState
+	{
+		PLAYER_CONTROLS,
+		OBJECT_PLACING
+	}
+	private InputState _currentInputState;
+	public InputState CurrentInputState
+	{
+		get { return _currentInputState; }
+		set
+		{
+			_currentInputState = value;
+			DoInputStateChanged();
+		}
+	}
 	
 	public Action<Vector3> OnPlayerDirectionUpdated;
 	public Action<float> OnZoomCamera;
 	public Action OnDropKeyPressed;
+
+	public Action<Vector2> OnDragUpdated;
+	public Action OnTap;
+	public Action OnDoubleTap;
+
+	Timer _doubleTapTimer;
+	bool _doubleTapFlag = false;
 
 	[Signal]
 	public delegate void OnPlayerRotationUpdatedEventHandler(Vector2 deltaRotationVector);
@@ -26,6 +49,7 @@ public partial class InputMaster : Node
 		// GD.Print($" Input Mode {Input.MouseMode}");
 
 		Instance ??= this;
+		_currentInputState = InputState.PLAYER_CONTROLS;
 	}
 
 
@@ -48,13 +72,16 @@ public partial class InputMaster : Node
 	private void ProcessKeyEvent(InputEventKey eventKey)
 	{
 		if (!eventKey.IsEcho()) {
-			Vector3 inputDir = new Vector3(Input.GetAxis("right", "left"), 0.0f, Input.GetAxis("down", "up"));
-			OnPlayerDirectionUpdated(inputDir.Normalized());
+
+			if (_currentInputState == InputState.PLAYER_CONTROLS) {
+				Vector3 inputDir = new Vector3(Input.GetAxis("right", "left"), 0.0f, Input.GetAxis("down", "up"));
+				OnPlayerDirectionUpdated(inputDir.Normalized());
+			}
 		}
 
 		if (IsReleaseEvent(eventKey, Key.Escape))
 		{
-			// Input.MouseMode = Input.MouseModeEnum.Visible;
+			Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
 
 		if (IsReleaseEvent(eventKey, Key.Ctrl))
@@ -86,13 +113,73 @@ public partial class InputMaster : Node
 		{
 			OnZoomCamera(+1.0f);
 		}
+
+		if (_currentInputState == InputState.OBJECT_PLACING)
+		{
+			if (eventMouseButton.ButtonIndex == MouseButton.Left && eventMouseButton.Pressed && eventMouseButton.IsEcho() == false)
+			{
+				if (_doubleTapTimer == null)
+				{
+					_doubleTapTimer = new Timer();
+					this.AddChild(_doubleTapTimer);
+					_doubleTapTimer.Timeout += DoDoubleTapTimeout;
+					_doubleTapTimer.OneShot = true;
+					_doubleTapTimer.Start(0.3f);
+				} else
+				{
+					_doubleTapFlag = true;
+				}
+				
+			}
+		}
+
 		// if (Input.MouseMode == Input.MouseModeEnum.Visible)
 		// 	Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
+
+
 	private void ProcessMouseMotionEvent(InputEventMouseMotion eventMouseMotion)
 	{
-		if (Input.MouseMode != Input.MouseModeEnum.Captured)
-			return;
+		// if (Input.MouseMode != Input.MouseModeEnum.Captured)
+			// return;
+
+		if (_currentInputState == InputState.OBJECT_PLACING)
+			OnDragUpdated(eventMouseMotion.ScreenRelative);
+	}
+
+	private void DoInputStateChanged()
+	{
+		switch (_currentInputState)
+		{
+			case InputState.PLAYER_CONTROLS:
+				{
+					Input.MouseMode = Input.MouseModeEnum.Visible;
+					break;
+				}
+			
+			case InputState.OBJECT_PLACING:
+				{
+					Input.MouseMode = Input.MouseModeEnum.Captured;
+					break;
+				}
+
+			
+			default:
+			break;
+		}
+	}
+
+	private void DoDoubleTapTimeout()
+	{
+		if (_doubleTapFlag)
+			OnDoubleTap();
+		else
+			OnTap();
+
+		_doubleTapFlag = false;
+
+		_doubleTapTimer.QueueFree();
+		_doubleTapTimer = null;
 	}
 }
