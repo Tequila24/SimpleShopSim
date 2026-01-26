@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c55t3q4rqfjyj"]
+
+[ext_resource type="Script" uid="uid://c8icauno6nd4q" path="res://scripts/GUI/utility/PopupMaster/GlobalPopupMaster.cs" id="1_e05ac"]
+[ext_resource type="PackedScene" uid="uid://cyo27g0kos1h" path="res://scenes/GUI/utility/PopupMaster/GlobalPopup.tscn" id="1_sdxwt"]
+
+[node name="GlobalPopupMaster" type="Control" node_paths=PackedStringArray("_vBox")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_vertical = 3
+script = ExtResource("1_e05ac")
+_popupPrefab = ExtResource("1_sdxwt")
+_vBox = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FurnitureData" load_steps=4 format=3 uid="uid://ccm4h0e5r3t8r"]
+
+[ext_resource type="Texture2D" uid="uid://ojoe5hgtqat6" path="res://assets/textures/res_money.png" id="1_phvhi"]
+[ext_resource type="PackedScene" uid="uid://djd7got7yxvmp" path="res://scenes/furniture/freezer.tscn" id="2_phvhi"]
+[ext_resource type="Script" uid="uid://qc6maaf7n7rk" path="res://data_templates/FurnitureData.cs" id="3_62n7o"]
+
+[resource]
+script = ExtResource("3_62n7o")
+name = "Freezer"
+price = 999
+image2D = ExtResource("1_phvhi")
+scene3D = ExtResource("2_phvhi")
+metadata/_custom_type_script = "uid://qc6maaf7n7rk"

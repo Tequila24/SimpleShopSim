@@ -1,4 +1,4 @@
-using System.Net.Http.Headers;
+using System;
 using Godot;
 
 
@@ -12,6 +12,9 @@ public partial class AccountWrapper : Node
 	[Export]
 	private AccountData _accountData;
 
+	public Action<int, int> OnAccountMoneyChanged;
+
+
 	
 	public override void _EnterTree()
 	{
@@ -22,6 +25,13 @@ public partial class AccountWrapper : Node
 	static public ItemCountData GetAccMoney()
 	{
 		return Instance._accountData.money;
+	}
+	
+	static public void ChangeAccMoney(int delta)
+	{
+		int oldCount = Instance._accountData.money.count;
+		Instance._accountData.money.count += delta;
+		Instance.OnAccountMoneyChanged(Instance._accountData.money.count, oldCount);
 	}
 
 	static public Godot.Collections.Array<FurnitureData> GetUnlockedFurniture()

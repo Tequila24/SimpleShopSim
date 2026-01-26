@@ -17,7 +17,6 @@ public partial class ShelfWindowLogic : Control
 	public override void _Ready()
 	{
 		_shelf = Utils.GetParentOfType<ShelfLogic>(this);
-		GD.Print($"Shelf found {_shelf.Name}");
 		_shelf.OnAnyItemUpdated += UpdateItemsVisual;
 
 		Init();

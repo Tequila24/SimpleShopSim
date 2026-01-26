@@ -15,9 +15,8 @@ public partial class ObjectPlacer : Node
 		
 		var collision = Utils.GetFirstChildOfType<CollisionShape3D>(_placedObject);
 		if (collision != null) {
-			GD.Print($"Collision disabled");
+			// GD.Print($"Collision disabled");
 			collision.Disabled = true;
-			// collision.SetDeferred("disabled", true);
 		}
 	}
 
@@ -26,9 +25,12 @@ public partial class ObjectPlacer : Node
 		base._EnterTree();
 		
 		InputMaster.Instance.CurrentInputState = InputMaster.InputState.OBJECT_PLACING;
+
 		InputMaster.Instance.OnDragUpdated += DoPlayerMoveInputUpdated;
 		InputMaster.Instance.OnTap += DoRotateObject;
 		InputMaster.Instance.OnDoubleTap += DoPlaceObject;
+
+		CameraMaster.NodeToFollow = _placedObject;
 
 		GetTree().Root.AddChild(_placedObject);
 	}
@@ -38,7 +40,6 @@ public partial class ObjectPlacer : Node
 		base._Ready();
 
 		_targetPosition = Global.GetPlayerNode().GlobalPosition;
-		_targetPosition.Y = 0.5f;
 	}
 
 	public void DoPlayerMoveInputUpdated(Vector2 newInput)
@@ -51,6 +52,7 @@ public partial class ObjectPlacer : Node
 		base._Process(delta);
 		
 		var roundedPosition = _targetPosition.Ceil();
+		roundedPosition.Y = 0.25f;
 		_placedObject.GlobalPosition = _placedObject.GlobalPosition.Lerp(roundedPosition, 20.0f * (float)delta);
 	}
 
@@ -64,11 +66,13 @@ public partial class ObjectPlacer : Node
 		var placeTween = _placedObject.CreateTween();
 		placeTween.TweenProperty(_placedObject, "position:y", 0, 0.2f);
 		placeTween.SetEase(Tween.EaseType.In);
-		placeTween.SetTrans(Tween.TransitionType.Sine);
+		placeTween.SetTrans(Tween.TransitionType.Elastic);
 
 		var collision = Utils.GetFirstChildOfType<CollisionShape3D>(_placedObject);
 		if (collision != null)
 			collision.Disabled = false;
+
+		CameraMaster.NodeToFollow = null;
 
 		this.QueueFree();
 	}

@@ -13,8 +13,16 @@ public partial class CameraMaster : Node
 	[Export]
 	private Node3D _cameraDolly;
 
-	public Node3D NodeToFollow;
-	private Vector3 _cameraPosition = Vector3.One;
+	private Node3D _nodeToFollow;
+	static public Node3D NodeToFollow
+	{
+		get { return Instance._nodeToFollow; }
+		set { if (value != null) Instance._nodeToFollow = value; else Instance._nodeToFollow = Instance.GetTree().GetNodesInGroup("Player")[0] as Node3D; }
+	}
+
+
+	private Vector3 _targetCameraPosition = Vector3.One;
+	// private float _targetCameraRotation = 0;
 
 
 
@@ -26,25 +34,33 @@ public partial class CameraMaster : Node
 
 	public override void _Ready()
 	{	
-		_cameraPosition = _mainCamera.Position;
-		InputMaster.Instance.OnZoomCamera += DoCameraZoom;
+		_targetCameraPosition = _mainCamera.Position;
+		// _targetCameraRotation = _cameraDolly.Rotation.Y;
+		
+		InputMaster.Instance.OnZoomCamera += DoZoomCamera;
+		InputMaster.Instance.OnRotateCamera += DoRotateCamera;
 
-		NodeToFollow = GetTree().GetNodesInGroup("Player")[0] as Node3D;
+		_nodeToFollow = GetTree().GetNodesInGroup("Player")[0] as Node3D;
 	}
 
-	public void DoCameraZoom(float zoomDelta)
+	public void DoZoomCamera(float zoomDelta)
 	{
-		_cameraPosition.Z = Mathf.Clamp(_cameraPosition.Z + zoomDelta * 0.1f, 4.0f, 10.0f);
-		GD.Print($"new camera position {_cameraPosition}");
+		_targetCameraPosition.Z = Mathf.Clamp(_targetCameraPosition.Z + zoomDelta * 0.1f, 4.0f, 10.0f);
+		// GD.Print($"new camera position {_targetCameraPosition}");
+	}
+
+	public void DoRotateCamera(float rotateDelta)
+	{
+		_cameraDolly.RotateY(-rotateDelta * 0.003f);
 	}
 
 	public override void _Process(double delta)
 	{
-		if (NodeToFollow == null)
+		if (_nodeToFollow == null)
 			return;
 		
-		_cameraDolly.Position = _cameraDolly.Position.Lerp(NodeToFollow.GlobalPosition, 5.0f * (float)delta);
-		_mainCamera.Position = _mainCamera.Position.Lerp(_cameraPosition, 10.0f * (float)delta);
+		_cameraDolly.Position = _cameraDolly.Position.Lerp(_nodeToFollow.GlobalPosition, 5.0f * (float)delta);
+		_mainCamera.Position = _mainCamera.Position.Lerp(_targetCameraPosition, 10.0f * (float)delta);
 	}
 
 	static public Camera3D GetCurrentCamera()

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://o88fcq642m4v" path="res://scenes/GUI/WindowShelf.tscn" id="3_bvjvp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwrpm"]
-size = Vector3(1.59375, 1.9, 0.82702637)
+size = Vector3(1.59375, 1.9, 0.7776489)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ho0"]
 resource_name = "colormap"
@@ -88,10 +88,11 @@ script = ExtResource("1_g6k01")
 SlotsHolder = NodePath("Slots")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9176758, -0.027893066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9176758, -0.5744744)
 shape = SubResource("BoxShape3D_dwrpm")
 
 [node name="Slots" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
 
 [node name="Slot_1" type="Node3D" parent="Slots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.122, 0.025999993)
@@ -111,22 +112,23 @@ _windowScene = ExtResource("3_bvjvp")
 _interactionArea = NodePath("../InteractionArea")
 
 [node name="MeshShelf" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0.4)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.1788486)
 mesh = SubResource("ArrayMesh_3fgrp")
 skeleton = NodePath("")
 
 [node name="MeshNameplate" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.9972664, 0, 0, 0, 1.073942, 0, 0, 0, 0.5, 0, 1.6058552, -0.3091419)
+transform = Transform3D(1.9972664, 0, 0, 0, 1.073942, 0, 0, 0, 0.5, 0, 1.6058552, -0.8879905)
 mesh = SubResource("ArrayMesh_scmpl")
 skeleton = NodePath("")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7350836, -0.26255795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7350836, -0.8414066)
 pixel_size = 0.0045
 texture_filter = 1
 text = "Shelf"
 
 [node name="InteractionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.3548241)

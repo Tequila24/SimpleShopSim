@@ -46,8 +46,14 @@ public partial class WindowBuyFurnitureLogic : MarginContainer
 
 	private void DoFurnitureSelected(FurnitureData data)
 	{
-		GD.Print($"Clicked on {data.name}");
-		Global.TryPlaceObject(data);
-		this.QueueFree();
+		if (AccountWrapper.GetAccMoney().count >= data.price)
+		{
+			AccountWrapper.ChangeAccMoney(-data.price);
+
+			Global.TryPlaceObject(data);
+			this.QueueFree();
+		} else {
+			GlobalPopupMaster.ShowPopup("Not enough money!");
+		}
 	}
 }

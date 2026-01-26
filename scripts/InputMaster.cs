@@ -5,9 +5,7 @@ using Godot;
 public partial class InputMaster : Node
 {
 	public static InputMaster Instance
-	{
-		private set; get;
-	}
+	{ private set; get; }
 
 	public enum InputState
 	{
@@ -27,12 +25,14 @@ public partial class InputMaster : Node
 	
 	public Action<Vector3> OnPlayerDirectionUpdated;
 	public Action<float> OnZoomCamera;
+	public Action<float> OnRotateCamera;
 	public Action OnDropKeyPressed;
 
 	public Action<Vector2> OnDragUpdated;
 	public Action OnTap;
 	public Action OnDoubleTap;
 
+	bool _middleMouseButtonHeld = false;
 	Timer _doubleTapTimer;
 	bool _doubleTapFlag = false;
 
@@ -113,6 +113,10 @@ public partial class InputMaster : Node
 		{
 			OnZoomCamera(+1.0f);
 		}
+		if (eventMouseButton.ButtonIndex == MouseButton.Middle)
+		{
+			_middleMouseButtonHeld = eventMouseButton.IsPressed();
+		}
 
 		if (_currentInputState == InputState.OBJECT_PLACING)
 		{
@@ -124,7 +128,7 @@ public partial class InputMaster : Node
 					this.AddChild(_doubleTapTimer);
 					_doubleTapTimer.Timeout += DoDoubleTapTimeout;
 					_doubleTapTimer.OneShot = true;
-					_doubleTapTimer.Start(0.3f);
+					_doubleTapTimer.Start(0.22f);
 				} else
 				{
 					_doubleTapFlag = true;
@@ -146,6 +150,9 @@ public partial class InputMaster : Node
 
 		if (_currentInputState == InputState.OBJECT_PLACING)
 			OnDragUpdated(eventMouseMotion.ScreenRelative);
+
+		if(_middleMouseButtonHeld)
+			OnRotateCamera(eventMouseMotion.ScreenRelative.X);
 	}
 
 	private void DoInputStateChanged()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://qa8bdlgk3bij"]
+[gd_scene load_steps=6 format=3 uid="uid://qa8bdlgk3bij"]
 
 [ext_resource type="Script" uid="uid://jndrfqcgbj0m" path="res://scripts/GUI/HUDLogic.cs" id="1_fsbs6"]
 [ext_resource type="PackedScene" uid="uid://cwxe3bl4yscng" path="res://scenes/GUI/utility/ItemCounter.tscn" id="2_0jvll"]
 [ext_resource type="PackedScene" uid="uid://bjb0c0stfu683" path="res://scenes/GUI/FurnitureShop/WindowBuyFurniture.tscn" id="2_s32he"]
 [ext_resource type="PackedScene" uid="uid://ddxfewhswj1" path="res://scenes/GUI/utility/BasicIconButton.tscn" id="3_lfrrd"]
+[ext_resource type="PackedScene" uid="uid://c55t3q4rqfjyj" path="res://scenes/GUI/utility/PopupMaster/GlobalPopupMaster.tscn" id="3_refw0"]
 
 [node name="HUD" type="MarginContainer" node_paths=PackedStringArray("moneyCounter", "buttonOpenFurnitureShop")]
 anchors_preset = 15
@@ -15,6 +16,9 @@ script = ExtResource("1_fsbs6")
 moneyCounter = NodePath("MarginContainer/VBoxContainer/ItemCounter")
 buttonOpenFurnitureShop = NodePath("Buttons/ButtonBuyFurniture")
 windowFurnitureShop = ExtResource("2_s32he")
+
+[node name="GlobalPopupMaster" parent="." instance=ExtResource("3_refw0")]
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
