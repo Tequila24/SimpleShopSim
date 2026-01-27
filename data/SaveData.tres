@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AccountData" load_steps=8 format=3 uid="uid://yntdv36d38a0"]
+[gd_resource type="Resource" script_class="AccountData" format=3 uid="uid://yntdv36d38a0"]
 
 [ext_resource type="Script" uid="uid://c4trck4r2o2re" path="res://data_templates/AccountData.cs" id="1_m0y6h"]
 [ext_resource type="Resource" uid="uid://cgtj3bpan844f" path="res://data/furniture/Shelf.tres" id="1_xvw5x"]

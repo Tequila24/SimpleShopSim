@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://caxmo27mklgfd"]
+
+[ext_resource type="Material" uid="uid://1ap6q5gk6hik" path="res://assets/materials/OrangeProto.tres" id="1_6wbbs"]
+[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="2_passs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_passs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aevmx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6wbbs"]
+size = Vector3(0.695, 0.255, 0.325)
+
+[node name="TestNpc" type="CharacterBody3D" unique_id=318894040]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1931330440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_passs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=942468996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("1_6wbbs")
+mesh = SubResource("CapsuleMesh_aevmx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=687451722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54724586, 0.38557768)
+material_override = ExtResource("2_passs")
+mesh = SubResource("BoxMesh_6wbbs")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=249910788]
+debug_enabled = true
+debug_path_custom_color = Color(0.81136674, 0.00051345886, 0.811361, 1)

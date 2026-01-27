@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c8ey84heour7x"]
+[gd_scene format=4 uid="uid://c8ey84heour7x"]
 
 [ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/ShelfLogic.cs" id="1_g6k01"]
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_oucxj"]
@@ -83,53 +83,53 @@ shadow_mesh = SubResource("ArrayMesh_7lhpv")
 [sub_resource type="SphereShape3D" id="SphereShape3D_g6k01"]
 radius = 0.4966996
 
-[node name="Shelf" type="StaticBody3D" node_paths=PackedStringArray("SlotsHolder")]
+[node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("SlotsHolder") groups=["NavigationCollision"]]
 script = ExtResource("1_g6k01")
 SlotsHolder = NodePath("Slots")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=62573867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9176758, -0.5744744)
 shape = SubResource("BoxShape3D_dwrpm")
 
-[node name="Slots" type="Node3D" parent="."]
+[node name="Slots" type="Node3D" parent="." unique_id=1203267384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
 
-[node name="Slot_1" type="Node3D" parent="Slots"]
+[node name="Slot_1" type="Node3D" parent="Slots" unique_id=512041453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.122, 0.025999993)
 
-[node name="Slot_2" type="Node3D" parent="Slots"]
+[node name="Slot_2" type="Node3D" parent="Slots" unique_id=2026662852]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.122, 0.025999993)
 
-[node name="Slot_3" type="Node3D" parent="Slots"]
+[node name="Slot_3" type="Node3D" parent="Slots" unique_id=570066723]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.3526376, 0.025999993)
 
-[node name="Slot_4" type="Node3D" parent="Slots"]
+[node name="Slot_4" type="Node3D" parent="Slots" unique_id=1177853491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3526376, 0.025999993)
 
-[node name="PopupController" type="Node" parent="." node_paths=PackedStringArray("_interactionArea")]
+[node name="PopupController" type="Node" parent="." unique_id=1773727411 node_paths=PackedStringArray("_interactionArea")]
 script = ExtResource("2_gro8r")
 _windowScene = ExtResource("3_bvjvp")
 _interactionArea = NodePath("../InteractionArea")
 
-[node name="MeshShelf" type="MeshInstance3D" parent="."]
+[node name="MeshShelf" type="MeshInstance3D" parent="." unique_id=2121283122]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.1788486)
 mesh = SubResource("ArrayMesh_3fgrp")
 skeleton = NodePath("")
 
-[node name="MeshNameplate" type="MeshInstance3D" parent="."]
+[node name="MeshNameplate" type="MeshInstance3D" parent="." unique_id=1466868316]
 transform = Transform3D(1.9972664, 0, 0, 0, 1.073942, 0, 0, 0, 0.5, 0, 1.6058552, -0.8879905)
 mesh = SubResource("ArrayMesh_scmpl")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="." unique_id=231332709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7350836, -0.8414066)
 pixel_size = 0.0045
 texture_filter = 1
 text = "Shelf"
 
-[node name="InteractionArea" type="Area3D" parent="."]
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1564984308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=600022783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.3548241)
 shape = SubResource("SphereShape3D_g6k01")

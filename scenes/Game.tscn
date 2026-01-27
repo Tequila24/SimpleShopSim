@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cx31e8ojfteo7"]
+[gd_scene format=3 uid="uid://cx31e8ojfteo7"]
 
 [ext_resource type="PackedScene" uid="uid://qa8bdlgk3bij" path="res://scenes/GUI/HUD.tscn" id="1_45i86"]
 [ext_resource type="PackedScene" uid="uid://6yf11rk4crfw" path="res://scenes/levels/LevelScene.tscn" id="1_r7sob"]
@@ -18,8 +18,8 @@
 [ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="12_a85ww"]
 [ext_resource type="Script" uid="uid://dvfxsch5jk0q8" path="res://data_templates/ItemsBoxData.cs" id="13_jhsr3"]
 [ext_resource type="PackedScene" uid="uid://ca5shgyut3o7" path="res://scenes/items/box_open.tscn" id="14_0bq3a"]
-[ext_resource type="PackedScene" uid="uid://c8ey84heour7x" path="res://scenes/furniture/shelf.tscn" id="15_754j2"]
 [ext_resource type="Texture2D" uid="uid://busibgl4gn6nu" path="res://assets/packs/kenney_animated-characters-2/Skins/skaterMaleA.png" id="15_bneo8"]
+[ext_resource type="PackedScene" uid="uid://caxmo27mklgfd" path="res://scenes/TestNPC.tscn" id="20_sv1m6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s5hy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -206,64 +206,64 @@ content = Array[ExtResource("10_ocgqw")]([SubResource("Resource_21xg8"), SubReso
 subScene = ExtResource("14_0bq3a")
 metadata/_custom_type_script = "uid://dvfxsch5jk0q8"
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" unique_id=693449353]
 
-[node name="HUD" parent="." instance=ExtResource("1_45i86")]
+[node name="HUD" parent="." unique_id=1399761579 instance=ExtResource("1_45i86")]
 
-[node name="ENV" type="Node" parent="."]
+[node name="ENV" type="Node" parent="." unique_id=1236292475]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="ENV"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ENV" unique_id=316817523]
 environment = SubResource("Environment_6ytau")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ENV"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ENV" unique_id=1528222446]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Global" type="Node" parent="."]
+[node name="Global" type="Node" parent="." unique_id=1288557011]
 script = ExtResource("2_bneo8")
 objectPlacer = ExtResource("3_bneo8")
 
-[node name="AccountWrapper" type="Node" parent="."]
+[node name="AccountWrapper" type="Node" parent="." unique_id=1674236339]
 script = ExtResource("1_y5y3l")
 _accountData = ExtResource("5_sv1m6")
 
-[node name="InputMaster" type="Node" parent="."]
+[node name="InputMaster" type="Node" parent="." unique_id=204199241]
 script = ExtResource("2_y5y3l")
 
-[node name="CameraMaster" type="Node" parent="." node_paths=PackedStringArray("_mainCamera", "_cameraDolly")]
+[node name="CameraMaster" type="Node" parent="." unique_id=1691051831 node_paths=PackedStringArray("_mainCamera", "_cameraDolly")]
 script = ExtResource("3_vjgi4")
 _mainCamera = NodePath("Dolly/Camera3D")
 _cameraDolly = NodePath("Dolly")
 
-[node name="Dolly" type="Node3D" parent="CameraMaster"]
+[node name="Dolly" type="Node3D" parent="CameraMaster" unique_id=195131702]
 transform = Transform3D(0.7071067, -0.5416752, 0.45451948, 0, 0.64278764, 0.76604444, -0.7071067, -0.5416752, 0.45451948, -0.30734158, 0, -0.07539177)
 
-[node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly"]
+[node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly" unique_id=1680751510]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 5.5)
 
-[node name="LevelScene" parent="." instance=ExtResource("1_r7sob")]
+[node name="LevelScene" parent="." unique_id=1369403572 instance=ExtResource("1_r7sob")]
 
-[node name="Character" type="CharacterBody3D" parent="." groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0086309, 0)
+[node name="Character" type="CharacterBody3D" parent="." unique_id=510431857 groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="PickupController" type="Node" parent="Character" node_paths=PackedStringArray("_pickupArea", "_itemVisualHolder")]
+[node name="PickupController" type="Node" parent="Character" unique_id=14397946 node_paths=PackedStringArray("_pickupArea", "_itemVisualHolder")]
 script = ExtResource("4_kyk2p")
 _pickupArea = NodePath("../Area3D")
 _itemVisualHolder = NodePath("../Picked Item Holder")
 
-[node name="PlayerController" type="Node" parent="Character" node_paths=PackedStringArray("_animPlayer")]
+[node name="PlayerController" type="Node" parent="Character" unique_id=1344227413 node_paths=PackedStringArray("_animPlayer")]
 script = ExtResource("5_45i86")
 _maxWalkVelocity = 5.0
 _animPlayer = NodePath("../Root/AnimationPlayer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Character"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character" unique_id=153518824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22912598, 0)
 shape = SubResource("CapsuleShape3D_vh257")
 
-[node name="Root" type="Node3D" parent="Character"]
+[node name="Root" type="Node3D" parent="Character" unique_id=361765514]
 transform = Transform3D(50, 0, 0, 0, -2.1855694e-06, 50, 0, -50, -2.1855694e-06, 0, -1, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Character/Root"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Character/Root" unique_id=1709596926]
 bones/0/name = "LeftFootCtrl"
 bones/0/parent = -1
 bones/0/rest = Transform3D(-3.5762787e-07, -2.980232e-08, -0.99999994, 1, 0, -3.874302e-07, -5.9604645e-08, -0.99999994, 5.9604645e-08, 0.002042088, 0.0014880997, 0.0019320479)
@@ -671,30 +671,28 @@ bones/57/position = Vector3(0, 0.002132363, 0)
 bones/57/rotation = Quaternion(0, 0, 0, 1)
 bones/57/scale = Vector3(1, 1, 1)
 
-[node name="characterMedium" type="MeshInstance3D" parent="Character/Root/Skeleton3D"]
+[node name="characterMedium" type="MeshInstance3D" parent="Character/Root/Skeleton3D" unique_id=1395235332]
 material_override = SubResource("StandardMaterial3D_vijgj")
 mesh = ExtResource("7_a8wo8")
 skin = SubResource("Skin_0xwob")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character/Root"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character/Root" unique_id=300022555]
 root_node = NodePath("../..")
-libraries = {
-&"Anim_char": ExtResource("8_attvq")
-}
+libraries/Anim_char = ExtResource("8_attvq")
 
-[node name="Area3D" type="Area3D" parent="Character"]
+[node name="Area3D" type="Area3D" parent="Character" unique_id=1698756181]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Character/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character/Area3D" unique_id=1353831687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11254883, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_bneo8")
 
-[node name="Picked Item Holder" type="Node3D" parent="Character"]
+[node name="Picked Item Holder" type="Node3D" parent="Character" unique_id=1042731585]
 transform = Transform3D(1, 0, 0, 0, 0.98616725, -0.16575333, 0, 0.16575333, 0.98616725, 0, -0.33091593, 0.5050606)
 
-[node name="TestDrop" parent="." instance=ExtResource("9_bneo8")]
+[node name="TestDrop" parent="." unique_id=843605946 instance=ExtResource("9_bneo8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0908794, 0, -0.10293317)
 _item = SubResource("Resource_kxqg4")
 
-[node name="Test Shelf" parent="." instance=ExtResource("15_754j2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+[node name="TestNpc" parent="." unique_id=318894040 instance=ExtResource("20_sv1m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4917636, 0, 1.8512341)
