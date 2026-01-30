@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmConcept", "FarmConcept.csproj", "{DA3E5FA3-7C55-4E68-BE62-B889AC527513}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmConcept", "FarmConcept.csproj", "{A08ABFB2-05CD-4EA6-84A6-F956640EDA22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DA3E5FA3-7C55-4E68-BE62-B889AC527513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA3E5FA3-7C55-4E68-BE62-B889AC527513}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA3E5FA3-7C55-4E68-BE62-B889AC527513}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{DA3E5FA3-7C55-4E68-BE62-B889AC527513}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{DA3E5FA3-7C55-4E68-BE62-B889AC527513}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{DA3E5FA3-7C55-4E68-BE62-B889AC527513}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{A08ABFB2-05CD-4EA6-84A6-F956640EDA22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A08ABFB2-05CD-4EA6-84A6-F956640EDA22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A08ABFB2-05CD-4EA6-84A6-F956640EDA22}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{A08ABFB2-05CD-4EA6-84A6-F956640EDA22}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{A08ABFB2-05CD-4EA6-84A6-F956640EDA22}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{A08ABFB2-05CD-4EA6-84A6-F956640EDA22}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
