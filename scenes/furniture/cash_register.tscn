@@ -1,23 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://t0a88yafwfgy"]
+[gd_scene format=3 uid="uid://t0a88yafwfgy"]
 
+[ext_resource type="Script" uid="uid://p2wooxjak6yd" path="res://scripts/furniture/CashRegisterLogic.cs" id="1_22htu"]
 [ext_resource type="PackedScene" uid="uid://cox6d8ek7n38h" path="res://assets/packs/kenney_mini-market/Models/GLB format/cash-register.glb" id="1_v0pm1"]
-[ext_resource type="Script" uid="uid://c28br4nfkbh7j" path="res://scripts/PopupController.cs" id="2_fq0fk"]
-[ext_resource type="PackedScene" uid="uid://cxoq1csmpfk33" path="res://scenes/GUI/Popup2D.tscn" id="3_osk2d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0pm1"]
 
-[node name="CashRegister" type="Node3D"]
+[node name="CashRegister" type="Node3D" unique_id=52326059]
+script = ExtResource("1_22htu")
 
-[node name="cash-register2" parent="." instance=ExtResource("1_v0pm1")]
+[node name="cash-register2" parent="." unique_id=1037191509 instance=ExtResource("1_v0pm1")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=745641430]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35401, 0.50472206, -0.33104786)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=39299616]
 shape = SubResource("SphereShape3D_v0pm1")
-
-[node name="PopupController" type="Node" parent="." node_paths=PackedStringArray("_interactionArea")]
-script = ExtResource("2_fq0fk")
-_windowScene = ExtResource("3_osk2d")
-_interactionArea = NodePath("../Area3D")

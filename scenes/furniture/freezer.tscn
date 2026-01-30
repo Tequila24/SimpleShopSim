@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://djd7got7yxvmp"]
+[gd_scene format=4 uid="uid://djd7got7yxvmp"]
 
-[ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/ShelfLogic.cs" id="1_bkjt0"]
+[ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/furniture/ShelfLogic.cs" id="1_bkjt0"]
 [ext_resource type="Script" uid="uid://c28br4nfkbh7j" path="res://scripts/PopupController.cs" id="2_jfej8"]
 [ext_resource type="PackedScene" uid="uid://o88fcq642m4v" path="res://scenes/GUI/WindowShelf.tscn" id="3_ndiuv"]
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="4_d1yvf"]
@@ -89,53 +89,58 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k3mm2")
 
-[node name="Shelf" type="StaticBody3D" node_paths=PackedStringArray("SlotsHolder")]
+[node name="Shelf" type="StaticBody3D" unique_id=1813106554 node_paths=PackedStringArray("_slots") groups=["NavigationCollision"]]
 script = ExtResource("1_bkjt0")
-SlotsHolder = NodePath("Slots")
+_slots = {
+NodePath("Slots/Slot_1"): null,
+NodePath("Slots/Slot_2"): null,
+NodePath("Slots/Slot_3"): null,
+NodePath("Slots/Slot_4"): null
+}
 
-[node name="CollisionShape" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=161205914]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026755333, 0.9176758, -0.50349)
 shape = SubResource("BoxShape3D_dwrpm")
 
-[node name="Slots" type="Node3D" parent="."]
+[node name="Slots" type="Node3D" parent="." unique_id=2128026440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
 
-[node name="Slot_1" type="Node3D" parent="Slots"]
+[node name="Slot_1" type="Node3D" parent="Slots" unique_id=1875467065]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.122, 0.27189493)
 
-[node name="Slot_2" type="Node3D" parent="Slots"]
+[node name="Slot_2" type="Node3D" parent="Slots" unique_id=1241737149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.122, 0.27189493)
 
-[node name="Slot_3" type="Node3D" parent="Slots"]
+[node name="Slot_3" type="Node3D" parent="Slots" unique_id=1623745424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3526376, 0.27189493)
 
-[node name="Slot_4" type="Node3D" parent="Slots"]
+[node name="Slot_4" type="Node3D" parent="Slots" unique_id=1653476289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3526376, 0.27189493)
 
-[node name="PopupController" type="Node" parent="." node_paths=PackedStringArray("_interactionArea")]
+[node name="PopupController" type="Node" parent="." unique_id=345793800 node_paths=PackedStringArray("_interactionArea")]
 script = ExtResource("2_jfej8")
 _windowScene = ExtResource("3_ndiuv")
 _interactionArea = NodePath("../InteractionArea")
 
-[node name="MeshNameplate" type="MeshInstance3D" parent="."]
+[node name="MeshNameplate" type="MeshInstance3D" parent="." unique_id=238814617]
 transform = Transform3D(1.9972664, 0, 0, 0, 1.073942, 0, 0, 0, 0.5, 0, 1.8104942, -0.3017645)
 mesh = SubResource("ArrayMesh_scmpl")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="." unique_id=357688912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9397225, -0.2551806)
 pixel_size = 0.0045
 texture_filter = 1
 text = "Freezer"
 
-[node name="InteractionArea" type="Area3D" parent="."]
+[node name="InteractionArea" type="Area3D" parent="." unique_id=414479814]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.3548241)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=1696678247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.7121053)
 shape = SubResource("SphereShape3D_g6k01")
 
-[node name="freezers-standing" type="MeshInstance3D" parent="."]
+[node name="freezers-standing" type="MeshInstance3D" parent="." unique_id=1804841243]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_neujn")
 skeleton = NodePath("")

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c8ey84heour7x"]
 
-[ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/ShelfLogic.cs" id="1_g6k01"]
+[ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/furniture/ShelfLogic.cs" id="1_g6k01"]
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_oucxj"]
 [ext_resource type="Script" uid="uid://c28br4nfkbh7j" path="res://scripts/PopupController.cs" id="2_gro8r"]
 [ext_resource type="PackedScene" uid="uid://o88fcq642m4v" path="res://scenes/GUI/WindowShelf.tscn" id="3_bvjvp"]
@@ -83,9 +83,14 @@ shadow_mesh = SubResource("ArrayMesh_7lhpv")
 [sub_resource type="SphereShape3D" id="SphereShape3D_g6k01"]
 radius = 0.4966996
 
-[node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("SlotsHolder") groups=["NavigationCollision"]]
+[node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("_slots") groups=["NavigationCollision"]]
 script = ExtResource("1_g6k01")
-SlotsHolder = NodePath("Slots")
+_slots = {
+NodePath("Slots/Slot_1"): null,
+NodePath("Slots/Slot_2"): null,
+NodePath("Slots/Slot_3"): null,
+NodePath("Slots/Slot_4"): null
+}
 
 [node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=62573867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9176758, -0.5744744)

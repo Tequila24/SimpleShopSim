@@ -1,30 +1,35 @@
 using Godot;
 using System;
 
-public partial class NavigationMaster : Node3D
+public partial class NavigationMaster : NavigationRegion3D
 {
-	[Export]
-	NavigationRegion3D _navRegion;
+	public static NavigationMaster Instance
+	{ private set; get; }
 
+
+
+	public override void _EnterTree()
+	{
+		base._EnterTree();
+
+		Instance ??= this;
+	}
 
 
 	public override void _Ready()
 	{
 		base._Ready();
 
-		_navRegion.BakeFinished += DoBakeFinished;
-	
-		ReBakeNavmesh();
-	}
+		NavigationServer3D.SetDebugEnabled(true);
 
+		BakeFinished += DoBakeFinished;
 
-	public void ReBakeNavmesh()
-	{
-		_navRegion.BakeNavigationMesh();
+		BakeNavigationMesh();
 	}
 
 	private void DoBakeFinished()
 	{
+		GD.Print($"Polygon Count: {NavigationMesh.GetPolygonCount()}");
 		GD.Print($"Bake Finished!");
 	}
 }

@@ -32,7 +32,7 @@ public partial class ObjectPlacer : Node
 
 		CameraMaster.NodeToFollow = _placedObject;
 
-		GetTree().Root.AddChild(_placedObject);
+		LevelMaster.Instance.AddChild(_placedObject);
 	}
 
 	public override void _Ready()
@@ -67,6 +67,13 @@ public partial class ObjectPlacer : Node
 		placeTween.TweenProperty(_placedObject, "position:y", 0, 0.2f);
 		placeTween.SetEase(Tween.EaseType.In);
 		placeTween.SetTrans(Tween.TransitionType.Elastic);
+		placeTween.TweenCallback(Callable.From(
+			() => {
+				LevelMaster.Instance.OnSomethingPlaced(_placedObject);
+				NavigationMaster.Instance.BakeNavigationMesh();
+				}
+		));
+
 
 		var collision = Utils.GetFirstChildOfType<CollisionShape3D>(_placedObject);
 		if (collision != null)
