@@ -20,12 +20,21 @@ public partial class LevelMaster : Node3D
 	public override void _Ready()
 	{
 		base._Ready();
-	
+
 		foreach (var child in GetChildren())
 		{
 			if (child is ShelfLogic newShelf)
+			{
 				shelves.Add(newShelf);
+				continue;
+			}
+
+			if (child is CashRegisterLogic cashRegister)
+			{
+				_cashRegister = cashRegister;
+			}
 		}
+
 	}
 
 
@@ -35,17 +44,19 @@ public partial class LevelMaster : Node3D
 		{
 			case ShelfLogic newShelf:
 				{
+					GD.Print($"New Shelf {newShelf.Name}");
 					shelves.Add(newShelf);
 					break;
 				}
 			case CashRegisterLogic newRegister:
 				{
+					GD.Print($"New Cash Register! {newRegister.Name}");
 					_cashRegister = newRegister;
 					break;
 				}
-			
+
 			default:
-			break;
+				break;
 		}
 	}
 
@@ -59,7 +70,8 @@ public partial class LevelMaster : Node3D
 			if (shelf.DoesHaveItem(searchedItem))
 			{
 				return shelf;
-			} else
+			}
+			else
 			{
 				continue;
 			}
