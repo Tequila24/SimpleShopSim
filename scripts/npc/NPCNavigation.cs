@@ -14,7 +14,6 @@ public partial class NPCNavigation : NavigationAgent3D
 	public override void _Ready()
 	{
 		base._Ready();
-		MaxSpeed = _maxSpeed;
 
 		NavigationMaster.Instance.BakeFinished += DoNavmeshBakeFinished;
 		VelocityComputed += DoVelocityComputed;
@@ -43,7 +42,7 @@ public partial class NPCNavigation : NavigationAgent3D
 
 	public void DoVelocityComputed(Vector3 newVelocity)
 	{
-		_npcBody.Velocity = newVelocity;
+		_npcBody.Velocity = newVelocity * _maxSpeed;
 		_npcBody.MoveAndSlide();
 	}
 }

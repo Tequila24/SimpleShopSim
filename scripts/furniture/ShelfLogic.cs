@@ -55,6 +55,7 @@ public partial class ShelfLogic : Node3D
 		if (match.Key != null)
 		{
 			_slots[match.Key] = null;
+			UpdateVisualHolder(match.Key);
 			return true;
 		} else
 		{

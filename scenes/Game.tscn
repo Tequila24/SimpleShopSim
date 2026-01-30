@@ -83,7 +83,7 @@ _mainCamera = NodePath("Dolly/Camera3D")
 _cameraDolly = NodePath("Dolly")
 
 [node name="Dolly" type="Node3D" parent="CameraMaster" unique_id=195131702]
-transform = Transform3D(0.7071067, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.7071067, -0.61237246, 0.35355335, -0.30734158, 0, -0.07539177)
+transform = Transform3D(0.7071067, -0.5416752, 0.45451948, 0, 0.64278764, 0.76604444, -0.7071067, -0.5416752, 0.45451948, -0.30734158, 0, -0.07539177)
 
 [node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly" unique_id=1680751510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
@@ -100,9 +100,6 @@ _item = SubResource("Resource_kxqg4")
 
 [node name="TestNpc" parent="." unique_id=318894040 instance=ExtResource("20_sv1m6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203, 0, 1.851)
-
-[node name="NavigationAgent3D" parent="TestNpc" index="2" unique_id=249910788]
-_maxSpeed = 10.0
 
 [node name="BuyerLogic" parent="TestNpc" index="3" unique_id=1429878381]
 _wantedItems = Array[ExtResource("17_vjgi4")]([ExtResource("11_jbgew"), ExtResource("12_a85ww")])

@@ -75,8 +75,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7061715, 3.330669e-16, -1.2
 _slots = {
 NodePath("Slots/Slot_1"): ExtResource("6_bavr4"),
 NodePath("Slots/Slot_2"): ExtResource("5_unm8g"),
-NodePath("Slots/Slot_3"): null,
-NodePath("Slots/Slot_4"): null
+NodePath("Slots/Slot_3"): ExtResource("6_bavr4"),
+NodePath("Slots/Slot_4"): ExtResource("5_unm8g")
 }
 
 [node name="CashRegister" parent="." unique_id=788410570 instance=ExtResource("8_bavr4")]

@@ -32,7 +32,7 @@ public partial class BuyerLogic : Node
 		_npcNav.NavigationFinished += DoTargetReached;
 
 		var delayStart = CreateTween();
-		delayStart.TweenInterval(1.0f);
+		delayStart.TweenInterval(2.0f);
 		delayStart.TweenCallback(Callable.From(
 			() => { _currentState = State.IDLE; }
 		));
@@ -129,6 +129,7 @@ public partial class BuyerLogic : Node
 			GD.Print($"NPC {_npcBody.Name} paying");
 			int summ = _foundItems.Aggregate(0, (total, next) => total + next.price);
 			AccountWrapper.ChangeAccMoney(summ);
+			_foundItems.Clear();
 			_currentState = State.IDLE;
 		}
 
