@@ -5,7 +5,13 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0pm1"]
 
-[node name="CashRegister" type="Node3D" unique_id=52326059]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ohuhh"]
+size = Vector3(0.77557373, 0.5, 1.5164795)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cki0w"]
+size = Vector3(1.6524963, 0.5, 0.7347412)
+
+[node name="CashRegister" type="StaticBody3D" unique_id=788410570 groups=["NavigationCollision"]]
 script = ExtResource("1_22htu")
 
 [node name="cash-register2" parent="." unique_id=1037191509 instance=ExtResource("1_v0pm1")]
@@ -16,3 +22,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35401, 0.50472206, -0.33104
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=39299616]
 shape = SubResource("SphereShape3D_v0pm1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=981133046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38210866, 0.27870464, -0.049865723)
+shape = SubResource("BoxShape3D_ohuhh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=970774618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053848267, 0.25, 0.35321045)
+shape = SubResource("BoxShape3D_cki0w")

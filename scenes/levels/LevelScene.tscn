@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ey84heour7x" path="res://scenes/furniture/shelf.tscn" id="4_rdyrl"]
 [ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="5_unm8g"]
 [ext_resource type="Resource" uid="uid://dqru0nhmdqovd" path="res://data/items/Bread.tres" id="6_bavr4"]
+[ext_resource type="PackedScene" uid="uid://t0a88yafwfgy" path="res://scenes/furniture/cash_register.tscn" id="8_bavr4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b8l4a"]
 vertices = PackedVector3Array(4.5, -0.28999996, 2.5, 4.5, -0.28999996, -2.5, 4, -0.28999996, -0.75, 1.5, -0.28999996, -0.75, 1.25, -0.28999996, -2.5, -4.5, -0.28999996, -2.5, -4.5, -0.28999996, 2.5)
@@ -77,3 +78,6 @@ NodePath("Slots/Slot_2"): ExtResource("5_unm8g"),
 NodePath("Slots/Slot_3"): null,
 NodePath("Slots/Slot_4"): null
 }
+
+[node name="CashRegister" parent="." unique_id=788410570 instance=ExtResource("8_bavr4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0496645, -4.7683716e-07, 1.5881392)

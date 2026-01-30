@@ -89,7 +89,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k3mm2")
 
-[node name="Shelf" type="StaticBody3D" unique_id=1813106554 node_paths=PackedStringArray("_slots") groups=["NavigationCollision"]]
+[node name="Freezer" type="StaticBody3D" unique_id=1813106554 node_paths=PackedStringArray("_slots") groups=["NavigationCollision"]]
 script = ExtResource("1_bkjt0")
 _slots = {
 NodePath("Slots/Slot_1"): null,
