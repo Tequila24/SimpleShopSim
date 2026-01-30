@@ -102,8 +102,10 @@ public partial class BuyerLogic : Node
 		var cashier = LevelMaster.Instance.TryFindCashRegister();
 		if (cashier == null)
 		{
+			GD.Print($"{_npcBody.Name} no cash register found, leaving");
 			_currentState = State.LEAVING;
-			UpdateState();
+			LeaveShop();
+			return;
 		}
 
 		_npcNav.NavigateTo(cashier.GlobalPosition);
