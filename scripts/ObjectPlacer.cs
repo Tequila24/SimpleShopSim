@@ -69,19 +69,18 @@ public partial class ObjectPlacer : Node
 		placeTween.SetTrans(Tween.TransitionType.Elastic);
 		placeTween.TweenCallback(Callable.From(
 			() => {
+				GD.Print($"CALLING MY ASS");
 				LevelMaster.Instance.OnSomethingPlaced(_placedObject);
 				NavigationMaster.Instance.BakeNavigationMesh();
+				this.QueueFree();
 				}
 		));
-
 
 		var collision = Utils.GetFirstChildOfType<CollisionShape3D>(_placedObject);
 		if (collision != null)
 			collision.Disabled = false;
 
 		CameraMaster.NodeToFollow = null;
-
-		this.QueueFree();
 	}
 
 	public override void _ExitTree()
