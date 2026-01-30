@@ -29,14 +29,10 @@ public partial class HUDLogic : Control
 	public void UpdateMoneyCounter(int newCount, int oldCount)
 	{
 		moneyCounter.ItemCountLabel.Text = newCount.ToString();
-
-		GlobalPopupMaster.ShowPopup("Test popup 1!");
-		GlobalPopupMaster.ShowPopup("Test popup 2!");
 	}
 
 	public void DoOpenFurnitureShop()
 	{
-		GlobalPopupMaster.ShowPopup("Test popup 3!");
 		var newWindow = windowFurnitureShop.Instantiate<Control>();
 		this.AddChild(newWindow);
 	}
