@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 
 public partial class LevelMaster : Node3D
@@ -8,6 +9,8 @@ public partial class LevelMaster : Node3D
 
 	Godot.Collections.Array<ShelfLogic> shelves = [];
 	CashRegisterLogic _cashRegister;
+
+	public Action OnLevelReady;
 
 
 	public override void _EnterTree()

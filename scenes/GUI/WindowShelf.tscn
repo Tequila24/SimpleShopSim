@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://o88fcq642m4v"]
+[gd_scene format=3 uid="uid://o88fcq642m4v"]
 
 [ext_resource type="Script" uid="uid://c5j5tk6lxgx32" path="res://scripts/GUI/ShelfWindowLogic.cs" id="1_oclos"]
 [ext_resource type="PackedScene" uid="uid://bw6vdlffldk6i" path="res://scenes/GUI/utility/item_button.tscn" id="2_k51sn"]

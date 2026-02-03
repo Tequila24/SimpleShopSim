@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw6vdlffldk6i"]
+[gd_scene format=3 uid="uid://bw6vdlffldk6i"]
 
 [ext_resource type="Script" uid="uid://pnkvdxvjkjgq" path="res://scripts/GUI/utility/ItemButtonLogic.cs" id="1_gunhi"]
 
