@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://ca5shgyut3o7"]
+[gd_scene format=4 uid="uid://ca5shgyut3o7"]
 
 [ext_resource type="Texture2D" uid="uid://b27648ghp3dis" path="res://assets/packs/kenney_survival-kit/Models/GLB format/Textures/colormap.png" id="1_h4lo5"]
+[ext_resource type="PackedScene" uid="uid://cyssnwksyuk56" path="res://assets/models/oiiaioooooiai_cat.glb" id="2_jvmh7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itnsh"]
 resource_name = "colormap"
@@ -42,9 +43,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_oc80k")
 
-[node name="BoxOpen" type="Node3D"]
+[node name="BoxOpen" type="Node3D" unique_id=750291497]
 
-[node name="box-open" type="MeshInstance3D" parent="."]
+[node name="box-open" type="MeshInstance3D" parent="." unique_id=1054247588]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wxhex")
 skeleton = NodePath("")
+
+[node name="Sketchfab_Scene" parent="." unique_id=1400500280 instance=ExtResource("2_jvmh7")]
+transform = Transform3D(1.349923, 0.011905677, -0.0081352675, 4.468225e-08, 0.76163596, 1.1146348, 0.0144197, -1.1145713, 0.7615926, 0.0025675297, 0.2821524, 0.1333102)

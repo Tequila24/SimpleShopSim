@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://b8e0j1cmpkr4m"]
+[gd_scene format=4 uid="uid://b8e0j1cmpkr4m"]
 
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_3jb24"]
 
@@ -43,18 +43,18 @@ shadow_mesh = SubResource("ArrayMesh_n6lwa")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dqndy"]
 size = Vector3(1, 1, 0.12580566)
 
-[node name="WallHigh" type="StaticBody3D"]
+[node name="WallHigh" type="StaticBody3D" unique_id=464313816 groups=["NavigationCollision"]]
 
-[node name="wall" type="MeshInstance3D" parent="."]
+[node name="wall" type="MeshInstance3D" parent="." unique_id=1635255205]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.19999999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_etydb")
 skeleton = NodePath("")
 
-[node name="wall2" type="MeshInstance3D" parent="."]
+[node name="wall2" type="MeshInstance3D" parent="." unique_id=77933382]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 0.19999999, 0, 2, 0)
 mesh = SubResource("ArrayMesh_etydb")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1199914994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.0010620132)
 shape = SubResource("BoxShape3D_dqndy")

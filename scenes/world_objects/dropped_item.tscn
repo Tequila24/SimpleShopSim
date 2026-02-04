@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ra8rc6ck5udh"]
+[gd_scene format=3 uid="uid://ra8rc6ck5udh"]
 
 [ext_resource type="Script" uid="uid://fmedb6y827fc" path="res://scripts/DroppedItem.cs" id="1_p32ve"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p32ve"]
 
-[node name="DroppedItem" type="Node3D" node_paths=PackedStringArray("_visualHolder")]
+[node name="DroppedItem" type="Node3D" unique_id=1252905797 node_paths=PackedStringArray("_visualHolder")]
 script = ExtResource("1_p32ve")
 _visualHolder = NodePath("VisualHolder")
 
-[node name="VisualHolder" type="Node3D" parent="."]
+[node name="VisualHolder" type="Node3D" parent="." unique_id=768889853]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=890793743]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=718033762]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_p32ve")

@@ -156,7 +156,7 @@ bind/44/pose = Transform3D(-0.99280274, 0.11937319, 0.009585102, -0.11966439, -0
 radius = 0.31396484
 height = 1.7749023
 
-[node name="Player" type="CharacterBody3D" unique_id=1259514022 groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1259514022 groups=["Characters", "Player"]]
 
 [node name="PickupController" type="Node" parent="." unique_id=1057939210 node_paths=PackedStringArray("_pickupArea", "_itemVisualHolder")]
 script = ExtResource("1_qu4a1")

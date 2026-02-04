@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cx31e8ojfteo7"]
 
 [ext_resource type="PackedScene" uid="uid://qa8bdlgk3bij" path="res://scenes/GUI/HUD.tscn" id="1_45i86"]
-[ext_resource type="PackedScene" uid="uid://6yf11rk4crfw" path="res://scenes/levels/LevelScene.tscn" id="1_r7sob"]
+[ext_resource type="PackedScene" uid="uid://6yf11rk4crfw" path="res://scenes/level/LevelScene.tscn" id="1_r7sob"]
 [ext_resource type="Script" uid="uid://ddngn7t0yxjen" path="res://scripts/data_wrappers/AccountWrapper.cs" id="1_y5y3l"]
 [ext_resource type="Script" uid="uid://dqkqgsh2y0kpo" path="res://scripts/Global.cs" id="2_bneo8"]
 [ext_resource type="Script" uid="uid://bi7khum6bi5qa" path="res://scripts/InputMaster.cs" id="2_y5y3l"]
@@ -15,8 +15,6 @@
 [ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="12_a85ww"]
 [ext_resource type="Script" uid="uid://dvfxsch5jk0q8" path="res://data_templates/ItemsBoxData.cs" id="13_jhsr3"]
 [ext_resource type="PackedScene" uid="uid://ca5shgyut3o7" path="res://scenes/items/box_open.tscn" id="14_0bq3a"]
-[ext_resource type="Script" uid="uid://cimo1fnt81gtv" path="res://data_templates/ItemData.cs" id="17_vjgi4"]
-[ext_resource type="PackedScene" uid="uid://caxmo27mklgfd" path="res://scenes/TestNPC.tscn" id="20_sv1m6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s5hy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -95,13 +93,5 @@ fov = 85.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="TestDrop" parent="." unique_id=843605946 instance=ExtResource("9_bneo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0908794, 0, -0.10293317)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9328032, 0, -1.4832652)
 _item = SubResource("Resource_kxqg4")
-
-[node name="TestNpc" parent="." unique_id=318894040 instance=ExtResource("20_sv1m6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203, 0, 1.851)
-
-[node name="BuyerLogic" parent="TestNpc" index="3" unique_id=1429878381]
-_wantedItems = Array[ExtResource("17_vjgi4")]([ExtResource("11_jbgew"), ExtResource("12_a85ww")])
-
-[editable path="TestNpc"]

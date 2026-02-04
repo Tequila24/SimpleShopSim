@@ -12,7 +12,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_6wbbs"]
 size = Vector3(0.695, 0.255, 0.325)
 
-[node name="TestNpc" type="CharacterBody3D" unique_id=318894040]
+[node name="TestNpc" type="CharacterBody3D" unique_id=318894040 groups=["Characters"]]
 motion_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1931330440]
@@ -30,7 +30,7 @@ material_override = ExtResource("2_passs")
 mesh = SubResource("BoxMesh_6wbbs")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=249910788 node_paths=PackedStringArray("_npcBody")]
-target_desired_distance = 0.5
+target_desired_distance = 0.2
 avoidance_enabled = true
 max_speed = 50.0
 debug_enabled = true

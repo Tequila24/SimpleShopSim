@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://0mfwsqi6caul"]
+
+[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_ay7t2"]
+[ext_resource type="Script" uid="uid://46lg34xxlhj" path="res://scripts/DoorLogic.cs" id="1_oe1mq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vpfwd"]
+size = Vector3(1, 2, 0.1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ay7t2"]
+radius = 1.0
+height = 3.0
+
+[node name="EntranceDoor" type="Node3D" unique_id=1416713399 node_paths=PackedStringArray("_detectionArea", "_doorLeft", "_doorRight")]
+script = ExtResource("1_oe1mq")
+_detectionArea = NodePath("DetectionArea")
+_doorLeft = NodePath("door_left")
+_doorRight = NodePath("door_right")
+
+[node name="door_left" type="MeshInstance3D" parent="." unique_id=681227520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+material_override = ExtResource("1_ay7t2")
+mesh = SubResource("BoxMesh_vpfwd")
+
+[node name="door_right" type="MeshInstance3D" parent="." unique_id=1924605866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
+material_override = ExtResource("1_ay7t2")
+mesh = SubResource("BoxMesh_vpfwd")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=450816986]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=679769530]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.6, 0)
+shape = SubResource("CapsuleShape3D_ay7t2")
