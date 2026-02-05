@@ -40,6 +40,10 @@ public partial class ShelfWindowLogic : Control
 				DoItemButtonPressed(capturedIdx); 
 			};
 		}
+
+		if (this.FindChild("MoveButton") is Button moveButton) {
+			moveButton.ButtonUp += () => { Global.TryMoveObject(_shelf); };
+		}
 	}
 
 	private void UpdateItemsVisual()

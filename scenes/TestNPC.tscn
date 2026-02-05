@@ -6,11 +6,13 @@
 [ext_resource type="Script" uid="uid://cha0ybw0crwoj" path="res://scripts/npc/NPCNavigation.cs" id="3_rrwvx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_passs"]
+radius = 0.4
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aevmx"]
+radius = 0.35
 
 [sub_resource type="BoxMesh" id="BoxMesh_6wbbs"]
-size = Vector3(0.695, 0.255, 0.325)
+size = Vector3(0.495, 0.275, 0.185)
 
 [node name="TestNpc" type="CharacterBody3D" unique_id=318894040 groups=["Characters"]]
 motion_mode = 1
@@ -25,20 +27,20 @@ material_override = ExtResource("1_6wbbs")
 mesh = SubResource("CapsuleMesh_aevmx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=687451722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54724586, 0.38557768)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54724586, 0.2957855)
 material_override = ExtResource("2_passs")
 mesh = SubResource("BoxMesh_6wbbs")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=249910788 node_paths=PackedStringArray("_npcBody")]
-target_desired_distance = 0.2
 avoidance_enabled = true
+radius = 1.0
 max_speed = 50.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.81136674, 0.00051345886, 0.811361, 1)
 script = ExtResource("3_rrwvx")
 _npcBody = NodePath("..")
-_maxSpeed = 2.0
+_maxSpeed = 4.0
 
 [node name="BuyerLogic" type="Node" parent="." unique_id=1429878381 node_paths=PackedStringArray("_npcBody", "_npcNav")]
 script = ExtResource("1_gwt4r")

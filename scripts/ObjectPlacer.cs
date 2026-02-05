@@ -8,10 +8,28 @@ public partial class ObjectPlacer : Node
 	private Node3D _placedObject;
 
 
-	public void Init(FurnitureData newFurniture)
+	public void InitWithPrefab(FurnitureData newFurniture)
 	{
 		objectToPlace = newFurniture;
 		_placedObject = objectToPlace.scene3D.Instantiate<Node3D>();
+		_targetPosition = Global.GetPlayerNode().GlobalPosition + new Vector3(0, 0.25f, 0);
+		
+		var collision = Utils.GetFirstChildOfType<CollisionShape3D>(_placedObject);
+		if (collision != null) {
+			// GD.Print($"Collision disabled");
+			collision.Disabled = true;
+		}
+	}
+
+	public void InitWithExistingObject(Node3D _movedObject)
+	{
+		objectToPlace = null;
+		_placedObject = _movedObject;
+		_targetPosition = _movedObject.Position;
+		var raiseTween = _movedObject.CreateTween();
+		raiseTween.TweenProperty(this, "_targetPosition:y", 0.25f, 0.2f);
+
+
 		
 		var collision = Utils.GetFirstChildOfType<CollisionShape3D>(_placedObject);
 		if (collision != null) {
@@ -32,14 +50,13 @@ public partial class ObjectPlacer : Node
 
 		CameraMaster.NodeToFollow = _placedObject;
 
-		LevelMaster.Instance.AddChild(_placedObject);
+		if (_placedObject.GetParent() != LevelMaster.Instance)
+			LevelMaster.Instance.AddChild(_placedObject);
 	}
 
 	public override void _Ready()
 	{
 		base._Ready();
-
-		_targetPosition = Global.GetPlayerNode().GlobalPosition;
 	}
 
 	public void DoPlayerMoveInputUpdated(Vector2 newInput)
@@ -52,8 +69,12 @@ public partial class ObjectPlacer : Node
 		base._Process(delta);
 		
 		var roundedPosition = _targetPosition.Ceil();
-		roundedPosition.Y = 0.25f;
-		_placedObject.GlobalPosition = _placedObject.GlobalPosition.Lerp(roundedPosition, 20.0f * (float)delta);
+		_placedObject.GlobalPosition = _placedObject.GlobalPosition.Lerp(new Vector3(
+			Mathf.Ceil(_targetPosition.X),
+			_targetPosition.Y,
+			Mathf.Ceil(_targetPosition.Z)
+			),
+			 20.0f * (float)delta);
 	}
 
 	private void DoRotateObject()
@@ -63,15 +84,20 @@ public partial class ObjectPlacer : Node
 
 	private void DoPlaceObject()
 	{
+		_placedObject.GlobalPosition = new Vector3(
+			Mathf.Ceil(_targetPosition.X),
+			_targetPosition.Y,
+			Mathf.Ceil(_targetPosition.Z)
+			);
+
 		var placeTween = _placedObject.CreateTween();
 		placeTween.TweenProperty(_placedObject, "position:y", 0, 0.2f);
 		placeTween.SetEase(Tween.EaseType.In);
 		placeTween.SetTrans(Tween.TransitionType.Elastic);
 		placeTween.TweenCallback(Callable.From(
 			() => {
-				GD.Print($"CALLING MY ASS");
-				LevelMaster.Instance.OnSomethingPlaced(_placedObject);
-				NavigationMaster.Instance.BakeNavigationMesh();
+				// GD.Print($"CALLING MY ASS");
+				SignalBus.OnFurniturePlaced(_placedObject);
 				this.QueueFree();
 				}
 		));

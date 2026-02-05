@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://o88fcq642m4v"]
+
+[ext_resource type="Script" uid="uid://c5j5tk6lxgx32" path="res://scripts/GUI/ShelfWindowLogic.cs" id="1_oclos"]
+[ext_resource type="PackedScene" uid="uid://bw6vdlffldk6i" path="res://scenes/GUI/shelf/item_button.tscn" id="2_k51sn"]
+
+[node name="ShelfInterface" type="Control" unique_id=1815826211 node_paths=PackedStringArray("_buttonsContainer")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_oclos")
+_itemButtonPrefab = ExtResource("2_k51sn")
+_buttonsContainer = NodePath("VBoxContainer/VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1740524719]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -150.0
+offset_right = 94.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 1)
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1615158410]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=987785051]
+layout_mode = 2
+alignment = 1
+
+[node name="MoveButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1982344025]
+layout_mode = 2
+text = "Move"
+
+[node name="Label" type="Label" parent="." unique_id=32067974]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -11.5
+offset_right = 36.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1

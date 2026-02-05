@@ -20,6 +20,9 @@ public partial class NavigationMaster : NavigationRegion3D
 	{
 		base._Ready();
 
+		SignalBus.OnFurniturePlaced += (Node3D newFurniture) => { BakeNavigationMesh(); };
+		SignalBus.OnFurniturePickedUp += (Node3D pickedFurnitre) => { BakeNavigationMesh(); };
+
 		NavigationServer3D.SetDebugEnabled(true);
 
 		BakeFinished += DoBakeFinished;

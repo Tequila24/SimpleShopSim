@@ -18,6 +18,9 @@ public partial class LevelMaster : Node3D
 		base._EnterTree();
 
 		Instance ??= this;
+
+		SignalBus.OnFurniturePlaced += OnSomethingPlaced;
+		SignalBus.OnFurniturePickedUp += OnSomethingPickedUp;
 	}
 
 	public override void _Ready()
@@ -55,6 +58,29 @@ public partial class LevelMaster : Node3D
 				{
 					GD.Print($"New Cash Register! {newRegister.Name}");
 					_cashRegister = newRegister;
+					break;
+				}
+
+			default:
+				break;
+		}
+	}
+
+	public void OnSomethingPickedUp(Node3D nodePickedUp)
+	{
+		switch (@nodePickedUp)
+		{
+			case ShelfLogic pickedShelf:
+				{
+					GD.Print($"Picked up shelf {pickedShelf.Name}");
+					shelves.Remove(pickedShelf);
+					break;
+				}
+			case CashRegisterLogic pickedRegister:
+				{
+					GD.Print($"Picked up register! {pickedRegister.Name}");
+					if (_cashRegister == pickedRegister)
+						_cashRegister = null;
 					break;
 				}
 

@@ -93,7 +93,7 @@ public partial class BuyerLogic : Node
 		else
 		{
 			_cachedShelf = newShelf;
-			_npcNav.NavigateTo(_cachedShelf.GlobalPosition);
+			_npcNav.NavigateTo(_cachedShelf.GetInteractionPoint());
 		}
 	}
 
@@ -142,6 +142,15 @@ public partial class BuyerLogic : Node
 
 	private void TryTakeItemFronShelf()
 	{
+		float distanceToShelf = (_npcBody.Position - _cachedShelf.GetInteractionPoint()).Length();
+		GD.Print($"Distance To Shelf {distanceToShelf}");
+		if (distanceToShelf > 1.0f)
+		{
+			_cachedShelf = null;
+			_currentState = State.IDLE;
+			return;
+		}
+
 		bool result = _cachedShelf.TryTakeItem(_wantedItems.Last());
 		// GD.Print($"NPC {_npcBody.Name} took {_wantedItems.Last().name} from {_cachedShelf.Name}");
 		if (result)

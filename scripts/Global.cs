@@ -27,7 +27,15 @@ public partial class Global : Node
 	public static ObjectPlacer TryPlaceObject(FurnitureData data)
 	{
 		var newPlacer = Instance.objectPlacer.Instantiate<ObjectPlacer>();
-		newPlacer.Init(data);
+		newPlacer.InitWithPrefab(data);
+		Instance.GetTree().Root.AddChild(newPlacer);
+		return newPlacer;
+	}
+
+	public static ObjectPlacer TryMoveObject(Node3D node)
+	{
+		var newPlacer = Instance.objectPlacer.Instantiate<ObjectPlacer>();
+		newPlacer.InitWithExistingObject(node);
 		Instance.GetTree().Root.AddChild(newPlacer);
 		return newPlacer;
 	}
