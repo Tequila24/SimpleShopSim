@@ -35,7 +35,7 @@ public partial class NPCNavigation : NavigationAgent3D
 
 		var nextPointGlobal = GetNextPathPosition();
 		var localSpeedToNext = (nextPointGlobal - _npcBody.GlobalPosition).Normalized();
-		localSpeedToNext.Y = 0;
+		// localSpeedToNext.Y = 0;
 		Velocity = localSpeedToNext;
 	}
 
