@@ -18,7 +18,7 @@ public partial class HUDLogic : Control
 		buttonOpenFurnitureShop.ButtonUp += DoOpenFurnitureShop;
 
 		InitMoneyCounter();
-		AccountWrapper.Instance.OnAccountMoneyChanged += UpdateMoneyCounter;
+		SignalBus.OnAccMoneyChanged += UpdateMoneyCounter;
 	}
 
 	public void InitMoneyCounter()

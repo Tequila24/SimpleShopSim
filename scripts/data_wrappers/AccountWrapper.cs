@@ -12,8 +12,6 @@ public partial class AccountWrapper : Node
 	[Export]
 	private AccountData _accountData;
 
-	public Action<int, int> OnAccountMoneyChanged;
-
 
 	
 	public override void _EnterTree()
@@ -31,7 +29,7 @@ public partial class AccountWrapper : Node
 	{
 		int oldCount = Instance._accountData.money.count;
 		Instance._accountData.money.count += delta;
-		Instance.OnAccountMoneyChanged(Instance._accountData.money.count, oldCount);
+		SignalBus.OnAccMoneyChanged(Instance._accountData.money.count, oldCount);
 	}
 
 	static public Godot.Collections.Array<FurnitureData> GetUnlockedFurniture()
