@@ -138,3 +138,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=600022783]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.3548241)
 shape = SubResource("SphereShape3D_g6k01")
+
+[node name="InteractionPoint" type="Node3D" parent="." unique_id=1227348050]

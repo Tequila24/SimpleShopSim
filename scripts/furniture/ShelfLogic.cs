@@ -23,11 +23,6 @@ public partial class ShelfLogic : Node3D
 		}
 	}
 
-	public Vector3 GetInteractionPoint()
-	{
-		return this.GlobalPosition + this.GlobalBasis.Z * 0.2f;
-	}
-
 	public int GetSlotCount()
 	{
 		return _slots.Count;
