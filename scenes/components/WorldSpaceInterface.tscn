@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d3hgea6p1karx"]
+
+[ext_resource type="Script" uid="uid://7ewqw1xap4kl" path="res://scripts/components/WorldSpaceInterface.cs" id="1_5in5c"]
+
+[node name="WorldSpaceInterface" type="Node" unique_id=327027461]
+script = ExtResource("1_5in5c")

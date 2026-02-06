@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d12q15tlutwf3"]
-
-[ext_resource type="Script" uid="uid://bjxt0pg2ixgna" path="res://scripts/ObjectPlacer.cs" id="1_sjrme"]
-
-[node name="ObjectPlacer" type="Node"]
-script = ExtResource("1_sjrme")

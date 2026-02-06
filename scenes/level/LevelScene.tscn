@@ -23,7 +23,6 @@ polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Arr
 geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"NavigationCollision"
-agent_max_climb = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfg5a"]
 size = Vector3(10, 1, 10)
