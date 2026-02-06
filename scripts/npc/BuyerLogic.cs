@@ -93,7 +93,12 @@ public partial class BuyerLogic : Node
 		else
 		{
 			_cachedShelf = newShelf;
-			_npcNav.NavigateTo(_cachedShelf.GetInteractionPoint());
+
+			var targetPosition = _cachedShelf.GlobalPosition;
+			if (_cachedShelf.FindChild("InteractionPoint", false) is Node3D point)
+				targetPosition = point.GlobalPosition;
+
+			_npcNav.NavigateTo(targetPosition);
 		}
 	}
 
@@ -108,7 +113,11 @@ public partial class BuyerLogic : Node
 			return;
 		}
 
-		_npcNav.NavigateTo(cashier.GlobalPosition);
+		var targetPosition = cashier.GlobalPosition;
+			if (cashier.FindChild("InteractionPoint", false) is Node3D point)
+				targetPosition = point.GlobalPosition;
+
+		_npcNav.NavigateTo(targetPosition);
 	}
 
 	private void LeaveShop()
@@ -142,7 +151,7 @@ public partial class BuyerLogic : Node
 
 	private void TryTakeItemFronShelf()
 	{
-		float distanceToShelf = (_npcBody.Position - _cachedShelf.GetInteractionPoint()).Length();
+		float distanceToShelf = _npcNav.DistanceToTarget();//(_npcBody.Position - _cachedShelf.GetInteractionPoint()).Length();
 		GD.Print($"Distance To Shelf {distanceToShelf}");
 		if (distanceToShelf > 1.0f)
 		{
