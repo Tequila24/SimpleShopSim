@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_ay7t2"]
 [ext_resource type="Script" uid="uid://46lg34xxlhj" path="res://scripts/DoorLogic.cs" id="1_oe1mq"]
+[ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="3_rmn8a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vpfwd"]
 size = Vector3(1, 2, 0.1)
@@ -10,9 +11,9 @@ size = Vector3(1, 2, 0.1)
 radius = 1.0
 height = 3.0
 
-[node name="EntranceDoor" type="Node3D" unique_id=1416713399 node_paths=PackedStringArray("_detectionArea", "_doorLeft", "_doorRight")]
+[node name="EntranceDoor" type="Node3D" unique_id=1416713399 node_paths=PackedStringArray("interactiveComponent", "_doorLeft", "_doorRight")]
 script = ExtResource("1_oe1mq")
-_detectionArea = NodePath("DetectionArea")
+interactiveComponent = NodePath("Interactive")
 _doorLeft = NodePath("door_left")
 _doorRight = NodePath("door_right")
 
@@ -31,3 +32,8 @@ mesh = SubResource("BoxMesh_vpfwd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=679769530]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_ay7t2")
+
+[node name="Interactive" parent="." unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("3_rmn8a")]
+_groupNames = Array[String](["PlayerGroup", "CharactersGroup"])
+_checkBodies = true
+_interactionZone = NodePath("../DetectionArea")
