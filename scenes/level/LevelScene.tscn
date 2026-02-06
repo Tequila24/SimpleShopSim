@@ -18,11 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://r7fm2rd08wsv" path="res://scenes/furniture/flip_sign.tscn" id="16_rm3y4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b8l4a"]
-vertices = PackedVector3Array(-4.5, 0.51, 0.5, -4.5, 0.51, -0.25, -5.75, 0.51, -0.5, -5.75, 0.51, 0.75, -5.5, 0.51, 5.75, -11.5, 0.51, 7.5, -5.25, 0.51, -5.75, 4.5, 0.51, -5.75, 4.5, 0.51, -7.5, -11.5, 0.51, -7.5, 4.5, 0.51, 7.5, 4.5, 0.51, 5.75, -5.75, 0.51, -5.25, -1.5, 0.51, 2.5, -2.25, 0.51, 2.75, -2.5, 0.51, 3.5, 4.25, 0.51, 4.25, -4.25, 0.51, 3.25, -4.25, 0.51, 4.25, 2.5, 0.51, -3.25, 4.25, 0.51, -3.5, 4.25, 0.51, -4.25, -4.25, 0.51, -4.25, -1.5, 0.51, 0.75, 2.5, 0.51, -1.75, 4.25, 0.51, -1.5, -3.25, 1.51, 1.5, -3.25, 1.51, 2, -2.5, 1.51, 1.75)
-polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(5, 3, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 4), PackedInt32Array(4, 10, 5), PackedInt32Array(9, 6, 12), PackedInt32Array(9, 12, 2), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 9), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 15), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(0, 1, 23), PackedInt32Array(23, 1, 22), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 19), PackedInt32Array(16, 18, 15), PackedInt32Array(23, 24, 13), PackedInt32Array(13, 24, 25), PackedInt32Array(13, 25, 16), PackedInt32Array(28, 27, 26)]
+vertices = PackedVector3Array(-4.5, 0.51, 0.5, -4.5, 0.51, -0.25, -5.75, 0.51, -0.5, -5.75, 0.51, 0.75, -5.5, 0.51, 5.75, -11.5, 0.51, 7.5, -5.25, 0.51, -5.75, 4.5, 0.51, -5.75, 4.5, 0.51, -7.5, -11.5, 0.51, -7.5, 4.5, 0.51, 7.5, 4.5, 0.51, 5.75, -5.75, 0.51, -5.25, -1.5, 0.51, 2.5, -2.25, 0.51, 2.75, -2.5, 0.51, 3.5, 4.25, 0.51, 4.25, -4.25, 0.51, 3.25, -4.25, 0.51, 4.25, 2.5, 0.51, -3.25, 4.25, 0.51, -3.5, 4.25, 0.51, -4.25, -4.25, 0.51, -4.25, -1.5, 0.51, 0.75, 2.5, 0.51, -1.75, 4.25, 0.51, -1.5)
+polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(5, 3, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 4), PackedInt32Array(4, 10, 5), PackedInt32Array(9, 6, 12), PackedInt32Array(9, 12, 2), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 9), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 15), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(0, 1, 23), PackedInt32Array(23, 1, 22), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 19), PackedInt32Array(16, 18, 15), PackedInt32Array(23, 24, 13), PackedInt32Array(13, 24, 25), PackedInt32Array(13, 25, 16)]
 geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"NavigationCollision"
+agent_max_climb = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfg5a"]
 size = Vector3(10, 1, 10)
@@ -40,7 +41,6 @@ size = Vector3(7, 1, 15)
 script = ExtResource("1_b8l4a")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=274807832]
-visible = false
 navigation_mesh = SubResource("NavigationMesh_b8l4a")
 script = ExtResource("4_b8l4a")
 
