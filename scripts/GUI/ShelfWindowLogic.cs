@@ -69,7 +69,7 @@ public partial class ShelfWindowLogic : Control
 
 	private void DoItemButtonPressed(int idx)
 	{
-		Node playerNode = GetTree().GetNodesInGroup("Player")[0];
+		Node playerNode = GetTree().GetNodesInGroup("PlayerGroup")[0];
 		var pickupControl = Utils.GetFirstChildOfType<PickupController>(playerNode);
 
 		var newItem = pickupControl.TryTakeItem();

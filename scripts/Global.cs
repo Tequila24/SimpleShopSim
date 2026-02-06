@@ -21,7 +21,7 @@ public partial class Global : Node
 
 	public static Node3D GetPlayerNode()
 	{
-		return Instance.GetTree().GetNodesInGroup("Player")[0] as Node3D;
+		return Instance.GetTree().GetNodesInGroup("PlayerGroup")[0] as Node3D;
 	}
 
 	public static ObjectPlacer TryPlaceObject(FurnitureData data)

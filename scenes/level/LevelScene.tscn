@@ -15,14 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://cgfmjblxqxefm" path="res://assets/packs/kenney_roads/Models/GLB format/road-side-entry.glb" id="13_kqg47"]
 [ext_resource type="PackedScene" uid="uid://bgqhd6y6asb60" path="res://assets/packs/kenney_roads/Models/GLB format/road-side-exit.glb" id="14_rm3y4"]
 [ext_resource type="PackedScene" uid="uid://cb3ocmcpotrsq" path="res://assets/packs/kenney_roads/Models/GLB format/road-side.glb" id="15_rjisx"]
+[ext_resource type="PackedScene" uid="uid://r7fm2rd08wsv" path="res://scenes/furniture/flip_sign.tscn" id="16_rm3y4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b8l4a"]
-vertices = PackedVector3Array(-5.1, 0.51, -5.3999996, -4.5, 0.51, -5.3999996, -4.6, 0.51, -7.7, -5.4, 0.51, -5.1, -11.7, 0.51, -7.7, -11.7, 0.51, -1.2999997, -5.4, 0.51, -1.4000001, 4.800001, 0.51, -5.3999996, 4.800001, 0.51, -7.7, -4.6, 0.51, 1.6999998, -4.1, 0.51, 1.8000002, -4.1, 0.51, 1.1000004, -4.6, 0.51, 0.9000006, -2.0999994, 0.51, 0.9000006, 3.1000004, 0.51, -1.6999998, 2.8000002, 0.51, -1.9000001, -3.8999996, 0.51, 0.9000006, -4.6, 0.51, -0.7999997, -5, 0.51, -0.5999999, -5, 0.51, 0.6999998, 3, 0.51, -3.1999998, 4.6000004, 0.51, -4.6, -4.6, 0.51, -4.6, 2.8000002, 0.51, -3, 4.6000004, 0.51, -3.1999998, 3.4000006, 2.26, -2.6, 3.4000006, 2.26, -2.2999997, 4.5, 2.26, -2.2999997, 4.5, 2.26, -2.6, -2, 0.51, 2.4000006, -2.5999994, 0.51, 2.4000006, -2.5999994, 0.51, 3, -4.1, 0.51, 3, -4.6, 0.51, 4.6000004, -2.8000002, 0.51, 3.1999998, 4.6000004, 0.51, 4.6000004, -3.8999996, 0.51, 3.1999998, -1.8000002, 0.51, 1.1000004, -1.8000002, 0.51, 2.1999998, 4.6000004, 0.51, -1.6999998, -5.4, 0.51, 0.9000006, -5.4, 0.51, -0.7999997, -11.7, 0.51, 1.4000006, -5.4, 0.51, 1.5, -4.7, 0.51, 7.7, -4.6, 0.51, 5.4000006, -5.2, 0.51, 5.4000006, -5.4, 0.51, 5.2, -11.7, 0.51, 7.7, -3.5, 1.26, 2.6000004, -3.1999998, 1.26, 2.6000004, -3.1999998, 1.51, 2, -3.5, 1.51, 1.5, -2.3999996, 1.51, 1.5, -3, 1.51, 1.8000002, -2.3999996, 1.51, 1.8000002, 4.800001, 0.51, 7.7, 4.800001, 0.51, 5.4000006)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 4), PackedInt32Array(6, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(7, 1, 8), PackedInt32Array(8, 1, 2), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(15, 14, 13), PackedInt32Array(11, 12, 16), PackedInt32Array(16, 12, 19), PackedInt32Array(16, 19, 18), PackedInt32Array(16, 18, 17), PackedInt32Array(16, 17, 13), PackedInt32Array(13, 17, 22), PackedInt32Array(13, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(20, 23, 13), PackedInt32Array(23, 15, 13), PackedInt32Array(21, 24, 20), PackedInt32Array(28, 27, 25), PackedInt32Array(25, 27, 26), PackedInt32Array(31, 30, 29), PackedInt32Array(10, 32, 9), PackedInt32Array(9, 32, 33), PackedInt32Array(35, 34, 31), PackedInt32Array(33, 32, 36), PackedInt32Array(36, 34, 33), PackedInt32Array(33, 34, 35), PackedInt32Array(37, 13, 14), PackedInt32Array(14, 38, 37), PackedInt32Array(39, 35, 14), PackedInt32Array(14, 35, 29), PackedInt32Array(29, 35, 31), PackedInt32Array(29, 38, 14), PackedInt32Array(18, 19, 41), PackedInt32Array(41, 19, 40), PackedInt32Array(41, 40, 42), PackedInt32Array(41, 42, 5), PackedInt32Array(5, 6, 41), PackedInt32Array(40, 43, 42), PackedInt32Array(46, 45, 44), PackedInt32Array(46, 44, 47), PackedInt32Array(47, 44, 48), PackedInt32Array(43, 47, 42), PackedInt32Array(42, 47, 48), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 52), PackedInt32Array(55, 54, 53), PackedInt32Array(53, 54, 52), PackedInt32Array(54, 51, 52), PackedInt32Array(57, 56, 45), PackedInt32Array(45, 56, 44)]
+vertices = PackedVector3Array(-4.5, 0.51, 0.5, -4.5, 0.51, -0.25, -5.75, 0.51, -0.5, -5.75, 0.51, 0.75, -5.5, 0.51, 5.75, -11.5, 0.51, 7.5, -5.25, 0.51, -5.75, 4.5, 0.51, -5.75, 4.5, 0.51, -7.5, -11.5, 0.51, -7.5, 4.5, 0.51, 7.5, 4.5, 0.51, 5.75, -5.75, 0.51, -5.25, -1.5, 0.51, 2.5, -2.25, 0.51, 2.75, -2.5, 0.51, 3.5, 4.25, 0.51, 4.25, -4.25, 0.51, 3.25, -4.25, 0.51, 4.25, 2.5, 0.51, -3.25, 4.25, 0.51, -3.5, 4.25, 0.51, -4.25, -4.25, 0.51, -4.25, -1.5, 0.51, 0.75, 2.5, 0.51, -1.75, 4.25, 0.51, -1.5, -3.25, 1.51, 1.5, -3.25, 1.51, 2, -2.5, 1.51, 1.75)
+polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(5, 3, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 4), PackedInt32Array(4, 10, 5), PackedInt32Array(9, 6, 12), PackedInt32Array(9, 12, 2), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 9), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 15), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(0, 1, 23), PackedInt32Array(23, 1, 22), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 19), PackedInt32Array(16, 18, 15), PackedInt32Array(23, 24, 13), PackedInt32Array(13, 24, 25), PackedInt32Array(13, 25, 16), PackedInt32Array(28, 27, 26)]
 geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"NavigationCollision"
-cell_size = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfg5a"]
 size = Vector3(10, 1, 10)
@@ -40,6 +40,7 @@ size = Vector3(7, 1, 15)
 script = ExtResource("1_b8l4a")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=274807832]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_b8l4a")
 script = ExtResource("4_b8l4a")
 
@@ -126,3 +127,6 @@ transform = Transform3D(-3.9340253e-07, 0, -7.2741632, 0, 3, 0, 9.000001, 0, -3.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.5, 0)
 material_override = ExtResource("1_in5yg")
 mesh = SubResource("BoxMesh_kqg47")
+
+[node name="FlipSign" parent="." unique_id=783732816 instance=ExtResource("16_rm3y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5174751, 0.00999999, -3.1614099)

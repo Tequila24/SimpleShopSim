@@ -17,7 +17,7 @@ public partial class CameraMaster : Node
 	static public Node3D NodeToFollow
 	{
 		get { return Instance._nodeToFollow; }
-		set { if (value != null) Instance._nodeToFollow = value; else Instance._nodeToFollow = Instance.GetTree().GetNodesInGroup("Player")[0] as Node3D; }
+		set { if (value != null) Instance._nodeToFollow = value; else Instance._nodeToFollow = Instance.GetTree().GetNodesInGroup("PlayerGroup")[0] as Node3D; }
 	}
 
 
@@ -40,7 +40,7 @@ public partial class CameraMaster : Node
 		InputMaster.Instance.OnZoomCamera += DoZoomCamera;
 		InputMaster.Instance.OnRotateCamera += DoRotateCamera;
 
-		_nodeToFollow = GetTree().GetNodesInGroup("Player")[0] as Node3D;
+		_nodeToFollow = GetTree().GetNodesInGroup("PlayerGroup")[0] as Node3D;
 	}
 
 	public void DoZoomCamera(float zoomDelta)

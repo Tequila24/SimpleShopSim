@@ -25,7 +25,7 @@ public partial class PopupController : Node
 
 	private void DoBodyEntered(Node3D body)
 	{
-		if (body == GetTree().GetNodesInGroup("Player")[0] as Node3D) {
+		if (body == GetTree().GetNodesInGroup("PlayerGroup")[0] as Node3D) {
 			_instantiatedScene = _windowScene.Instantiate<Control>();
 			_parentObject.AddChild(_instantiatedScene);
 		}

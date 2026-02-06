@@ -42,9 +42,9 @@ folder_colors={
 
 [global_group]
 
-Player=""
 NavigationCollision=""
-Characters=""
+PlayerGroup=""
+CharactersGroup=""
 
 [input]
 
