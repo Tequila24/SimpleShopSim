@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://r7fm2rd08wsv"]
+
+[ext_resource type="Script" uid="uid://cly13v7nq1usf" path="res://scripts/furniture/FlipSignLogic.cs" id="1_ofno4"]
+[ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="1_us3qy"]
+[ext_resource type="Material" uid="uid://1ap6q5gk6hik" path="res://assets/materials/OrangeProto.tres" id="1_wtift"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_57g8p"]
+size = Vector3(0.3, 0.1, 0.01)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wtift"]
+radius = 0.2
+
+[node name="FlipSign" type="Node3D" unique_id=783732816]
+script = ExtResource("1_ofno4")
+
+[node name="Interactive" parent="." unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("1_us3qy")]
+_groupNames = Array[String](["PlayerGroup"])
+_checkBodies = true
+_interactionZone = NodePath("../InteractionArea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=558890187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+material_override = ExtResource("1_wtift")
+mesh = SubResource("BoxMesh_57g8p")
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1802884619]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=1742579717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.15272613)
+shape = SubResource("SphereShape3D_wtift")

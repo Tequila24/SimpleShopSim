@@ -4,7 +4,7 @@ using Godot;
 public partial class DoorLogic : Node3D
 {
 	[Export]
-	private Area3D _detectionArea;
+	Interactive interactiveComponent;
 	[Export]
 	private Node3D _doorLeft;
 	[Export]
@@ -20,28 +20,11 @@ public partial class DoorLogic : Node3D
 
 	public override void _Ready()
 	{
-		_detectionArea.BodyEntered += DoBodyEntered;
-		_detectionArea.BodyExited += DoBodyExited;
-
 		_leftClosedPosition = _doorLeft.Position;
 		_rightClosedPosition = _doorRight.Position;
-	}
-
-
-	private void DoBodyEntered(Node3D otherBody)
-	{
-		if (otherBody.IsInGroup("Characters"))
-		{
-			ChangeCount(1);
-		}
-	}
-
-	private void DoBodyExited(Node3D otherBody)
-	{
-		if (otherBody.IsInGroup("Characters"))
-		{
-			ChangeCount(-1);
-		}
+		
+		interactiveComponent.OnEntered += (Node3D enterd) => { ChangeCount(+1);};
+		interactiveComponent.OnExited += (Node3D enterd) => { ChangeCount(-1);};
 	}
 
 	private void ChangeCount(int d)
