@@ -43,6 +43,6 @@ public partial class WorldSpaceInterface : Node
 		if (_instantiatedScene == null)
 			return;
 
-		_instantiatedScene.GlobalPosition = CameraMaster.GetCurrentCamera().UnprojectPosition(_parentObject.Position);
+		_instantiatedScene.GlobalPosition = CameraMaster.GetCurrentCamera().UnprojectPosition(_parentObject.GlobalPosition);
 	}
 }

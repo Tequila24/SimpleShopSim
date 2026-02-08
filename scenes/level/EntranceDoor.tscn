@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0mfwsqi6caul"]
 
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_ay7t2"]
-[ext_resource type="Script" uid="uid://46lg34xxlhj" path="res://scripts/DoorLogic.cs" id="1_oe1mq"]
+[ext_resource type="Script" uid="uid://46lg34xxlhj" path="res://scripts/level/DoorLogic.cs" id="1_oe1mq"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="3_rmn8a"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vpfwd"]

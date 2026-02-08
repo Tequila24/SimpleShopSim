@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://o88fcq642m4v"]
 
-[ext_resource type="Script" uid="uid://c5j5tk6lxgx32" path="res://scripts/GUI/ShelfWindowLogic.cs" id="1_oclos"]
-[ext_resource type="PackedScene" uid="uid://bw6vdlffldk6i" path="res://scenes/GUI/shelf/item_button.tscn" id="2_k51sn"]
+[ext_resource type="Script" uid="uid://c5j5tk6lxgx32" path="res://scripts/GUI/furniture/shelf/ShelfWindowLogic.cs" id="1_oclos"]
+[ext_resource type="PackedScene" uid="uid://bw6vdlffldk6i" path="res://scenes/GUI/furniture_interfaces/shelf/item_button.tscn" id="2_k51sn"]
 
 [node name="ShelfInterface" type="Control" unique_id=1815826211 node_paths=PackedStringArray("_buttonsContainer")]
 layout_mode = 3

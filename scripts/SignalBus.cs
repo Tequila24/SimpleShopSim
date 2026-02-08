@@ -9,7 +9,8 @@ public partial class SignalBus : Node
 
 	public static Action<int, int> OnAccMoneyChanged;
 
-	public static Action<bool> OnShopStateSwitch;
+	public static Action OnSwitchShopState;
+	public static Action<bool> OnShopStateUpdated;
 
 	public static Action<Node3D> OnFurniturePickedUp;
 	public static Action<Node3D> OnFurniturePlaced;

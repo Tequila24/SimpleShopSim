@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cly13v7nq1usf" path="res://scripts/furniture/FlipSignLogic.cs" id="1_ofno4"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="1_us3qy"]
 [ext_resource type="Material" uid="uid://1ap6q5gk6hik" path="res://assets/materials/OrangeProto.tres" id="1_wtift"]
+[ext_resource type="PackedScene" uid="uid://d3hgea6p1karx" path="res://scenes/components/WorldSpaceInterface.tscn" id="3_2tcpn"]
+[ext_resource type="PackedScene" uid="uid://cggil3pxkbtl4" path="res://scenes/GUI/furniture_interfaces/flip_sign/WindowFlipSign.tscn" id="4_2tcpn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_57g8p"]
 size = Vector3(0.3, 0.1, 0.01)
@@ -17,6 +19,11 @@ script = ExtResource("1_ofno4")
 _groupNames = Array[String](["PlayerGroup"])
 _checkBodies = true
 _interactionZone = NodePath("../InteractionArea")
+
+[node name="WorldSpaceInterface" parent="." unique_id=327027461 node_paths=PackedStringArray("_interactive", "_parentObject") instance=ExtResource("3_2tcpn")]
+_interactive = NodePath("../Interactive")
+_interfacePrefab = ExtResource("4_2tcpn")
+_parentObject = NodePath("..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=558890187]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6yf11rk4crfw" path="res://scenes/level/LevelScene.tscn" id="1_r7sob"]
 [ext_resource type="Script" uid="uid://ddngn7t0yxjen" path="res://scripts/data_wrappers/AccountWrapper.cs" id="1_y5y3l"]
 [ext_resource type="Script" uid="uid://dqkqgsh2y0kpo" path="res://scripts/Global.cs" id="2_bneo8"]
+[ext_resource type="Script" uid="uid://d1cy07sa48wb5" path="res://scripts/SignalBus.cs" id="2_vjgi4"]
 [ext_resource type="Script" uid="uid://bi7khum6bi5qa" path="res://scripts/InputMaster.cs" id="2_y5y3l"]
 [ext_resource type="PackedScene" uid="uid://d12q15tlutwf3" path="res://scenes/utils/ObjectPlacer.tscn" id="3_bneo8"]
 [ext_resource type="Script" uid="uid://bb2bogqswcxy" path="res://scripts/CameraMaster.cs" id="3_vjgi4"]
@@ -65,6 +66,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="SignalBus" type="Node" parent="." unique_id=1272607664]
+script = ExtResource("2_vjgi4")
 
 [node name="Global" type="Node" parent="." unique_id=1288557011]
 script = ExtResource("2_bneo8")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwsmm7al82dgb" path="res://scripts/LevelMaster.cs" id="1_b8l4a"]
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_in5yg"]
 [ext_resource type="PackedScene" uid="uid://b8e0j1cmpkr4m" path="res://scenes/level/wall_high.tscn" id="2_0xuyx"]
+[ext_resource type="Script" uid="uid://bd5dct547tim8" path="res://scripts/level/ShopMaster.cs" id="2_rjisx"]
 [ext_resource type="Script" uid="uid://ngh7xksjfl7u" path="res://scripts/NavigationMaster.cs" id="4_b8l4a"]
 [ext_resource type="PackedScene" uid="uid://c8ey84heour7x" path="res://scenes/furniture/shelf.tscn" id="4_rdyrl"]
 [ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="5_unm8g"]
@@ -38,6 +39,22 @@ size = Vector3(7, 1, 15)
 
 [node name="LevelScene" type="Node3D" unique_id=1797794574]
 script = ExtResource("1_b8l4a")
+
+[node name="ShopMaster" type="Node" parent="." unique_id=1240358108]
+script = ExtResource("2_rjisx")
+
+[node name="NPC_Spawner" type="Node" parent="." unique_id=527323772 node_paths=PackedStringArray("_NPCSpawnPoint", "_NPCDespawnPoint")]
+script = ExtResource("10_1xt25")
+_NPCSpawnPoint = NodePath("NPC_SpawnPoint")
+_NPCDespawnPoint = NodePath("NPC_DespawnPoint")
+_npcPrefab = ExtResource("11_63gba")
+_randomWantedItemList = Array[ExtResource("12_0jw6h")]([ExtResource("6_bavr4")])
+
+[node name="NPC_SpawnPoint" type="Node3D" parent="NPC_Spawner" unique_id=711459064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -3)
+
+[node name="NPC_DespawnPoint" type="Node3D" parent="NPC_Spawner" unique_id=1258032371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 3)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=274807832]
 navigation_mesh = SubResource("NavigationMesh_b8l4a")
@@ -97,19 +114,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 
 
 [node name="EntranceDoor" parent="." unique_id=1416713399 instance=ExtResource("9_4sdll")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.076857, 0, 0)
-
-[node name="NPC_Spawner" type="Node" parent="." unique_id=527323772 node_paths=PackedStringArray("_NPCSpawnPoint", "_NPCDespawnPoint")]
-script = ExtResource("10_1xt25")
-_NPCSpawnPoint = NodePath("NPC_SpawnPoint")
-_NPCDespawnPoint = NodePath("NPC_DespawnPoint")
-_npcPrefab = ExtResource("11_63gba")
-_randomWantedItemList = Array[ExtResource("12_0jw6h")]([ExtResource("6_bavr4")])
-
-[node name="NPC_SpawnPoint" type="Node3D" parent="NPC_Spawner" unique_id=711459064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -3)
-
-[node name="NPC_DespawnPoint" type="Node3D" parent="NPC_Spawner" unique_id=1258032371]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 3)
 
 [node name="ROAD" type="Node3D" parent="." unique_id=1888572040]
 
