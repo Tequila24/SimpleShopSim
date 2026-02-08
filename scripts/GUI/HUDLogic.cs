@@ -1,8 +1,13 @@
 using Godot;
-
+ 
 
 public partial class HUDLogic : Control
 {
+	public static HUDLogic Root
+	{
+		private set; get;
+	}
+
 	[Export]
 	private ItemCounterLogic moneyCounter;
 	[Export]
@@ -11,11 +16,17 @@ public partial class HUDLogic : Control
 	private PackedScene windowFurnitureShop;
 
 
+
+	public override void _EnterTree()
+	{
+		base._EnterTree();
+
+		Root ??= this;
+	}
+
 	public override void _Ready()
 	{
 		base._Ready();
-
-		buttonOpenFurnitureShop.ButtonUp += DoOpenFurnitureShop;
 
 		InitMoneyCounter();
 		SignalBus.OnAccMoneyChanged += UpdateMoneyCounter;
@@ -29,11 +40,5 @@ public partial class HUDLogic : Control
 	public void UpdateMoneyCounter(int newCount, int oldCount)
 	{
 		moneyCounter.ItemCountLabel.Text = newCount.ToString();
-	}
-
-	public void DoOpenFurnitureShop()
-	{
-		var newWindow = windowFurnitureShop.Instantiate<Control>();
-		this.AddChild(newWindow);
 	}
 }

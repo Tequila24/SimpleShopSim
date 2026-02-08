@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://jndrfqcgbj0m" path="res://scripts/GUI/HUDLogic.cs" id="1_fsbs6"]
 [ext_resource type="PackedScene" uid="uid://cwxe3bl4yscng" path="res://scenes/GUI/utility/ItemCounter.tscn" id="2_0jvll"]
-[ext_resource type="PackedScene" uid="uid://bjb0c0stfu683" path="res://scenes/GUI/FurnitureShop/WindowBuyFurniture.tscn" id="2_s32he"]
+[ext_resource type="PackedScene" uid="uid://bjb0c0stfu683" path="res://scenes/GUI/WindowFurnitureShop/WindowBuyFurniture.tscn" id="2_s32he"]
 [ext_resource type="PackedScene" uid="uid://ddxfewhswj1" path="res://scenes/GUI/utility/BasicIconButton.tscn" id="3_lfrrd"]
 [ext_resource type="PackedScene" uid="uid://c55t3q4rqfjyj" path="res://scenes/GUI/utility/PopupMaster/GlobalPopupMaster.tscn" id="3_refw0"]
+[ext_resource type="Script" uid="uid://cwni1mh0v6tt" path="res://scripts/GUI/HudButtonsMaster.cs" id="5_8bjmg"]
+[ext_resource type="PackedScene" uid="uid://cvxofcxs0s2w8" path="res://scenes/GUI/WindowSupplies/WindowBuySupplies.tscn" id="6_gqhu0"]
+[ext_resource type="Texture2D" uid="uid://dtptqc48pqn6n" path="res://assets/textures/Icon Shop.png" id="6_jxqsu"]
+[ext_resource type="Texture2D" uid="uid://lc13tec3kmpf" path="res://assets/textures/Icon Box.png" id="7_8bjmg"]
 
 [node name="HUD" type="MarginContainer" unique_id=622512711 node_paths=PackedStringArray("moneyCounter", "buttonOpenFurnitureShop")]
 anchors_preset = 15
@@ -14,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fsbs6")
 moneyCounter = NodePath("MarginContainer/VBoxContainer/ItemCounter")
-buttonOpenFurnitureShop = NodePath("Buttons/ButtonBuyFurniture")
+buttonOpenFurnitureShop = NodePath("MarginContainer2/Buttons/MarginContainer/ButtonBuyFurniture")
 windowFurnitureShop = ExtResource("2_s32he")
 
 [node name="GlobalPopupMaster" parent="." unique_id=175788497 instance=ExtResource("3_refw0")]
@@ -36,12 +40,44 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Buttons" type="MarginContainer" parent="." unique_id=485928762]
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=976345047]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ButtonBuyFurniture" parent="Buttons" unique_id=987255049 instance=ExtResource("3_lfrrd")]
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer2" unique_id=179296409]
 layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HUDButtonsMaster" type="Node" parent="MarginContainer2/Buttons" unique_id=325027060 node_paths=PackedStringArray("_buttonsAndWindows")]
+script = ExtResource("5_8bjmg")
+_buttonsAndWindows = {
+NodePath("../MarginContainer/ButtonBuyFurniture"): ExtResource("2_s32he"),
+NodePath("../MarginContainer2/ButtonOrderSupplies"): ExtResource("6_gqhu0")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Buttons" unique_id=1818838978]
+layout_mode = 2
+
+[node name="ButtonBuyFurniture" parent="MarginContainer2/Buttons/MarginContainer" unique_id=987255049 instance=ExtResource("3_lfrrd")]
+layout_mode = 2
+focus_mode = 0
+text = "Shop"
+icon = ExtResource("6_jxqsu")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/Buttons" unique_id=34202417]
+layout_mode = 2
+
+[node name="ButtonOrderSupplies" parent="MarginContainer2/Buttons/MarginContainer2" unique_id=588574696 instance=ExtResource("3_lfrrd")]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+text = "Supplies"
+icon = ExtResource("7_8bjmg")
+clip_text = true
+icon_alignment = 1
+vertical_icon_alignment = 0
