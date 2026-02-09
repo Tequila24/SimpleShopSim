@@ -72,12 +72,12 @@ public partial class ShelfWindowLogic : Control
 		Node playerNode = GetTree().GetNodesInGroup("PlayerGroup")[0];
 		var pickupControl = Utils.GetFirstChildOfType<PickupController>(playerNode);
 
-		var newItem = pickupControl.TryTakeItem();
-		if (newItem == null)
-			return;
+		// var newItem = pickupControl.TryTakeItem();
+		// if (newItem == null)
+		// 	return;
 
-		_shelf.AddItemTo(idx, newItem);
-		UpdateItemsVisual();
+		// _shelf.AddItemTo(idx, newItem);
+		// UpdateItemsVisual();
 	}
 
 }

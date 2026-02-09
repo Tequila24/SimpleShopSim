@@ -9,7 +9,7 @@ public partial class WorldSpaceInterface : Node
 	private PackedScene _interfacePrefab;
 
 	private Control _instantiatedScene;
-	
+
 	[Export]
 	private Node3D _parentObject;
 
@@ -19,12 +19,18 @@ public partial class WorldSpaceInterface : Node
 	{
 		_parentObject ??= this.GetParent<Node3D>();
 
-		_interactive.OnEntered += DoOpenUI;
-		_interactive.OnExited += DoCloseUI;
+		if (_interactive != null)
+		{
+			_interactive.OnEntered += DoOpenUI;
+			_interactive.OnExited += DoCloseUI;
+		}
 	}
 
 	private void DoOpenUI(Node3D unusedNodeEntered)
 	{
+		if (_interfacePrefab == null)
+			return;
+
 		_instantiatedScene = _interfacePrefab.Instantiate<Control>();
 		_parentObject.AddChild(_instantiatedScene);
 		_instantiatedScene.TreeExiting += () => { this._instantiatedScene = null; };

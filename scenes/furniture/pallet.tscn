@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://r1ru20mg43wu"]
+
+[ext_resource type="Script" uid="uid://bc3yryihydajd" path="res://scripts/furniture/PalletLogic.cs" id="1_fftyn"]
+[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_qovi2"]
+[ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="1_tn2wj"]
+[ext_resource type="PackedScene" uid="uid://d3hgea6p1karx" path="res://scenes/components/WorldSpaceInterface.tscn" id="2_qovi2"]
+[ext_resource type="PackedScene" uid="uid://b0jeewaa7hj1x" path="res://scenes/GUI/furniture_interfaces/pallet/WindowPallet.tscn" id="4_fftyn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dlw2e"]
+size = Vector3(1.5, 0.1, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qovi2"]
+size = Vector3(1.7, 0.3, 1.7)
+
+[node name="ItemsPallet" type="Node3D" unique_id=1094728566 node_paths=PackedStringArray("_itemsVisualHolder")]
+script = ExtResource("1_fftyn")
+_itemsVisualHolder = NodePath("VisualHolder")
+
+[node name="Interactive" parent="." unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("1_tn2wj")]
+_groupNames = Array[String](["PlayerGroup"])
+_checkBodies = true
+_interactionZone = NodePath("../InteractionArea")
+
+[node name="WorldSpaceInterface" parent="." unique_id=327027461 node_paths=PackedStringArray("_interactive", "_parentObject") instance=ExtResource("2_qovi2")]
+_interactive = NodePath("../Interactive")
+_interfacePrefab = ExtResource("4_fftyn")
+_parentObject = NodePath("..")
+
+[node name="PalletModelPlaceholder" type="MeshInstance3D" parent="." unique_id=1706870996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+material_override = ExtResource("1_qovi2")
+mesh = SubResource("BoxMesh_dlw2e")
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=1334570950]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=1689185948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14999999, 0)
+shape = SubResource("BoxShape3D_qovi2")
+
+[node name="VisualHolder" type="Node3D" parent="." unique_id=171160755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)

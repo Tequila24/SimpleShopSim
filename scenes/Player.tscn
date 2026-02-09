@@ -158,10 +158,9 @@ height = 1.7749023
 
 [node name="Player" type="CharacterBody3D" unique_id=1259514022 groups=["CharactersGroup", "PlayerGroup"]]
 
-[node name="PickupController" type="Node" parent="." unique_id=1057939210 node_paths=PackedStringArray("_pickupArea", "_itemVisualHolder")]
+[node name="PickupController" type="Node" parent="." unique_id=1057939210 node_paths=PackedStringArray("_itemsVisualHolder")]
 script = ExtResource("1_qu4a1")
-_pickupArea = NodePath("../Area3D")
-_itemVisualHolder = NodePath("../Picked Item Holder")
+_itemsVisualHolder = NodePath("../Picked Item Holder")
 
 [node name="PlayerController" type="Node" parent="." unique_id=1958541553 node_paths=PackedStringArray("_animPlayer")]
 script = ExtResource("2_70d11")

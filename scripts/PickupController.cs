@@ -6,92 +6,56 @@ using Godot;
 public partial class PickupController : Node
 {
 	[Export]
-	private Area3D _pickupArea;
-	[Export]
-	private Node _itemVisualHolder;
+	public StackInventory Inventory = new();
 
 	[Export]
-	private ItemData _itemHolding;
+	private Node3D _itemsVisualHolder;
+	private Vector3 _itemVisualPositionStep = Vector3.One * 0.5f;
+	private Vector3 _itemVisualPositionMax = Vector3.One;
+
 
 
 	public override void _Ready()
 	{
 		base._Ready();
 
-		_pickupArea.AreaEntered += DoAreaEntered;
-		
-		InputMaster.Instance.OnDropKeyPressed += DoDropItem;
+		Inventory.OnUpdated += DoUpdateVisual;
 	}
 
-	private void DoAreaEntered(Area3D otherArea)
+	public void DoUpdateVisual()
 	{
-		var otherAreaParent = otherArea.GetParent() as DroppedItem;
-		if (otherAreaParent== null)
-			return;
+		int itemsVisualCount = _itemsVisualHolder.GetChildCount();
 
-		// GD.Print($"Area Entered {otherAreaParent.Name}");
-
-		if (otherAreaParent.Item.IsItemsBox())
-			DoPickupItemsBox(otherAreaParent.Item as ItemsBoxData);
-
-		otherAreaParent.DoItemPickedUp();
-	}
-
-	private void DoPickupItemsBox(ItemsBoxData newBox)
-	{
-		_itemHolding = newBox;
-		_itemVisualHolder.AddChild(newBox.subScene.Instantiate());
-
-		GD.Print($"Picked up box of");
-		foreach (var itemCount in newBox.content)
+		if (Inventory.Count() == itemsVisualCount)
 		{
-			GD.Print($"Item: {itemCount.item.name}, amount: {itemCount.count}");
-		}
-	}
-
-	private void DoDropItem()
-	{
-		_itemHolding = null;
-		UpdateVisual();
-	}
-
-	private void UpdateVisual()
-	{
-		Utils.ClearChildren(_itemVisualHolder);
-
-		if (_itemHolding == null)
 			return;
-			
-		_itemVisualHolder.AddChild(_itemHolding.subScene.Instantiate<Node3D>());
-	}
-
-	public ItemData TryTakeItem()
-	{
-		ItemData retValue = null;
-
-		switch (@_itemHolding)
-		{
-			case ItemsBoxData box:
-				{
-					if (box.content.Count <= 0)
-						return null;
-
-					var topItemCount = box.content[box.content.Count - 1];
-					if (topItemCount.count > 1) {
-						topItemCount.count--;
-						retValue = topItemCount.item;
-					} else
-					{
-						retValue = topItemCount.item;
-						box.content.RemoveAt(box.content.Count - 1);
-					}
-				}
-			break;
-
-			default:
-			break;
 		}
+		else if (Inventory.Count() < itemsVisualCount)
+		{
+			_itemsVisualHolder.GetChild(-1).QueueFree();
+		}
+		else if (Inventory.Count() > itemsVisualCount)
+		{
+			int difference = Inventory.Count() - itemsVisualCount;
 
-		return retValue;
+			// if no item, next will be at 0
+			Vector3 nextItemVisualPos = new Vector3(0, -_itemVisualPositionStep.Y, 0);
+			if (itemsVisualCount > 0) {
+				nextItemVisualPos = _itemsVisualHolder.GetChild<Node3D>(-1).Position;
+				
+			}
+
+			while (difference > 0)
+			{
+				//next position
+				nextItemVisualPos.Y += _itemVisualPositionStep.Y;
+				
+				Node3D newItemVisual = Inventory.PeekItemAt(Inventory.Count() - difference).subScene.Instantiate<Node3D>();
+				_itemsVisualHolder.AddChild(newItemVisual);
+				newItemVisual.Position = nextItemVisualPos;
+
+				difference--;
+			}
+		}
 	}
 }
