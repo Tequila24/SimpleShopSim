@@ -12,7 +12,7 @@
 
 [sub_resource type="Resource" id="Resource_cw2d6"]
 script = ExtResource("2_khinc")
-stack = Array[ExtResource("3_bruh7")]([ExtResource("4_6eyey"), ExtResource("4_6eyey"), ExtResource("5_6eyey")])
+_itemsStack = Array[ExtResource("3_bruh7")]([ExtResource("4_6eyey"), ExtResource("4_6eyey"), ExtResource("5_6eyey"), ExtResource("4_6eyey"), ExtResource("4_6eyey")])
 metadata/_custom_type_script = "uid://88g2uivj7s2s"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vh257"]
@@ -171,8 +171,6 @@ height = 1.7749023
 script = ExtResource("1_qu4a1")
 _inventory = SubResource("Resource_cw2d6")
 _itemsVisualHolder = NodePath("../Picked Item Holder")
-
-[node name="ActionTimer" type="Timer" parent="PickupController" unique_id=865164372]
 
 [node name="PlayerController" type="Node" parent="." unique_id=1958541553 node_paths=PackedStringArray("_animPlayer")]
 script = ExtResource("2_70d11")

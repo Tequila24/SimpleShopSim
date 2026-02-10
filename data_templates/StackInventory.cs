@@ -1,38 +1,16 @@
-using System;
-using System.Collections;
 using Godot;
 
 
 [GlobalClass]
-public partial class StackInventory : Resource
-{
-	[Export]
-	private int _maxCapacity = -1;
-	public int MaxCapacity => _maxCapacity;
-	
-	public int Count => stack.Count;
-
-	public bool IsFull => (_maxCapacity > 0 && stack.Count >= _maxCapacity);
-	public bool IsEmpty => (Count == 0);
-
-	[Export]
-	private Godot.Collections.Array<ItemData> stack = [];
-
-	[Signal]
-	public delegate void OnUpdatedEventHandler();
-	public void EmitOnUpdated()
-	{ EmitSignal(SignalName.OnUpdated); }
-
-
-
+public partial class StackInventory : BaseInventory
+{	
 	public bool PushItem(ItemData newItem)
 	{
-		if (_maxCapacity > 0 && stack.Count >= _maxCapacity) {
-			GD.Print($"Tshis stack is at max capacity");
+		if (_maxCapacity > 0 && _itemsStack.Count >= _maxCapacity) {
 			return false;
 		}
 
-		stack.Add(newItem);
+		_itemsStack.Add(newItem);
 		EmitOnUpdated();
 		return true;
 	}
@@ -42,8 +20,8 @@ public partial class StackInventory : Resource
 		if (Count <= 0)
 			return null;
 		
-		var retValue = stack[Count - 1];
-		stack.RemoveAt(Count - 1);
+		var retValue = _itemsStack[Count - 1];
+		_itemsStack.RemoveAt(Count - 1);
 		EmitOnUpdated();
 
 		return retValue;
@@ -54,7 +32,7 @@ public partial class StackInventory : Resource
 		if (IsEmpty)
 			return null;
 
-		return PeekItemAt(stack.Count - 1);
+		return PeekItemAt(_itemsStack.Count - 1);
 	}
 
 	public ItemData PeekItemAt(int index)
@@ -62,10 +40,9 @@ public partial class StackInventory : Resource
 		if (IsEmpty)
 			return null;
 
-		if (Mathf.Abs(index) > stack.Count)
+		if (Mathf.Abs(index) > _itemsStack.Count)
 			return null;
 			
-		// GD.Print($"Index {index}");
-		return stack[index >= 0 ? index : Count - index];
+		return _itemsStack[index >= 0 ? index : Count - index];
 	}
 }

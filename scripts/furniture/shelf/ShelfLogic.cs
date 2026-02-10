@@ -6,71 +6,92 @@ using System.Linq;
 public partial class ShelfLogic : Node3D
 {
 	[Export]
-	private Godot.Collections.Dictionary<Node3D, ItemData> _slots = [];
+	private ShelfData _data;
 
-	public Action OnAnyItemUpdated;
+	public ItemData ShelfItem => _data.contents.item;
+	public int Capacity => _data.contents.count;
+
+
+	[Export]
+	private Node3D _visualsRoot;
+	private Godot.Collections.Array<Node3D> _visualHolders = new();
 
 
 
 	public override void _Ready()
 	{
 		base._Ready();
-	
-		foreach (var slot in _slots)
+
+
+		foreach (var holder in _visualsRoot.GetChildren())
 		{
-			if (slot.Value != null)
-				UpdateVisualHolder(slot.Key);
+			_visualHolders.Add(holder as Node3D);
 		}
+
+		UpdateVisual();
 	}
 
-	public int GetSlotCount()
+	public bool TryAddItem(ItemData newItem)
 	{
-		return _slots.Count;
-	}
-
-	public void AddItemTo(int index, ItemData newItem)
-	{
-		_slots[_slots.ElementAt(index).Key] = newItem;
-		UpdateVisualHolder(_slots.ElementAt(index).Key);
-	}
-
-	public ItemData GetItemAt(int index)
-	{
-		return _slots.ElementAt(index).Value;
-	}
-
-	public void RemoveItemAt(int index)
-	{
-		AddItemTo(index, null);
-	}
-
-	public bool DoesHaveItem(ItemData item)
-	{
-		return _slots.Values.Contains(item);
-	}
-
-	public bool TryTakeItem(ItemData item)
-	{
-		var match = _slots.FirstOrDefault((v) => v.Value == item);
-		if (match.Key != null)
-		{
-			_slots[match.Key] = null;
-			UpdateVisualHolder(match.Key);
-			return true;
-		} else
-		{
+		if (ShelfItem != newItem)
 			return false;
-		}
+
+		if (_data.contents.count >= _visualHolders.Count)
+			return false;
+
+		_data.contents.count++;
+		UpdateVisual();
+		return true;
 	}
 
-	private void UpdateVisualHolder(Node3D _slotVisualHolder)
+	public bool TryTakeItem()
 	{
-		Utils.ClearChildren(_slotVisualHolder);
+		if (_data.contents.count <= 0)
+			return false;
 
-		if (_slots[_slotVisualHolder] == null)
+		_data.contents.count--;
+		UpdateVisual();
+		return true;
+	}
+
+	private void UpdateVisual()
+	{
+		int itemsVisualCount = 0;
+		foreach (var vHolder in _visualHolders)
+		{
+			if (vHolder.GetChildCount() > 0)
+				itemsVisualCount++;
+		}
+
+
+		if (_data.contents.count == itemsVisualCount)
+		{
 			return;
+		}
+		else if (_data.contents.count < itemsVisualCount)
+		{
+			int difference = itemsVisualCount - _data.contents.count;
+			GD.Print($"data > visual, difference: {difference}");
 
-		var newVisual = _slots[_slotVisualHolder].subScene.Instantiate<Node3D>();
-		_slotVisualHolder.AddChild(newVisual);
+			while (difference > 0)
+			{
+				Utils.ClearChildren(_visualHolders[itemsVisualCount - difference]);
+				difference--;
+			}
+		}
+		else if (_data.contents.count > itemsVisualCount)
+		{
+			int difference = _data.contents.count - itemsVisualCount;
+
+			GD.Print($"visual > data, difference: {difference} {itemsVisualCount}");
+
+			int i = 0;
+			while (i < difference)
+			{
+				Node3D newItemVisual = ShelfItem.subScene.Instantiate<Node3D>();
+				_visualHolders[itemsVisualCount + i].AddChild(newItemVisual);
+				i++;
+			}
+		}
 	}
 }

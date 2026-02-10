@@ -2,8 +2,8 @@ using Godot;
 
 
 [GlobalClass]
-public partial class ShelfData : FurnitureData
+public partial class ShelfData : Resource
 {
 	[Export]
-	Godot.Collections.Array<ItemData> items;
+	public ItemCountData contents;
 }

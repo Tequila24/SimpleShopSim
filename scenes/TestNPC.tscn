@@ -43,7 +43,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.81136674, 0.00051345886, 0.811361, 1)
 script = ExtResource("3_rrwvx")
 _npcBody = NodePath("..")
-_maxSpeed = 1.0
+_maxSpeed = 3.0
 
 [node name="BuyerLogic" type="Node" parent="." unique_id=1429878381 node_paths=PackedStringArray("_npcBody", "_npcNav")]
 script = ExtResource("1_gwt4r")

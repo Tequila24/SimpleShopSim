@@ -96,7 +96,7 @@ public partial class LevelMaster : Node3D
 
 		foreach (var shelf in shelves)
 		{
-			if (shelf.DoesHaveItem(searchedItem))
+			if (shelf.ShelfItem == searchedItem && shelf.Capacity > 0)
 			{
 				return shelf;
 			}

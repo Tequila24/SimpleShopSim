@@ -160,7 +160,7 @@ public partial class BuyerLogic : Node
 			return;
 		}
 
-		bool result = _cachedShelf.TryTakeItem(_wantedItems.Last());
+		bool result = _cachedShelf.TryTakeItem();
 		// GD.Print($"NPC {_npcBody.Name} took {_wantedItems.Last().name} from {_cachedShelf.Name}");
 		if (result)
 		{

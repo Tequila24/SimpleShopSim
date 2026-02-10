@@ -84,14 +84,9 @@ shadow_mesh = SubResource("ArrayMesh_7lhpv")
 [sub_resource type="SphereShape3D" id="SphereShape3D_g6k01"]
 radius = 0.4966996
 
-[node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("_slots") groups=["NavigationCollision"]]
+[node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("_visualsRoot") groups=["NavigationCollision"]]
 script = ExtResource("1_g6k01")
-_slots = {
-NodePath("Slots/Slot_1"): null,
-NodePath("Slots/Slot_2"): null,
-NodePath("Slots/Slot_3"): null,
-NodePath("Slots/Slot_4"): null
-}
+_visualsRoot = NodePath("Slots")
 
 [node name="Interactive" parent="." unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("2_27cfk")]
 _groupNames = Array[String](["PlayerGroup"])
