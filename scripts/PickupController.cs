@@ -6,7 +6,8 @@ using Godot;
 public partial class PickupController : Node
 {
 	[Export]
-	public StackInventory Inventory = new();
+	private StackInventory _inventory;
+	public StackInventory Inventory => _inventory;
 
 	[Export]
 	private Node3D _itemsVisualHolder;
@@ -19,24 +20,27 @@ public partial class PickupController : Node
 	{
 		base._Ready();
 
-		Inventory.OnUpdated += DoUpdateVisual;
+		_inventory.OnUpdated += DoUpdateVisual;
+		DoUpdateVisual();
 	}
+
+
 
 	public void DoUpdateVisual()
 	{
 		int itemsVisualCount = _itemsVisualHolder.GetChildCount();
 
-		if (Inventory.Count() == itemsVisualCount)
+		if (_inventory.Count == itemsVisualCount)
 		{
 			return;
 		}
-		else if (Inventory.Count() < itemsVisualCount)
+		else if (_inventory.Count < itemsVisualCount)
 		{
 			_itemsVisualHolder.GetChild(-1).QueueFree();
 		}
-		else if (Inventory.Count() > itemsVisualCount)
+		else if (_inventory.Count > itemsVisualCount)
 		{
-			int difference = Inventory.Count() - itemsVisualCount;
+			int difference = _inventory.Count - itemsVisualCount;
 
 			// if no item, next will be at 0
 			Vector3 nextItemVisualPos = new Vector3(0, -_itemVisualPositionStep.Y, 0);
@@ -50,7 +54,7 @@ public partial class PickupController : Node
 				//next position
 				nextItemVisualPos.Y += _itemVisualPositionStep.Y;
 				
-				Node3D newItemVisual = Inventory.PeekItemAt(Inventory.Count() - difference).subScene.Instantiate<Node3D>();
+				Node3D newItemVisual = _inventory.PeekItemAt(_inventory.Count - difference).subScene.Instantiate<Node3D>();
 				_itemsVisualHolder.AddChild(newItemVisual);
 				newItemVisual.Position = nextItemVisualPos;
 

@@ -5,8 +5,8 @@ using System.Threading;
 public partial class PalletLogic : Node3D
 {
 	[Export]
-	public PalletData PalletData
-	{ private set; get; }
+	private PalletData _data;
+	public PalletData Data => _data;
 
 	[Export]
 	private Node3D _itemsVisualHolder;
@@ -16,61 +16,36 @@ public partial class PalletLogic : Node3D
 
 	public void InitWithData(PalletData newData)
 	{
-		PalletData = newData;
+		_data = newData;
 		_itemsVisualHolder ??= this.FindChild("ItemsVisualHolder") as Node3D;
 	}
 
 	public override void _Ready()
 	{
 		base._Ready();
-		UpdateVisual();
-	}
-
-	public ItemData TryTakeItem()
-	{
-		if (PalletData.Item.count <= 0)
-			return null;
-
 		
-		PalletData.Item.count--;
+		_data.Contents.OnUpdated += UpdateVisual;
 		UpdateVisual();
-		return PalletData.Item.item;
-	}
-
-	public bool TryAddItem(ItemData item)
-	{
-		if (PalletData.Item.item == item)
-		{
-			PalletData.Item.count++;	
-			UpdateVisual();
-			return true;
-		}
-		else if (PalletData.Item.count == 0)
-		{
-			PalletData.Item.item = item;
-			PalletData.Item.count++;
-			UpdateVisual();
-			return true;
-		}
-	
-		return false;
 	}
 
 	private void UpdateVisual()
 	{
+		if (_data.Contents == null)
+			return;
+
 		int itemsVisualCount = _itemsVisualHolder.GetChildCount();
 
-		if (PalletData.Item.count == itemsVisualCount)
+		if (_data.Contents.Count == itemsVisualCount)
 		{
 			return;
 		}
-		else if (PalletData.Item.count < itemsVisualCount)
+		else if (_data.Contents.Count < itemsVisualCount)
 		{
 			_itemsVisualHolder.GetChild(-1).QueueFree();
 		}
-		else if (PalletData.Item.count > itemsVisualCount)
+		else if (_data.Contents.Count > itemsVisualCount)
 		{
-			int difference = PalletData.Item.count - itemsVisualCount;
+			int difference = _data.Contents.Count - itemsVisualCount;
 
 			// if no item, next will be at 0
 			Vector3 nextItemVisualPos = new Vector3(-_itemVisualPositionStep.X, 0, 0);
@@ -94,7 +69,7 @@ public partial class PalletLogic : Node3D
 				}
 
 				
-				Node3D newItemVisual = PalletData.Item.item.subScene.Instantiate<Node3D>();
+				Node3D newItemVisual = _data.Contents.PeekItemAt(_data.Contents.Count - difference).subScene.Instantiate<Node3D>();
 				_itemsVisualHolder.AddChild(newItemVisual);
 				newItemVisual.Position = nextItemVisualPos;
 

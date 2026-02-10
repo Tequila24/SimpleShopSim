@@ -5,5 +5,5 @@ using Godot;
 public partial class PalletData : Resource
 {
 	[Export]
-	public ItemCountData Item;
+	public StackInventory Contents;
 }

@@ -11,7 +11,7 @@ public partial class WindowPallet : Control
 	PalletLogic _pallet;
 
 
-	
+
 	public override void _Ready()
 	{
 		_pallet = Utils.GetParentOfType<PalletLogic>(this);
@@ -25,11 +25,15 @@ public partial class WindowPallet : Control
 		if (_pallet == null)
 			return;
 
-		if (_pallet.TryTakeItem() is ItemData item)
+		Node playerNode = GetTree().GetNodesInGroup("PlayerGroup")[0];
+		var pickupControl = Utils.GetFirstChildOfType<PickupController>(playerNode);
+
+		if (pickupControl.Inventory.IsFull)
+			return;
+
+		if (_pallet.Data.Contents.TryPopItem() is ItemData topPalletItem)
 		{
-			Node playerNode = GetTree().GetNodesInGroup("PlayerGroup")[0];
-			var pickupControl = Utils.GetFirstChildOfType<PickupController>(playerNode);
-			pickupControl.Inventory.PushItem(item);
+			pickupControl.Inventory.PushItem(topPalletItem);
 		}
 	}
 
@@ -38,13 +42,19 @@ public partial class WindowPallet : Control
 		if (_pallet == null)
 			return;
 
+		if (_pallet.Data.Contents.IsFull)
+			return;
+
 		Node playerNode = GetTree().GetNodesInGroup("PlayerGroup")[0];
 		var pickupControl = Utils.GetFirstChildOfType<PickupController>(playerNode);
-		var playerTopItem = pickupControl.Inventory.PeekTopItem();
-		
-		if (_pallet.TryAddItem(playerTopItem))
+
+		if (pickupControl.Inventory.PeekTopItem() is ItemData topItem)
 		{
-			pickupControl.Inventory.PopItem();
+			bool result = _pallet.Data.Contents.PushItem(topItem);
+			if (result)
+			{
+				pickupControl.Inventory.TryPopItem();
+			}
 		}
 	}
 }
