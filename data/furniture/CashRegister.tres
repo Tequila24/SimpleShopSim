@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="FurnitureData" load_steps=4 format=3 uid="uid://bs61cxp7y5nyo"]
+[gd_resource type="Resource" script_class="FurnitureData" format=3 uid="uid://bs61cxp7y5nyo"]
 
 [ext_resource type="Texture2D" uid="uid://byg1wv4juywpc" path="res://assets/textures/NoIcon.png" id="1_3gcf5"]
 [ext_resource type="Script" uid="uid://qc6maaf7n7rk" path="res://data_templates/FurnitureData.cs" id="1_o6jg4"]
-[ext_resource type="PackedScene" uid="uid://t0a88yafwfgy" path="res://scenes/furniture/cash_register.tscn" id="2_n5oqk"]
+[ext_resource type="PackedScene" uid="uid://t0a88yafwfgy" path="res://scenes/furniture/cash_register/cash_register.tscn" id="2_n5oqk"]
 
 [resource]
 script = ExtResource("1_o6jg4")

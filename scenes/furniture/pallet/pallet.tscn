@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://r1ru20mg43wu"]
 
-[ext_resource type="Script" uid="uid://bc3yryihydajd" path="res://scripts/furniture/PalletLogic.cs" id="1_fftyn"]
+[ext_resource type="Script" uid="uid://bc3yryihydajd" path="res://scripts/furniture/pallet/PalletLogic.cs" id="1_fftyn"]
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_qovi2"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="1_tn2wj"]
 [ext_resource type="PackedScene" uid="uid://d3hgea6p1karx" path="res://scenes/components/WorldSpaceInterface.tscn" id="2_qovi2"]
-[ext_resource type="PackedScene" uid="uid://b0jeewaa7hj1x" path="res://scenes/GUI/furniture_interfaces/pallet/WindowPallet.tscn" id="4_fftyn"]
+[ext_resource type="PackedScene" uid="uid://b0jeewaa7hj1x" path="res://scenes/furniture/pallet/WindowPallet.tscn" id="4_fftyn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dlw2e"]
 size = Vector3(1.5, 0.1, 1.5)

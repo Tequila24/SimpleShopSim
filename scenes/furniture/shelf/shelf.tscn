@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://c8ey84heour7x"]
 
-[ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/furniture/ShelfLogic.cs" id="1_g6k01"]
+[ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/furniture/shelf/ShelfLogic.cs" id="1_g6k01"]
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_oucxj"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="2_27cfk"]
-[ext_resource type="PackedScene" uid="uid://o88fcq642m4v" path="res://scenes/GUI/furniture_interfaces/shelf/WindowShelf.tscn" id="3_bvjvp"]
+[ext_resource type="PackedScene" uid="uid://o88fcq642m4v" path="res://scenes/furniture/shelf/WindowShelf.tscn" id="3_bvjvp"]
 [ext_resource type="PackedScene" uid="uid://d3hgea6p1karx" path="res://scenes/components/WorldSpaceInterface.tscn" id="3_ynwff"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwrpm"]

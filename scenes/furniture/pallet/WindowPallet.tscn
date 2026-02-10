@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0jeewaa7hj1x"]
 
-[ext_resource type="Script" uid="uid://cyuc05iahbmyf" path="res://scripts/GUI/furniture/pallet/WindowPallet.cs" id="1_2euke"]
+[ext_resource type="Script" uid="uid://cyuc05iahbmyf" path="res://scripts/furniture/pallet/WindowPallet.cs" id="1_2euke"]
 [ext_resource type="PackedScene" uid="uid://ddxfewhswj1" path="res://scenes/GUI/utility/BasicIconButton.tscn" id="1_iewrb"]
 
 [node name="WindowPallet" type="Control" unique_id=1258112623 node_paths=PackedStringArray("_buttonTake", "_buttonPut")]

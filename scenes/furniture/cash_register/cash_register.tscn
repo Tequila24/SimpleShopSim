@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://t0a88yafwfgy"]
 
-[ext_resource type="Script" uid="uid://p2wooxjak6yd" path="res://scripts/furniture/CashRegisterLogic.cs" id="1_22htu"]
+[ext_resource type="Script" uid="uid://p2wooxjak6yd" path="res://scripts/furniture/cash_register/CashRegisterLogic.cs" id="1_22htu"]
 [ext_resource type="PackedScene" uid="uid://cox6d8ek7n38h" path="res://assets/packs/kenney_mini-market/Models/GLB format/cash-register.glb" id="1_v0pm1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0pm1"]

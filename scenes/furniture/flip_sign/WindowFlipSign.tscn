@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cggil3pxkbtl4"]
 
-[ext_resource type="Script" uid="uid://d03xk8x0s6xng" path="res://scripts/GUI/furniture/flip_sign/WindowFlipSignLogic.cs" id="1_48nle"]
+[ext_resource type="Script" uid="uid://d03xk8x0s6xng" path="res://scripts/furniture/flip_sign/WindowFlipSignLogic.cs" id="1_48nle"]
 [ext_resource type="Texture2D" uid="uid://dh3kvaaeyl3ot" path="res://assets/textures/Sign Closed.png" id="1_ghjp0"]
 [ext_resource type="Texture2D" uid="uid://6jy13he4xoi8" path="res://assets/textures/Sign Open.png" id="1_ka48k"]
 
