@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cx042y51s4bfm"]
-
-[ext_resource type="Script" uid="uid://88g2uivj7s2s" path="res://data_templates/StackInventory.cs" id="1_3qqtb"]
-
-[node name="StackInventory" type="Node" unique_id=592150467]
-script = ExtResource("1_3qqtb")

@@ -23,11 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://buokowyy4iswd" path="res://scenes/items/soda.tscn" id="21_aaksw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b8l4a"]
-vertices = PackedVector3Array(-4.5, 0.51, 0.5, -4.5, 0.51, -0.25, -5.75, 0.51, -0.5, -5.75, 0.51, 0.75, -5.5, 0.51, 5.75, -11.5, 0.51, 7.5, -5.25, 0.51, -5.75, 4.5, 0.51, -5.75, 4.5, 0.51, -7.5, -11.5, 0.51, -7.5, 4.5, 0.51, 7.5, 4.5, 0.51, 5.75, -5.75, 0.51, -5.25, -1.5, 0.51, 2.5, -2.25, 0.51, 2.75, -2.5, 0.51, 3.5, 4.25, 0.51, 4.25, -4.25, 0.51, 3.25, -4.25, 0.51, 4.25, 2.5, 0.51, -3.25, 4.25, 0.51, -3.5, 4.25, 0.51, -4.25, -4.25, 0.51, -4.25, -1.5, 0.51, 0.75, 2.5, 0.51, -1.75, 4.25, 0.51, -1.5, -3.25, 1.51, 1.5, -3.25, 1.51, 2, -2.5, 1.51, 1.75)
-polygons = [PackedInt32Array(0, 3, 1), PackedInt32Array(1, 3, 2), PackedInt32Array(5, 3, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 4), PackedInt32Array(4, 10, 5), PackedInt32Array(9, 6, 12), PackedInt32Array(9, 12, 2), PackedInt32Array(3, 5, 2), PackedInt32Array(2, 5, 9), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(18, 17, 15), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(0, 1, 23), PackedInt32Array(23, 1, 22), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 19), PackedInt32Array(16, 18, 15), PackedInt32Array(23, 24, 13), PackedInt32Array(13, 24, 25), PackedInt32Array(13, 25, 16), PackedInt32Array(28, 27, 26)]
+vertices = PackedVector3Array(-5.1, 0.51, -5.6, -4.5, 0.51, -5.6, -4.6, 0.51, -7.5, -5.6, 0.51, -5.1, -11.5, 0.51, -7.5, -11.5, 0.51, -1.2999997, -5.6, 0.51, -1.4000001, 4.6000004, 0.51, -5.6, 4.6000004, 0.51, -7.5, -5, 0.51, -0.4000001, -5, 0.51, 0.5, -4.6, 0.51, 0.6000004, -4.6, 0.51, -0.5, -1.8999996, 0.51, 0.8000002, 2.9000006, 0.51, -1.6999998, 2.6000004, 0.51, -2, -2.8999996, 0.51, 4.4000006, -2.8999996, 0.51, 3.4000006, -3.8999996, 0.51, 3.4000006, -4.4, 0.51, 4.4000006, -4.4, 0.51, -0.7999997, -3.8999996, 0.51, 0.6999998, 2.6999998, 0.51, -3.1999998, -4.4, 0.51, -4.3999996, -4.2, 0.51, 3.1999998, -4.4, 0.51, 0.9000006, -4.2999997, 0.51, 1.1000004, 3, 0.51, -3.4, 4.3999996, 0.51, -3.4, 4.3999996, 0.51, -4.3999996, -2, 0.51, 2.6000004, -2.3999996, 0.51, 2.6000004, -2.5, 0.51, 3.1999998, -1.5999994, 0.51, 2.1999998, 4.3999996, 0.51, 4.4000006, 4.3999996, 0.51, -1.5999999, -1.5999994, 0.51, 1.1000004, -5.5, 0.51, 0.6999998, -5.5, 0.51, -0.5999999, -5.6, 0.51, 1.5, -11.5, 0.51, 1.4000006, -4.7, 0.51, 7.5, -4.6, 0.51, 5.6000004, -5.2, 0.51, 5.6000004, -5.6, 0.51, 5.2, -11.5, 0.51, 7.5, 4.6000004, 0.51, 7.5, 4.6000004, 0.51, 5.6000004)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 4), PackedInt32Array(6, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(7, 1, 8), PackedInt32Array(8, 1, 2), PackedInt32Array(9, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(15, 14, 13), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(21, 20, 13), PackedInt32Array(13, 20, 23), PackedInt32Array(13, 23, 15), PackedInt32Array(15, 23, 22), PackedInt32Array(24, 18, 19), PackedInt32Array(25, 11, 21), PackedInt32Array(21, 11, 12), PackedInt32Array(21, 12, 20), PackedInt32Array(21, 26, 25), PackedInt32Array(29, 28, 27), PackedInt32Array(27, 22, 29), PackedInt32Array(29, 22, 23), PackedInt32Array(26, 24, 25), PackedInt32Array(25, 24, 19), PackedInt32Array(30, 32, 31), PackedInt32Array(16, 17, 32), PackedInt32Array(30, 33, 32), PackedInt32Array(32, 33, 16), PackedInt32Array(16, 33, 34), PackedInt32Array(34, 33, 14), PackedInt32Array(34, 14, 35), PackedInt32Array(36, 13, 14), PackedInt32Array(14, 33, 36), PackedInt32Array(10, 37, 9), PackedInt32Array(9, 37, 38), PackedInt32Array(37, 39, 38), PackedInt32Array(38, 39, 6), PackedInt32Array(6, 39, 5), PackedInt32Array(5, 39, 40), PackedInt32Array(43, 42, 41), PackedInt32Array(43, 41, 44), PackedInt32Array(44, 41, 45), PackedInt32Array(39, 44, 40), PackedInt32Array(40, 44, 45), PackedInt32Array(47, 46, 42), PackedInt32Array(42, 46, 41)]
 geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"NavigationCollision"
+cell_size = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfg5a"]
 size = Vector3(10, 1, 10)
@@ -53,6 +54,7 @@ metadata/_custom_type_script = "uid://c0nt678fs1acx"
 
 [sub_resource type="Resource" id="Resource_nyq84"]
 script = ExtResource("19_aaksw")
+_maxCapacity = 4
 metadata/_custom_type_script = "uid://88g2uivj7s2s"
 
 [sub_resource type="Resource" id="Resource_fvn6o"]
