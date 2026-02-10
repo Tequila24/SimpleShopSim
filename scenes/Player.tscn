@@ -162,6 +162,8 @@ height = 1.7749023
 script = ExtResource("1_qu4a1")
 _itemsVisualHolder = NodePath("../Picked Item Holder")
 
+[node name="ActionTimer" type="Timer" parent="PickupController" unique_id=865164372]
+
 [node name="PlayerController" type="Node" parent="." unique_id=1958541553 node_paths=PackedStringArray("_animPlayer")]
 script = ExtResource("2_70d11")
 _maxWalkVelocity = 5.0
@@ -602,6 +604,7 @@ shape = SubResource("CapsuleShape3D_bneo8")
 transform = Transform3D(1, 0, 0, 0, 0.98616725, -0.16575333, 0, 0.16575333, 0.98616725, 0, -0.33091593, 0.5050606)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=921479340 groups=["NavigationCollision"]]
+visible = false
 radius = 0.6
 affect_navigation_mesh = true
 carve_navigation_mesh = true
