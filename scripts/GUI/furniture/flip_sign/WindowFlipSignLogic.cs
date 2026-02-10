@@ -19,13 +19,26 @@ public partial class WindowFlipSignLogic : Control
 
 		DoUpdateSignVisual(ShopMaster.Instance.IsShopOpen);
 
-		SignalBus.OnShopStateUpdated += (bool newState) => { DoUpdateSignVisual(newState); };
+		SignalBus.OnShopStateUpdated += DoShopStateUpdated;
 	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+
+		SignalBus.OnShopStateUpdated -= DoShopStateUpdated;
+	}
+
 
 	private void DoSwitchButtonPressed()
 	{
 		// GD.Print($"I AM TEST {this.Name}");
 		SignalBus.OnSwitchShopState();
+	}
+
+	private void DoShopStateUpdated(bool newState)
+	{
+		DoUpdateSignVisual(newState);
 	}
 
 	public void DoUpdateSignVisual(bool isOpen, bool animated = false)
