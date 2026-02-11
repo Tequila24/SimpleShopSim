@@ -11,7 +11,7 @@ size = Vector3(1, 2, 0.1)
 radius = 1.0
 height = 3.0
 
-[node name="EntranceDoor" type="Node3D" unique_id=1416713399 node_paths=PackedStringArray("interactiveComponent", "_doorLeft", "_doorRight")]
+[node name="EntranceDoor" type="Node3D" unique_id=1287278942 node_paths=PackedStringArray("interactiveComponent", "_doorLeft", "_doorRight")]
 script = ExtResource("1_oe1mq")
 interactiveComponent = NodePath("Interactive")
 _doorLeft = NodePath("door_left")

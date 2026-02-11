@@ -15,7 +15,7 @@ public partial class NPCSpawner : Node
 	private PackedScene _npcPrefab;
 	[Export]
 	private Godot.Collections.Array<ItemData> _randomWantedItemList = [];
-
+	[Export]
 	private Node3D _currentNPC;
 
 
@@ -50,6 +50,7 @@ public partial class NPCSpawner : Node
 
 	private void OnCurrentNPCRemoved()
 	{
+		_currentNPC = null;
 		SpawnNewNPC();
 	}
 }

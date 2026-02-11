@@ -8,4 +8,17 @@ public partial class ItemCountData : Resource
 	public ItemData item;
 	[Export]
 	public int count;
+
+	
+
+	public ItemCountData()
+	{
+		
+	}
+	
+	public ItemCountData(ItemData newItem, int newCount)
+	{
+		item = newItem;
+		count = newCount;
+	}
 }

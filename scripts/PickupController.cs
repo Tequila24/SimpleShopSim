@@ -20,11 +20,12 @@ public partial class PickupController : Node
 	{
 		base._Ready();
 
+		if (_inventory == null)
+			_inventory = new StackInventory();
+
 		_inventory.OnUpdated += DoUpdateVisual;
 		DoUpdateVisual();
 	}
-
-
 
 	public void DoUpdateVisual()
 	{

@@ -2,7 +2,7 @@ using Godot;
 
 
 [GlobalClass]
-public partial class StackInventory : BaseInventory
+public partial class StackInventory : AInventory
 {	
 	public bool PushItem(ItemData newItem)
 	{
@@ -10,7 +10,7 @@ public partial class StackInventory : BaseInventory
 			return false;
 		}
 
-		_itemsStack.Add(newItem);
+		_itemsStack.Add(new ItemCountData(newItem, 1));
 		EmitOnUpdated();
 		return true;
 	}
@@ -24,7 +24,7 @@ public partial class StackInventory : BaseInventory
 		_itemsStack.RemoveAt(Count - 1);
 		EmitOnUpdated();
 
-		return retValue;
+		return retValue.item;
 	}
 
 	public ItemData PeekTopItem()
@@ -43,6 +43,6 @@ public partial class StackInventory : BaseInventory
 		if (Mathf.Abs(index) > _itemsStack.Count)
 			return null;
 			
-		return _itemsStack[index >= 0 ? index : Count - index];
+		return _itemsStack[index >= 0 ? index : Count - index].item;
 	}
 }

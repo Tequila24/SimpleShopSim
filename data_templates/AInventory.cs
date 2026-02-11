@@ -1,11 +1,10 @@
 using Godot;
 
 
-[GlobalClass]
-public partial class BaseInventory : Resource
+public partial class AInventory : Resource
 {
 	[Export]
-	protected Godot.Collections.Array<ItemData> _itemsStack = [];
+	protected Godot.Collections.Array<ItemCountData> _itemsStack = [];
 
 	[Export]
 	protected int _maxCapacity = -1;

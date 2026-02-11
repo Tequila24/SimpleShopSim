@@ -11,7 +11,6 @@ public partial class ShelfLogic : Node3D
 	public ItemData ShelfItem => _data.contents.item;
 	public int Capacity => _data.contents.count;
 
-
 	[Export]
 	private Node3D _visualsRoot;
 	private Godot.Collections.Array<Node3D> _visualHolders = new();
@@ -71,7 +70,7 @@ public partial class ShelfLogic : Node3D
 		else if (_data.contents.count < itemsVisualCount)
 		{
 			int difference = itemsVisualCount - _data.contents.count;
-			GD.Print($"data > visual, difference: {difference}");
+			// GD.Print($"data > visual, difference: {difference}");
 
 			while (difference > 0)
 			{
@@ -83,7 +82,7 @@ public partial class ShelfLogic : Node3D
 		{
 			int difference = _data.contents.count - itemsVisualCount;
 
-			GD.Print($"visual > data, difference: {difference} {itemsVisualCount}");
+			// GD.Print($"visual > data, difference: {difference} {itemsVisualCount}");
 
 			int i = 0;
 			while (i < difference)
