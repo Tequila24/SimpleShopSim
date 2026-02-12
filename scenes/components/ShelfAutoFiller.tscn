@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cpfabb142rykh"]
 
-[ext_resource type="Script" uid="uid://b1vbajgt70lmp" path="res://scripts/furniture/shelf/ShelfAutoFiller.cs" id="1_b2ukw"]
+[ext_resource type="Script" uid="uid://b1vbajgt70lmp" path="res://scripts/components/ShelfAutoFiller.cs" id="1_b2ukw"]
 
 [node name="ShelfAutoFiller" type="Node" unique_id=1233742220 node_paths=PackedStringArray("_interactionTimer")]
 script = ExtResource("1_b2ukw")

@@ -33,7 +33,7 @@ public partial class WindowPallet : Control
 
 		if (_pallet.Data.Contents.TryPopItem() is ItemData topPalletItem)
 		{
-			pickupControl.Inventory.PushItem(topPalletItem);
+			pickupControl.Inventory.TryPushItem(topPalletItem);
 		}
 	}
 
@@ -50,7 +50,7 @@ public partial class WindowPallet : Control
 
 		if (pickupControl.Inventory.PeekTopItem() is ItemData topItem)
 		{
-			bool result = _pallet.Data.Contents.PushItem(topItem);
+			bool result = _pallet.Data.Contents.TryPushItem(topItem);
 			if (result)
 			{
 				pickupControl.Inventory.TryPopItem();

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://q1mogryf3kqt"]
+
+[ext_resource type="Script" uid="uid://bina4lvio3ojx" path="res://scripts/components/AutoFiller.cs" id="1_qvjom"]
+
+[node name="AutoFiller" type="Node" unique_id=1134029518]
+script = ExtResource("1_qvjom")

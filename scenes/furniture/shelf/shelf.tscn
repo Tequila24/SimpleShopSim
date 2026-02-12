@@ -3,9 +3,23 @@
 [ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/furniture/shelf/ShelfLogic.cs" id="1_g6k01"]
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_oucxj"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="2_27cfk"]
+[ext_resource type="Resource" uid="uid://dqru0nhmdqovd" path="res://data/items/Bread.tres" id="2_fe37t"]
 [ext_resource type="PackedScene" uid="uid://o88fcq642m4v" path="res://scenes/furniture/shelf/WindowShelf.tscn" id="3_bvjvp"]
+[ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="3_qu8ce"]
 [ext_resource type="PackedScene" uid="uid://d3hgea6p1karx" path="res://scenes/components/WorldSpaceInterface.tscn" id="3_ynwff"]
-[ext_resource type="PackedScene" uid="uid://cpfabb142rykh" path="res://scenes/furniture/shelf/ShelfAutoFiller.tscn" id="5_j10w2"]
+[ext_resource type="Script" uid="uid://42teiv11ghbh" path="res://data_templates/ShelfData.cs" id="4_4dm70"]
+[ext_resource type="PackedScene" uid="uid://q1mogryf3kqt" path="res://scenes/components/AutoFiller.tscn" id="8_qu8ce"]
+
+[sub_resource type="Resource" id="Resource_ssun1"]
+script = ExtResource("3_qu8ce")
+item = ExtResource("2_fe37t")
+count = 4
+metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
+
+[sub_resource type="Resource" id="Resource_yt01f"]
+script = ExtResource("4_4dm70")
+contents = SubResource("Resource_ssun1")
+metadata/_custom_type_script = "uid://42teiv11ghbh"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwrpm"]
 size = Vector3(1.59375, 1.9, 0.6876526)
@@ -87,6 +101,7 @@ radius = 0.4966996
 
 [node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("_visualsRoot") groups=["NavigationCollision"]]
 script = ExtResource("1_g6k01")
+_data = SubResource("Resource_yt01f")
 _visualsRoot = NodePath("Slots")
 
 [node name="Interactive" parent="." unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("2_27cfk")]
@@ -99,9 +114,14 @@ _interactive = NodePath("../Interactive")
 _interfacePrefab = ExtResource("3_bvjvp")
 _parentObject = NodePath("..")
 
-[node name="ShelfAutoFiller" parent="." unique_id=1233742220 node_paths=PackedStringArray("_interactZone", "_shelfLogic") instance=ExtResource("5_j10w2")]
+[node name="AutoFiller" parent="." unique_id=1134029518 node_paths=PackedStringArray("_interactZone", "_interactionTimer", "_NodeStaticExchanger") instance=ExtResource("8_qu8ce")]
+_exchangeDirection = 1
 _interactZone = NodePath("../Interactive")
-_shelfLogic = NodePath("..")
+_interactionTimer = NodePath("Timer")
+_NodeStaticExchanger = NodePath("..")
+
+[node name="Timer" type="Timer" parent="AutoFiller" unique_id=722632784]
+wait_time = 0.3
 
 [node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=62573867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9176758, -0.61947256)

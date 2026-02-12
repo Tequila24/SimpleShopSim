@@ -2,11 +2,11 @@ using Godot;
 
 
 [GlobalClass]
-public partial class StackInventory : AInventory
+public partial class StackInventory : AInventory, IAutoExchange
 {	
-	public bool PushItem(ItemData newItem)
+	public bool TryPushItem(ItemData newItem)
 	{
-		if (_maxCapacity > 0 && _itemsStack.Count >= _maxCapacity) {
+		if (IsFull) {
 			return false;
 		}
 
@@ -17,7 +17,7 @@ public partial class StackInventory : AInventory
 
 	public ItemData TryPopItem()
 	{
-		if (Count <= 0)
+		if (IsEmpty)
 			return null;
 		
 		var retValue = _itemsStack[Count - 1];
@@ -44,5 +44,20 @@ public partial class StackInventory : AInventory
 			return null;
 			
 		return _itemsStack[index >= 0 ? index : Count - index].item;
+	}
+
+	public ItemData GetAutoNextItem()
+	{
+		return PeekTopItem();
+	}
+
+	public ItemData TryAutoTakeItem()
+	{
+		return TryPopItem();
+	}
+
+	public bool TryAutoPutItem(ItemData newItem)
+	{
+		return TryPushItem(newItem);
 	}
 }

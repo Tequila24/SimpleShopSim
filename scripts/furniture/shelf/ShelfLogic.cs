@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 
 
-public partial class ShelfLogic : Node3D
+public partial class ShelfLogic : Node3D, IAutoExchange
 {
 	[Export]
 	private ShelfData _data;
@@ -20,7 +20,6 @@ public partial class ShelfLogic : Node3D
 	public override void _Ready()
 	{
 		base._Ready();
-
 
 		foreach (var holder in _visualsRoot.GetChildren())
 		{
@@ -92,5 +91,29 @@ public partial class ShelfLogic : Node3D
 				i++;
 			}
 		}
+	}
+
+	public ItemData GetAutoNextItem()
+	{
+		if (_data.contents.count <= 0)
+			return null;
+
+		return _data.contents.item;
+	}
+
+	public ItemData TryAutoTakeItem()
+	{
+		// no auto taking
+		return null;
+	}
+
+	public bool TryAutoPutItem(ItemData newItem)
+	{
+		if (newItem != ShelfItem)
+		{
+			return false;
+		}
+
+		return TryAddItem(newItem);
 	}
 }

@@ -3,7 +3,7 @@ using System.Linq;
 using Godot;
 
 
-public partial class PickupController : Node
+public partial class PickupController : Node, IAutoExchange
 {
 	[Export]
 	private StackInventory _inventory;
@@ -62,5 +62,20 @@ public partial class PickupController : Node
 				difference--;
 			}
 		}
+	}
+
+	public ItemData GetAutoNextItem()
+	{
+		return Inventory.PeekTopItem();
+	}
+
+	public ItemData TryAutoTakeItem()
+	{
+		return Inventory.TryPopItem();
+	}
+
+	public bool TryAutoPutItem(ItemData newItem)
+	{
+		return Inventory.TryPushItem(newItem);
 	}
 }
