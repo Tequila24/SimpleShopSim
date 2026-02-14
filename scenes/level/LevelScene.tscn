@@ -157,7 +157,7 @@ transform = Transform3D(-4.371139e-07, 0, 1, 0, 1, 0, -10, 0, -4.371139e-08, 5, 
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.076857, 0, 0)
 
 [node name="FlipSign" parent="." unique_id=783732816 instance=ExtResource("16_rm3y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5174751, 0.00999999, -3.1614099)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.412291, 0.00999999, 1.8081112)
 
 [node name="TestShelf" parent="." unique_id=1864721992 instance=ExtResource("4_rdyrl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9061716, 3.330669e-16, -1.8564044)
@@ -167,9 +167,9 @@ _data = SubResource("Resource_wlqc3")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, 2)
 
 [node name="TestPallet" parent="." unique_id=1094728566 instance=ExtResource("18_undt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81797874, 0.00999999, 3.3195553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2527113, 0.00999999, -3.6287766)
 _data = SubResource("Resource_8hboa")
 
 [node name="TestPallet2" parent="." unique_id=650940503 instance=ExtResource("18_undt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.323049, 0.00999999, 3.3195553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2523589, 0.00999999, -3.6287766)
 _data = SubResource("Resource_fvn6o")

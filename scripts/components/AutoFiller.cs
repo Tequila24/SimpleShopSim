@@ -87,6 +87,12 @@ public partial class AutoFiller : Node
 
 
 		ItemData itemToExchangeData = from.PeekAutoNextItem();
+		if (itemToExchangeData == null)
+		{
+			_interactionTimer.Stop();
+			return;
+		}
+
 		if (to.TryAutoPutItem(itemToExchangeData))
 		{
 			var unused = from.TryAutoTakeItem();

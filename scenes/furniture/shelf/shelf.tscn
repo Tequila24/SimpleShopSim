@@ -181,7 +181,7 @@ shape = SubResource("SphereShape3D_g6k01")
 [node name="InteractionPoint" type="Node3D" parent="." unique_id=1227348050]
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1844939232]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.3)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.04, 0.3)
 texture = SubResource("ViewportTexture_qu8ce")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1130937034]
