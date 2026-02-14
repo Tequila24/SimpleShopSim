@@ -64,7 +64,7 @@ public partial class PickupController : Node, IAutoExchange
 		}
 	}
 
-	public ItemData GetAutoNextItem()
+	public ItemData PeekAutoNextItem()
 	{
 		return Inventory.PeekTopItem();
 	}

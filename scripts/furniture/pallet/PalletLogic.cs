@@ -78,9 +78,9 @@ public partial class PalletLogic : Node3D, IAutoExchange
 		}
 	}
 	
-	public ItemData GetAutoNextItem()
+	public ItemData PeekAutoNextItem()
 	{
-		return Data.Contents.GetAutoNextItem();
+		return Data.Contents.PeekAutoNextItem();
 	}
 
 	public ItemData TryAutoTakeItem()

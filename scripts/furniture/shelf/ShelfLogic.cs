@@ -93,7 +93,7 @@ public partial class ShelfLogic : Node3D, IAutoExchange
 		}
 	}
 
-	public ItemData GetAutoNextItem()
+	public ItemData PeekAutoNextItem()
 	{
 		if (_data.contents.count <= 0)
 			return null;

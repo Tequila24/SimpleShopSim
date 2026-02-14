@@ -46,7 +46,7 @@ public partial class StackInventory : AInventory, IAutoExchange
 		return _itemsStack[index >= 0 ? index : Count - index].item;
 	}
 
-	public ItemData GetAutoNextItem()
+	public ItemData PeekAutoNextItem()
 	{
 		return PeekTopItem();
 	}

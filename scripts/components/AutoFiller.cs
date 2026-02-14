@@ -65,8 +65,8 @@ public partial class AutoFiller : Node
 
 	private void DoFill()
 	{
-		IAutoExchange from;
-		IAutoExchange to;
+		IAutoExchange from = null;
+		IAutoExchange to = null;
 
 		if (_exchangeDirection == ExchangeDirection.FROM_ATTACHED)
 		{
@@ -86,7 +86,7 @@ public partial class AutoFiller : Node
 		}
 
 
-		ItemData itemToExchangeData = from.GetAutoNextItem();
+		ItemData itemToExchangeData = from.PeekAutoNextItem();
 		if (to.TryAutoPutItem(itemToExchangeData))
 		{
 			var unused = from.TryAutoTakeItem();
