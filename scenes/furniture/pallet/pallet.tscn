@@ -3,39 +3,145 @@
 [ext_resource type="Script" uid="uid://bc3yryihydajd" path="res://scripts/furniture/pallet/PalletLogic.cs" id="1_fftyn"]
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_qovi2"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="1_tn2wj"]
+[ext_resource type="PackedScene" uid="uid://q1mogryf3kqt" path="res://scenes/components/AutoFiller.tscn" id="2_n3a2v"]
 [ext_resource type="PackedScene" uid="uid://d3hgea6p1karx" path="res://scenes/components/WorldSpaceInterface.tscn" id="2_qovi2"]
 [ext_resource type="PackedScene" uid="uid://b0jeewaa7hj1x" path="res://scenes/furniture/pallet/WindowPallet.tscn" id="4_fftyn"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_dlw2e"]
-size = Vector3(1.5, 0.1, 1.5)
+[ext_resource type="PackedScene" uid="uid://8f64jdjm0hy4" path="res://scenes/furniture/InteractionZoneRotator.tscn" id="5_2oojv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qovi2"]
-size = Vector3(1.7, 0.3, 1.7)
+size = Vector3(0.90000004, 0.3, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2oojv"]
+viewport_path = NodePath("InteractionZoneRotator/PUT/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3a2v"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.73333335)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n3a2v"]
+viewport_path = NodePath("InteractionZoneRotator/TAKE/SubViewport")
+
+[sub_resource type="BoxMesh" id="BoxMesh_dlw2e"]
+size = Vector3(2.5, 0.1, 2.5)
 
 [node name="ItemsPallet" type="Node3D" unique_id=1094728566 node_paths=PackedStringArray("_itemsVisualHolder")]
 script = ExtResource("1_fftyn")
 _itemsVisualHolder = NodePath("VisualHolder")
 
-[node name="Interactive" parent="." unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("1_tn2wj")]
+[node name="AutoFiller_TAKE" parent="." unique_id=1134029518 node_paths=PackedStringArray("_interactZone", "_interactionTimer", "_NodeStaticExchanger") instance=ExtResource("2_n3a2v")]
+_interactZone = NodePath("Interactive_TAKE")
+_interactionTimer = NodePath("Timer")
+_NodeStaticExchanger = NodePath("..")
+
+[node name="Interactive_TAKE" parent="AutoFiller_TAKE" unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("1_tn2wj")]
 _groupNames = Array[String](["PlayerGroup"])
 _checkBodies = true
-_interactionZone = NodePath("../InteractionArea")
+_interactionZone = NodePath("../../InteractionZoneRotator/AREA_TAKE")
+
+[node name="Timer" type="Timer" parent="AutoFiller_TAKE" unique_id=1303351225]
+wait_time = 0.2
+
+[node name="AutoFiller_PUT" parent="." unique_id=1360743454 node_paths=PackedStringArray("_interactZone", "_interactionTimer", "_NodeStaticExchanger") instance=ExtResource("2_n3a2v")]
+_exchangeDirection = 1
+_interactZone = NodePath("Interactive_PUT")
+_interactionTimer = NodePath("Timer")
+_NodeStaticExchanger = NodePath("..")
+
+[node name="Interactive_PUT" parent="AutoFiller_PUT" unique_id=188100583 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("1_tn2wj")]
+_groupNames = Array[String](["PlayerGroup"])
+_checkBodies = true
+_interactionZone = NodePath("../../InteractionZoneRotator/AREA_PUT")
+
+[node name="Timer" type="Timer" parent="AutoFiller_PUT" unique_id=782295368]
+wait_time = 0.2
 
 [node name="WorldSpaceInterface" parent="." unique_id=327027461 node_paths=PackedStringArray("_interactive", "_parentObject") instance=ExtResource("2_qovi2")]
-_interactive = NodePath("../Interactive")
+_interactive = NodePath("../AutoFiller_TAKE/Interactive_TAKE")
 _interfacePrefab = ExtResource("4_fftyn")
 _parentObject = NodePath("..")
+
+[node name="InteractionZoneRotator" parent="." unique_id=1005752223 instance=ExtResource("5_2oojv")]
+
+[node name="AREA_TAKE" type="Area3D" parent="InteractionZoneRotator" unique_id=1174060309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6999999, 0, 1.7)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZoneRotator/AREA_TAKE" unique_id=834465843]
+shape = SubResource("BoxShape3D_qovi2")
+
+[node name="AREA_PUT" type="Area3D" parent="InteractionZoneRotator" unique_id=1334570950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000005, 0, 1.7)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZoneRotator/AREA_PUT" unique_id=1689185948]
+shape = SubResource("BoxShape3D_qovi2")
+
+[node name="PUT" type="Sprite3D" parent="InteractionZoneRotator" unique_id=641288496]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.7, 0.04, 1.7)
+texture = SubResource("ViewportTexture_2oojv")
+
+[node name="SubViewport" type="SubViewport" parent="InteractionZoneRotator/PUT" unique_id=2001866318]
+transparent_bg = true
+size = Vector2i(128, 85)
+
+[node name="WorldSpaceZone" type="MarginContainer" parent="InteractionZoneRotator/PUT/SubViewport" unique_id=691961232]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="InteractionZoneRotator/PUT/SubViewport/WorldSpaceZone" unique_id=19395222]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n3a2v")
+
+[node name="Label" type="Label" parent="InteractionZoneRotator/PUT/SubViewport/WorldSpaceZone" unique_id=783319432]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.73333335)
+theme_override_font_sizes/font_size = 32
+text = "PUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TAKE" type="Sprite3D" parent="InteractionZoneRotator" unique_id=1010402162]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.7, 0.04, 1.7)
+texture = SubResource("ViewportTexture_n3a2v")
+
+[node name="SubViewport" type="SubViewport" parent="InteractionZoneRotator/TAKE" unique_id=914061255]
+transparent_bg = true
+size = Vector2i(128, 85)
+
+[node name="WorldSpaceZone" type="MarginContainer" parent="InteractionZoneRotator/TAKE/SubViewport" unique_id=1243142448]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="InteractionZoneRotator/TAKE/SubViewport/WorldSpaceZone" unique_id=1683946589]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n3a2v")
+
+[node name="Label" type="Label" parent="InteractionZoneRotator/TAKE/SubViewport/WorldSpaceZone" unique_id=401142720]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.73333335)
+theme_override_font_sizes/font_size = 32
+text = "TAKE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="PalletModelPlaceholder" type="MeshInstance3D" parent="." unique_id=1706870996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 material_override = ExtResource("1_qovi2")
 mesh = SubResource("BoxMesh_dlw2e")
-
-[node name="InteractionArea" type="Area3D" parent="." unique_id=1334570950]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=1689185948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14999999, 0)
-shape = SubResource("BoxShape3D_qovi2")
 
 [node name="VisualHolder" type="Node3D" parent="." unique_id=171160755]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)

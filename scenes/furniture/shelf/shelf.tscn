@@ -97,7 +97,21 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7lhpv")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g6k01"]
-radius = 0.4966996
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qu8ce"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bbg8"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.73333335)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("_visualsRoot") groups=["NavigationCollision"]]
 script = ExtResource("1_g6k01")
@@ -159,10 +173,37 @@ texture_filter = 1
 text = "Shelf"
 
 [node name="InteractionArea" type="Area3D" parent="." unique_id=1564984308]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5788486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.17884862)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=600022783]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.3548241)
 shape = SubResource("SphereShape3D_g6k01")
 
 [node name="InteractionPoint" type="Node3D" parent="." unique_id=1227348050]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1844939232]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0.3)
+texture = SubResource("ViewportTexture_qu8ce")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1130937034]
+transparent_bg = true
+size = Vector2i(170, 85)
+
+[node name="WorldSpaceZone" type="MarginContainer" parent="Sprite3D/SubViewport" unique_id=167257857]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Sprite3D/SubViewport/WorldSpaceZone" unique_id=2061392355]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0bbg8")
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport/WorldSpaceZone" unique_id=291758330]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.73333335)
+theme_override_font_sizes/font_size = 32
+text = "PUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

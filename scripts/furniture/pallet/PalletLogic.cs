@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading;
 
-public partial class PalletLogic : Node3D
+public partial class PalletLogic : Node3D, IAutoExchange
 {
 	[Export]
 	private PalletData _data;
@@ -76,5 +76,20 @@ public partial class PalletLogic : Node3D
 				difference--;
 			}
 		}
+	}
+	
+	public ItemData GetAutoNextItem()
+	{
+		return Data.Contents.GetAutoNextItem();
+	}
+
+	public ItemData TryAutoTakeItem()
+	{
+		return Data.Contents.TryPopItem();
+	}
+
+	public bool TryAutoPutItem(ItemData newItem)
+	{
+		return Data.Contents.TryPushItem(newItem);
 	}
 }

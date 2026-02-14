@@ -4,9 +4,7 @@ using System;
 public partial class CameraMaster : Node
 {
 	public static CameraMaster Instance
-	{
-		private set; get;
-	}
+	{ private set; get; }
 	
 	[Export]
 	private Camera3D _mainCamera;
@@ -20,9 +18,11 @@ public partial class CameraMaster : Node
 		set { if (value != null) Instance._nodeToFollow = value; else Instance._nodeToFollow = Instance.GetTree().GetNodesInGroup("PlayerGroup")[0] as Node3D; }
 	}
 
-
 	private Vector3 _targetCameraPosition = Vector3.One;
 	// private float _targetCameraRotation = 0;
+
+	public Action OnCameraRotated;
+	public float CameraYawAngle => _cameraDolly.RotationDegrees.Y;
 
 
 
@@ -52,6 +52,7 @@ public partial class CameraMaster : Node
 	public void DoRotateCamera(float rotateDelta)
 	{
 		_cameraDolly.RotateY(-rotateDelta * 0.003f);
+		OnCameraRotated?.Invoke();
 	}
 
 	public override void _Process(double delta)

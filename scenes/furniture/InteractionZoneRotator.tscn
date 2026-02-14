@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8f64jdjm0hy4"]
+
+[ext_resource type="Script" uid="uid://hignio68xbln" path="res://scripts/furniture/InteractionZoneRotator.cs" id="1_0akra"]
+
+[node name="InteractionZoneRotator" type="Node3D" unique_id=1005752223]
+script = ExtResource("1_0akra")
