@@ -9,13 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d12q15tlutwf3" path="res://scenes/tools/ObjectPlacer.tscn" id="3_bneo8"]
 [ext_resource type="Script" uid="uid://bb2bogqswcxy" path="res://scripts/CameraMaster.cs" id="3_vjgi4"]
 [ext_resource type="Resource" uid="uid://yntdv36d38a0" path="res://data/SaveData.tres" id="5_sv1m6"]
-[ext_resource type="PackedScene" uid="uid://ra8rc6ck5udh" path="res://scenes/tools/dropped_item.tscn" id="9_bneo8"]
 [ext_resource type="PackedScene" uid="uid://dvmwdkqyol4s0" path="res://scenes/Player.tscn" id="9_y5y3l"]
-[ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="10_ocgqw"]
-[ext_resource type="Resource" uid="uid://dqru0nhmdqovd" path="res://data/items/Bread.tres" id="11_jbgew"]
-[ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="12_a85ww"]
-[ext_resource type="Script" uid="uid://dvfxsch5jk0q8" path="res://data_templates/ItemsBoxData.cs" id="13_jhsr3"]
-[ext_resource type="PackedScene" uid="uid://ca5shgyut3o7" path="res://scenes/items/box_open.tscn" id="14_0bq3a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s5hy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,24 +27,6 @@ fog_enabled = true
 fog_mode = 1
 fog_density = 0.4294
 fog_depth_curve = 0.5176333
-
-[sub_resource type="Resource" id="Resource_21xg8"]
-script = ExtResource("10_ocgqw")
-item = ExtResource("11_jbgew")
-count = 3
-metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
-
-[sub_resource type="Resource" id="Resource_icif4"]
-script = ExtResource("10_ocgqw")
-item = ExtResource("12_a85ww")
-count = 3
-metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
-
-[sub_resource type="Resource" id="Resource_kxqg4"]
-script = ExtResource("13_jhsr3")
-content = Array[ExtResource("10_ocgqw")]([SubResource("Resource_21xg8"), SubResource("Resource_icif4")])
-subScene = ExtResource("14_0bq3a")
-metadata/_custom_type_script = "uid://dvfxsch5jk0q8"
 
 [node name="Game" type="Node3D" unique_id=693449353]
 
@@ -85,7 +61,7 @@ _mainCamera = NodePath("Dolly/Camera3D")
 _cameraDolly = NodePath("Dolly")
 
 [node name="Dolly" type="Node3D" parent="CameraMaster" unique_id=195131702]
-transform = Transform3D(0.7071067, -0.5416752, 0.45451948, 0, 0.64278764, 0.76604444, -0.7071067, -0.5416752, 0.45451948, -0.30734158, 0, -0.07539177)
+transform = Transform3D(0.7071067, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.7071067, -0.61237246, 0.35355335, -0.30734158, 0, -0.07539177)
 
 [node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly" unique_id=1680751510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
@@ -94,8 +70,4 @@ fov = 85.0
 [node name="LevelScene" parent="." unique_id=1369403572 instance=ExtResource("1_r7sob")]
 
 [node name="Player" parent="." unique_id=1259514022 instance=ExtResource("9_y5y3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="TestDrop" parent="." unique_id=843605946 instance=ExtResource("9_bneo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9328032, 0, -1.4832652)
-_item = SubResource("Resource_kxqg4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.8445506)

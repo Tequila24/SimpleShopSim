@@ -158,6 +158,7 @@ radius = 0.31396484
 height = 1.7749023
 
 [node name="Player" type="CharacterBody3D" unique_id=1259514022 groups=["CharactersGroup", "PlayerGroup"]]
+collision_mask = 3
 
 [node name="PickupController" type="Node" parent="." unique_id=1057939210 node_paths=PackedStringArray("_itemsVisualHolder")]
 script = ExtResource("1_qu4a1")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cxnu0futcqu7c"]
+
+[ext_resource type="Material" uid="uid://1ap6q5gk6hik" path="res://assets/materials/OrangeProto.tres" id="1_8oy1d"]
+[ext_resource type="ArrayMesh" uid="uid://3lhehr3htn3s" path="res://assets/models/street assets_Barrier.res" id="1_xvi3e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8oy1d"]
+size = Vector3(2.9, 1.4, 0.1)
+
+[node name="ParkingBarier" type="StaticBody3D" unique_id=1447184678 groups=["NavigationCollision"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1029376135]
+material_override = ExtResource("1_8oy1d")
+mesh = ExtResource("1_xvi3e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=451721202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6000001, 0)
+shape = SubResource("BoxShape3D_8oy1d")

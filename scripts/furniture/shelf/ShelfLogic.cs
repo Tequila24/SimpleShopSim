@@ -31,6 +31,11 @@ public partial class ShelfLogic : Node3D, IAutoExchange
 
 	public bool TryAddItem(ItemData newItem)
 	{
+		if (ShelfItem == null)
+		{
+			 _data.contents.item = newItem;
+		}
+
 		if (ShelfItem != newItem)
 			return false;
 
@@ -48,6 +53,12 @@ public partial class ShelfLogic : Node3D, IAutoExchange
 			return false;
 
 		_data.contents.count--;
+
+		if (_data.contents.count == 0)
+		{
+			_data.contents.item = null;
+		}
+
 		UpdateVisual();
 		return true;
 	}
@@ -109,7 +120,7 @@ public partial class ShelfLogic : Node3D, IAutoExchange
 
 	public bool TryAutoPutItem(ItemData newItem)
 	{
-		if (newItem != ShelfItem)
+		if (ShelfItem != null && newItem != ShelfItem)
 		{
 			return false;
 		}

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dvkgo0cpj35il"]
+
+[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_bc0sm"]
+[ext_resource type="ArrayMesh" uid="uid://g5iyjb8gktuu" path="res://assets/models/StoreOutside_Wall_Window.res" id="2_4ixjq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83syi"]
+size = Vector3(2, 2, 0.2)
+
+[node name="WallWindowMiddle" type="StaticBody3D" unique_id=1817564307 groups=["NavigationCollision"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1609672263]
+material_override = ExtResource("1_bc0sm")
+mesh = ExtResource("2_4ixjq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1101075233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+shape = SubResource("BoxShape3D_83syi")

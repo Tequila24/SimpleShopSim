@@ -43,9 +43,8 @@ public partial class NPCSpawner : Node
 			bLogic._wantedItems.Add(_randomWantedItemList.PickRandom());
 		}
 
+		_currentNPC.Position = _NPCSpawnPoint.GlobalPosition;
 		GetTree().Root.AddChild(_currentNPC);
-
-		_currentNPC.Position = _NPCSpawnPoint.GlobalPosition; 
 	}
 
 	private void OnCurrentNPCRemoved()

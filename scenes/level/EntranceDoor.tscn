@@ -28,6 +28,7 @@ material_override = ExtResource("1_ay7t2")
 mesh = SubResource("BoxMesh_vpfwd")
 
 [node name="DetectionArea" type="Area3D" parent="." unique_id=450816986]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=679769530]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.6, 0)

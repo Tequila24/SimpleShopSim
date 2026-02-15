@@ -85,7 +85,7 @@ public partial class InputMaster : Node
 		}
 
 		if (IsReleaseEvent(eventKey, Key.Ctrl))
-			OnDropKeyPressed();
+			OnDropKeyPressed?.Invoke();
 
 		// if (IsTapEvent(eventKey, Key.E))
 		// {

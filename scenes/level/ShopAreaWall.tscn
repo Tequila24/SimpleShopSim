@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cx8qwcnb8oxux"]
+
+[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_872u3"]
+[ext_resource type="ArrayMesh" uid="uid://0gepc7jnbb7b" path="res://assets/models/StoreOutside_Wall_Solid.res" id="2_0y2o4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5q14"]
+size = Vector3(14, 2, 0.2)
+
+[node name="ShopAreaWall" type="Node3D" unique_id=2105811122 groups=["NavigationCollision"]]
+
+[node name="WallSolid" type="StaticBody3D" parent="." unique_id=1817564307]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallSolid" unique_id=1609672263]
+transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("1_872u3")
+mesh = ExtResource("2_0y2o4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallSolid" unique_id=1854840440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_f5q14")
