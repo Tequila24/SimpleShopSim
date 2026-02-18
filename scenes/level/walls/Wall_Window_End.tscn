@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcg03sh0mmrbo"]
 
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_3i8rd"]
-[ext_resource type="ArrayMesh" uid="uid://c1cwqohnpsao3" path="res://assets/models/StoreOutside_Wall_Window_Left.res" id="2_f5q14"]
+[ext_resource type="ArrayMesh" uid="uid://bmp7ve86r608j" path="res://assets/models/StoreOutside_Wall_Window_Left.res" id="2_f5q14"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f5q14"]
 size = Vector3(2, 2, 0.2)

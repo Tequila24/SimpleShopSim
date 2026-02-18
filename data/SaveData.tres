@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://cgtj3bpan844f" path="res://data/furniture/Shelf.tres" id="1_xvw5x"]
 [ext_resource type="Resource" uid="uid://bs61cxp7y5nyo" path="res://data/furniture/CashRegister.tres" id="2_e8ifp"]
 [ext_resource type="Resource" uid="uid://dsofeqowda688" path="res://data/items/Money.tres" id="3_e7rtq"]
+[ext_resource type="Resource" uid="uid://bbiabvmeakt5n" path="res://data/furniture/StorageShelf.tres" id="3_e8ifp"]
 [ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="4_bf55r"]
 
 [sub_resource type="Resource" id="Resource_sv1m6"]
@@ -17,6 +18,7 @@ script = ExtResource("1_m0y6h")
 money = SubResource("Resource_sv1m6")
 furnitureUnlocks = Dictionary[Object, bool]({
 ExtResource("1_xvw5x"): true,
-ExtResource("2_e8ifp"): true
+ExtResource("2_e8ifp"): true,
+ExtResource("3_e8ifp"): true
 })
 metadata/_custom_type_script = "uid://c4trck4r2o2re"

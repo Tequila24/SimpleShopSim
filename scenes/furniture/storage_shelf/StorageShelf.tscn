@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://twm443iiagy5"]
+
+[ext_resource type="Script" uid="uid://crqgdrtbxu8nv" path="res://scripts/furniture/storage_shelf/StorageShelf.cs" id="1_2uluy"]
+[ext_resource type="PackedScene" uid="uid://br78yggephky7" path="res://scenes/components/inventory/StackInventory.tscn" id="2_2vocq"]
+[ext_resource type="PackedScene" uid="uid://q1mogryf3kqt" path="res://scenes/components/inventory/TriggerAreaItemExchanger.tscn" id="3_2uluy"]
+[ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="4_h0a8u"]
+[ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="5_dgcjs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nssfl"]
+size = Vector3(2, 0.02, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eumsl"]
+size = Vector3(0.02, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nssfl"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eumsl"]
+size = Vector3(0.7, 0.3, 0.7)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nssfl"]
+viewport_path = NodePath("PUT/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqq1w"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.73333335)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eumsl"]
+viewport_path = NodePath("TAKE/SubViewport")
+
+[node name="StorageShelf" type="StaticBody3D" unique_id=307143794 node_paths=PackedStringArray("_contents", "_itemsVisualHolder")]
+script = ExtResource("1_2uluy")
+_contents = NodePath("StackInventory")
+_itemsVisualHolder = NodePath("VisualHolder")
+
+[node name="StackInventory" parent="." unique_id=212492952 instance=ExtResource("2_2vocq")]
+
+[node name="ZoneItemExchanger_TAKE" parent="." unique_id=1134029518 node_paths=PackedStringArray("_interactZone", "_exchangeTimer") instance=ExtResource("3_2uluy")]
+_interactZone = NodePath("Interactive_TAKE")
+_exchangeTimer = NodePath("Timer")
+
+[node name="Interactive_TAKE" parent="ZoneItemExchanger_TAKE" unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("4_h0a8u")]
+_groupNames = Array[String](["PlayerGroup"])
+_checkBodies = true
+_interactionZone = NodePath("../../AREA_TAKE")
+
+[node name="Timer" type="Timer" parent="ZoneItemExchanger_TAKE" unique_id=1759182139]
+wait_time = 0.2
+
+[node name="ZoneItemExchanger_PUT" parent="." unique_id=782157834 node_paths=PackedStringArray("_interactZone", "_exchangeTimer") instance=ExtResource("3_2uluy")]
+_exchangeDirection = 1
+_interactZone = NodePath("Interactive_PUT")
+_exchangeTimer = NodePath("Timer")
+
+[node name="Interactive_PUT" parent="ZoneItemExchanger_PUT" unique_id=1635612801 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("4_h0a8u")]
+_groupNames = Array[String](["PlayerGroup"])
+_checkBodies = true
+_interactionZone = NodePath("../../AREA_PUT")
+
+[node name="Timer" type="Timer" parent="ZoneItemExchanger_PUT" unique_id=915303502]
+wait_time = 0.2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=160561404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49, -0.5)
+material_override = ExtResource("5_dgcjs")
+mesh = SubResource("BoxMesh_nssfl")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=757070500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -0.5)
+material_override = ExtResource("5_dgcjs")
+mesh = SubResource("BoxMesh_eumsl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1119050836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -0.5)
+material_override = ExtResource("5_dgcjs")
+mesh = SubResource("BoxMesh_eumsl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1064296071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+shape = SubResource("BoxShape3D_nssfl")
+
+[node name="AREA_TAKE" type="Area3D" parent="." unique_id=1717612519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999994, 0.5, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AREA_TAKE" unique_id=1214033442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000008, 0, 0)
+shape = SubResource("BoxShape3D_eumsl")
+
+[node name="AREA_PUT" type="Area3D" parent="." unique_id=1942457993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40000007, 0.5, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AREA_PUT" unique_id=411813825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20000005, 0, 0)
+shape = SubResource("BoxShape3D_eumsl")
+
+[node name="PUT" type="Sprite3D" parent="." unique_id=15673704]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.5, 0.04, 0.5)
+texture = SubResource("ViewportTexture_nssfl")
+
+[node name="SubViewport" type="SubViewport" parent="PUT" unique_id=1639494937]
+transparent_bg = true
+size = Vector2i(100, 85)
+
+[node name="WorldSpaceZone" type="MarginContainer" parent="PUT/SubViewport" unique_id=1278137460]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PUT/SubViewport/WorldSpaceZone" unique_id=1023787365]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqq1w")
+
+[node name="Label" type="Label" parent="PUT/SubViewport/WorldSpaceZone" unique_id=1069623518]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.73333335)
+theme_override_font_sizes/font_size = 32
+text = "PUT"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TAKE" type="Sprite3D" parent="." unique_id=1588304790]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 0.04, 0.5)
+texture = SubResource("ViewportTexture_eumsl")
+
+[node name="SubViewport" type="SubViewport" parent="TAKE" unique_id=28601341]
+transparent_bg = true
+size = Vector2i(100, 85)
+
+[node name="WorldSpaceZone" type="MarginContainer" parent="TAKE/SubViewport" unique_id=1168311355]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TAKE/SubViewport/WorldSpaceZone" unique_id=1151574158]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqq1w")
+
+[node name="Label" type="Label" parent="TAKE/SubViewport/WorldSpaceZone" unique_id=1502715605]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.73333335)
+theme_override_font_sizes/font_size = 32
+text = "TAKE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VisualHolder" type="Node3D" parent="." unique_id=1463395597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)

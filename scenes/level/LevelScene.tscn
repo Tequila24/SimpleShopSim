@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cwsmm7al82dgb" path="res://scripts/LevelMaster.cs" id="1_b8l4a"]
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="1_in5yg"]
-[ext_resource type="Script" uid="uid://bd5dct547tim8" path="res://scripts/level/ShopMaster.cs" id="2_rjisx"]
 [ext_resource type="Script" uid="uid://ngh7xksjfl7u" path="res://scripts/NavigationMaster.cs" id="4_b8l4a"]
 [ext_resource type="Resource" uid="uid://dqru0nhmdqovd" path="res://data/items/Bread.tres" id="6_bavr4"]
 [ext_resource type="ArrayMesh" uid="uid://cnuo6efsjt8hg" path="res://assets/models/street assets_Parking.res" id="8_1xt25"]
@@ -10,6 +9,7 @@
 [ext_resource type="Material" uid="uid://6sckd1wdiokr" path="res://assets/materials/WhiteProto.tres" id="10_0jw6h"]
 [ext_resource type="Script" uid="uid://pveydtvpx2nj" path="res://scripts/npc/NPCSpawner.cs" id="10_1xt25"]
 [ext_resource type="PackedScene" uid="uid://cxnu0futcqu7c" path="res://scenes/level/objects/parking_barier.tscn" id="10_63gba"]
+[ext_resource type="Material" uid="uid://1ap6q5gk6hik" path="res://assets/materials/OrangeProto.tres" id="11_2yk0u"]
 [ext_resource type="PackedScene" uid="uid://caxmo27mklgfd" path="res://scenes/TestNPC.tscn" id="11_63gba"]
 [ext_resource type="Script" uid="uid://cimo1fnt81gtv" path="res://data_templates/ItemData.cs" id="12_0jw6h"]
 [ext_resource type="PackedScene" uid="uid://dcg03sh0mmrbo" path="res://scenes/level/walls/Wall_Window_End.tscn" id="13_wg31h"]
@@ -17,9 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://dlkay1nasjyxx" path="res://scenes/level/walls/Wall_Solid.tscn" id="15_kqg47"]
 [ext_resource type="PackedScene" uid="uid://cx8qwcnb8oxux" path="res://scenes/level/ShopAreaWall.tscn" id="16_2yk0u"]
 [ext_resource type="PackedScene" uid="uid://dxc10pb5ulq1p" path="res://scenes/level/ShopArea.tscn" id="16_rjisx"]
+[ext_resource type="PackedScene" uid="uid://twm443iiagy5" path="res://scenes/furniture/storage_shelf/StorageShelf.tscn" id="18_2yk0u"]
+[ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="19_285we"]
+[ext_resource type="Script" uid="uid://d0cc3ta18h5vh" path="res://data_templates/InventoryData.cs" id="20_aaksw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b8l4a"]
-vertices = PackedVector3Array(-7.299999, 0.5, -14.599999, -6.5, 0.5, -14.7, -6.5999985, 0.5, -27.4, -7.700001, 0.5, -14.099999, -34.4, 0.5, -27.4, -34.4, 0.5, -0.69999886, -7.700001, 0.5, -0.69999886, 6.6000023, 0.5, -14.7, 6.700001, 0.5, -27.4, 7.200001, 0.5, -14.7, 7.799999, 0.5, -14.099999, 34.4, 0.5, -27.4, 7.799999, 0.5, -0.69999886, 34.4, 0.5, -0.69999886, -0.29999924, 0.5, 0, 0.40000153, 0.5, 0, 0.5, 0.5, -0.39999962, -0.3999977, 0.5, -0.39999962, 0.9000015, 0.5, -0.69999886, 6.299999, 0.5, -0.69999886, 6.299999, 0.5, -13.2, -0.79999924, 0.5, -0.69999886, -6.200001, 0.5, -13.2, -6.200001, 0.5, -0.69999886, -0.3999977, 0.5, 0.39999962, 0.5, 0.5, 0.5, 3.7999992, 0.5, 0.80000114, 0.9000015, 0.5, 0.80000114, 1.1000023, 0.5, 2.3000011, 3.7000008, 0.5, 2.3000011, -0.8999977, 0.5, 0.80000114, -3.7999992, 0.5, 0.80000114, -3.7000008, 0.5, 2.3000011, -1.0999985, 0.5, 2.3000011, -0.5999985, 0.5, 2.8999996, 0.6000023, 0.5, 2.8999996, -4.5, 0.5, 2.3999996, -5.0999985, 0.5, 3.3999996, -26.9, 0.5, 0.80000114, -3.7999992, 0.5, 23.400002, -3.7999992, 0.5, 7.200001, -4.5999985, 0.5, 7.200001, -5.0999985, 0.5, 6.700001, -26.9, 0.5, 23.400002, 4.5, 0.5, 2.3999996, 5.200001, 0.5, 3.3999996, 26.900002, 0.5, 0.80000114, 4.6000023, 0.5, 7.200001, 3.7999992, 0.5, 7.200001, 3.7999992, 0.5, 23.400002, 5.200001, 0.5, 6.6000023, 26.900002, 0.5, 23.400002, -3.8999977, 4.5, 4.1000023, -3.8999977, 4.5, 5.9000015, 3.9000015, 4.5, 5.9000015, 3.9000015, 4.5, 4.1000023)
+vertices = PackedVector3Array(-7.299999, 0.5, -14.599999, -6.5, 0.5, -14.7, -6.5999985, 0.5, -27.4, -7.700001, 0.5, -14.099999, -34.4, 0.5, -27.4, -34.4, 0.5, -0.69999886, -7.700001, 0.5, -0.69999886, 6.6000023, 0.5, -14.7, 6.700001, 0.5, -27.4, 7.200001, 0.5, -14.7, 7.799999, 0.5, -14.099999, 34.4, 0.5, -27.4, 7.799999, 0.5, -0.79999924, 34.4, 0.5, -0.79999924, -0.29999924, 0.5, 0, 0.40000153, 0.5, 0, 0.5, 0.5, -0.39999962, -0.3999977, 0.5, -0.39999962, 0.9000015, 0.5, -0.69999886, 6.299999, 0.5, -0.69999886, 6.299999, 0.5, -13.2, -0.79999924, 0.5, -0.69999886, -6.200001, 0.5, -13.2, -6.200001, 0.5, -0.69999886, -0.3999977, 0.5, 0.39999962, 0.5, 0.5, 0.5, 3.7999992, 0.5, 0.80000114, 0.9000015, 0.5, 0.80000114, 1.1000023, 0.5, 2.3000011, 3.7000008, 0.5, 2.3000011, -0.8999977, 0.5, 0.80000114, -3.7999992, 0.5, 0.80000114, -3.7000008, 0.5, 2.3000011, -1.0999985, 0.5, 2.3000011, -0.5999985, 0.5, 2.8999996, 0.6000023, 0.5, 2.8999996, -4.5, 0.5, 2.3999996, -5.0999985, 0.5, 3.3999996, -26.9, 0.5, 0.80000114, -3.7999992, 0.5, 23.400002, -3.7999992, 0.5, 11.200001, -4.5999985, 0.5, 11.200001, -5.0999985, 0.5, 10.700001, -26.9, 0.5, 23.400002, 4.5, 0.5, 2.3999996, 5.200001, 0.5, 3.3999996, 26.900002, 0.5, 0.80000114, 4.6000023, 0.5, 11.200001, 3.7999992, 0.5, 11.200001, 3.7999992, 0.5, 23.400002, 5.200001, 0.5, 10.600002, 26.900002, 0.5, 23.400002, -3.8999977, 4.25, 4.1000023, -3.8999977, 4.25, 9.900002, 3.9000015, 4.25, 9.900002, 3.9000015, 4.25, 4.1000023)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 4), PackedInt32Array(6, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(1, 2, 7), PackedInt32Array(7, 2, 8), PackedInt32Array(9, 7, 8), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 11), PackedInt32Array(14, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(20, 19, 18), PackedInt32Array(17, 21, 16), PackedInt32Array(16, 21, 18), PackedInt32Array(18, 21, 20), PackedInt32Array(20, 21, 22), PackedInt32Array(21, 23, 22), PackedInt32Array(14, 15, 24), PackedInt32Array(24, 15, 25), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(25, 27, 24), PackedInt32Array(24, 27, 30), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 30), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 28), PackedInt32Array(28, 33, 30), PackedInt32Array(28, 30, 27), PackedInt32Array(36, 31, 32), PackedInt32Array(36, 37, 31), PackedInt32Array(31, 37, 38), PackedInt32Array(41, 40, 39), PackedInt32Array(41, 39, 42), PackedInt32Array(42, 39, 43), PackedInt32Array(42, 43, 38), PackedInt32Array(42, 38, 37), PackedInt32Array(44, 29, 26), PackedInt32Array(44, 26, 45), PackedInt32Array(45, 26, 46), PackedInt32Array(49, 48, 47), PackedInt32Array(47, 50, 49), PackedInt32Array(49, 50, 51), PackedInt32Array(51, 50, 46), PackedInt32Array(50, 45, 46), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53), PackedInt32Array(40, 48, 39), PackedInt32Array(39, 48, 49)]
 geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 1
@@ -28,11 +31,14 @@ cell_size = 0.1
 agent_radius = 0.6
 agent_max_climb = 0.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0jw6h"]
+size = Vector3(55, 0.5, 24)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_63gba"]
 size = Vector2(0.1, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0jw6h"]
-size = Vector3(55, 0.5, 24)
+[sub_resource type="PlaneMesh" id="PlaneMesh_2yk0u"]
+size = Vector2(0.1, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1y6m"]
 size = Vector3(56, 10, 10)
@@ -44,13 +50,20 @@ size = Vector3(12, 10, 14)
 size = Vector3(12, 10, 14)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rm3y4"]
-size = Vector3(9, 3.3447266, 3)
+size = Vector3(9, 3, 7)
+
+[sub_resource type="Resource" id="Resource_8hboa"]
+script = ExtResource("20_aaksw")
+metadata/_custom_type_script = "uid://d0cc3ta18h5vh"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_285we"]
+viewport_path = NodePath("PUT/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aaksw"]
+viewport_path = NodePath("TAKE/SubViewport")
 
 [node name="LevelScene" type="Node3D" unique_id=1797794574]
 script = ExtResource("1_b8l4a")
-
-[node name="ShopMaster" type="Node" parent="." unique_id=1240358108]
-script = ExtResource("2_rjisx")
 
 [node name="NPC_Spawner" type="Node" parent="." unique_id=527323772 node_paths=PackedStringArray("_NPCSpawnPoint", "_NPCDespawnPoint")]
 script = ExtResource("10_1xt25")
@@ -72,112 +85,221 @@ script = ExtResource("4_b8l4a")
 
 [node name="Street" type="Node3D" parent="." unique_id=2074029084]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Street" unique_id=1128563389 groups=["NavigationCollision"]]
+[node name="ParkingLot" type="StaticBody3D" parent="Street" unique_id=1128563389 groups=["NavigationCollision"]]
 
-[node name="ParkingLot" type="MeshInstance3D" parent="Street/StaticBody3D" unique_id=2047111447]
+[node name="ParkingLot" type="MeshInstance3D" parent="Street/ParkingLot" unique_id=2047111447]
 material_override = ExtResource("1_in5yg")
 mesh = ExtResource("8_1xt25")
 skeleton = NodePath("../..")
 
-[node name="line1" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1229857427]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.05, 8.599999)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Street/ParkingLot" unique_id=1199004812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 12)
+visible = false
+shape = SubResource("BoxShape3D_0jw6h")
+
+[node name="ParkingLines" type="Node3D" parent="Street/ParkingLot" unique_id=688064507]
+
+[node name="line1" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1229857427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.05, 6.5999994)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line2" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1135619118]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.05, 8.599999)
+[node name="line2" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1135619118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.05, 6.5999994)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line3" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1520147320]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 8.599999)
+[node name="line3" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1520147320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 6.5999994)
+visible = false
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
 skeleton = NodePath("../line1")
 
-[node name="line4" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=419039295]
+[node name="line4" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=419039295]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.05, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line5" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=757265521]
+[node name="line5" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=757265521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.05, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line6" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1054740496]
+[node name="line6" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1054740496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
 skeleton = NodePath("../line1")
 
-[node name="line7" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1527096577]
+[node name="line7" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1527096577]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.05, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line8" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=698032556]
+[node name="line8" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=698032556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.05, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line9" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1218813477]
+[node name="line9" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1218813477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
 skeleton = NodePath("../line1")
 
-[node name="line10" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=76070822]
+[node name="line10" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=76070822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0.05, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line11" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1932878305]
+[node name="line11" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1932878305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.05, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line12" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=645045559]
+[node name="line12" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=645045559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.1, 19.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
 skeleton = NodePath("../line1")
 
-[node name="line13" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1214004216]
+[node name="line13" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1214004216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.05, 8.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line14" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1916416015]
+[node name="line14" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1916416015]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0.05, 8.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line15" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=555452213]
+[node name="line15" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=555452213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1, 8.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
 skeleton = NodePath("../line1")
 
-[node name="line16" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1583589196]
+[node name="line16" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1583589196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0.05, 8.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line17" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=1807451505]
+[node name="line17" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=1807451505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.05, 8.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
+skeleton = NodePath("../../ParkingLot")
 
-[node name="line18" type="MeshInstance3D" parent="Street/StaticBody3D/ParkingLot" unique_id=404764948]
+[node name="line18" type="MeshInstance3D" parent="Street/ParkingLot/ParkingLines" unique_id=404764948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.1, 8.6)
 material_override = ExtResource("10_0jw6h")
 mesh = SubResource("PlaneMesh_63gba")
 skeleton = NodePath("../line1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Street/StaticBody3D" unique_id=1199004812]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 12)
-shape = SubResource("BoxShape3D_0jw6h")
+[node name="UnloadingZone" type="Node3D" parent="Street/ParkingLot" unique_id=853012033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="line1" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1849159778]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.05, -3)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line5" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1347292332]
+transform = Transform3D(-0.70710677, 0, -0.98994946, 0, 1, 0, 0.70710677, 0, -0.98994946, 0, 0.05, 0)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line6" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=378635075]
+transform = Transform3D(-0.70710677, 0, -0.76367533, 0, 1, 0, 0.70710677, 0, -0.76367533, -0.70710677, 0.05, 0.70710677)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line7" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=377557788]
+transform = Transform3D(-0.70710677, 0, -0.53386563, 0, 1, 0, 0.70710677, 0, -0.53386563, -1.4142135, 0.05, 1.4142135)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line8" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=655445451]
+transform = Transform3D(-0.70710677, 0, -0.28284273, 0, 1, 0, 0.70710677, 0, -0.28284273, -2.1213202, 0.05, 2.1213202)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line9" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=572877620]
+transform = Transform3D(0.70710665, 0, 0.76367533, 0, 1, 0, -0.70710677, 0, 0.7636752, 0.7071069, 0.05, -0.70710707)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line10" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1081040212]
+transform = Transform3D(0.7071067, 0, 0.5338657, 0, 1, 0, -0.7071068, 0, 0.5338656, 1.4142135, 0.05, -1.4142137)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line11" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1837874599]
+transform = Transform3D(0.7071067, 0, 0.28284276, 0, 1, 0, -0.7071068, 0, 0.2828427, 2.1213202, 0.05, -2.1213207)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line12" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1947839205]
+transform = Transform3D(-0.70710677, 0, -0.98994946, 0, 1, 0, 0.70710677, 0, -0.98994946, 0, 0.05, 0)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line13" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1544043386]
+transform = Transform3D(-0.70710677, 0, -0.76367533, 0, 1, 0, 0.70710677, 0, -0.76367533, -0.70710677, 0.05, 0.70710677)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line14" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=744403281]
+transform = Transform3D(-0.70710677, 0, -0.53386563, 0, 1, 0, 0.70710677, 0, -0.53386563, -1.4142135, 0.05, 1.4142135)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line15" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1550527006]
+transform = Transform3D(-0.70710677, 0, -0.28284273, 0, 1, 0, 0.70710677, 0, -0.28284273, -2.1213202, 0.05, 2.1213202)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line16" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1507409137]
+transform = Transform3D(0.70710665, 0, 0.76367533, 0, 1, 0, -0.70710677, 0, 0.7636752, 0.7071069, 0.05, -0.70710707)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line17" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=206581026]
+transform = Transform3D(0.7071067, 0, 0.5338657, 0, 1, 0, -0.7071068, 0, 0.5338656, 1.4142135, 0.05, -1.4142137)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line18" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1498322634]
+transform = Transform3D(0.7071067, 0, 0.28284276, 0, 1, 0, -0.7071068, 0, 0.2828427, 2.1213202, 0.05, -2.1213207)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line2" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=2102095037]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.05, 3)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line3" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1146974950]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 0.05, 0)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
+
+[node name="line4" type="MeshInstance3D" parent="Street/ParkingLot/UnloadingZone" unique_id=1063739722]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -3, 0.05, 0)
+material_override = ExtResource("11_2yk0u")
+mesh = SubResource("PlaneMesh_2yk0u")
 
 [node name="ParkingBarier" parent="Street" unique_id=1447184678 instance=ExtResource("10_63gba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6999998, -0.3, 3)
@@ -209,6 +331,33 @@ transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, 2, 0, 
 transform = Transform3D(18, 0, -4.0602444e-15, 0, 1, 0, 7.30844e-14, 0, 1, 25, 0, 0)
 
 [node name="WallSolid2" parent="Outside_Walls" unique_id=1770484307 instance=ExtResource("15_kqg47")]
+transform = Transform3D(18, 0, -4.0602444e-15, 0, 1, 0, 7.30844e-14, 0, 1, -25, 0, 0)
+
+[node name="Inside_Walls" type="Node3D" parent="." unique_id=1669014689]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="WallWindowEnd" parent="Inside_Walls" unique_id=1334967320 instance=ExtResource("13_wg31h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="WallWindowMiddle" parent="Inside_Walls" unique_id=1924138574 instance=ExtResource("14_kqg47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="WallWindowEnd2" parent="Inside_Walls" unique_id=2041736392 instance=ExtResource("13_wg31h")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, -6, 0, 0)
+
+[node name="WallWindowEnd3" parent="Inside_Walls" unique_id=1970604134 instance=ExtResource("13_wg31h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="WallWindowMiddle2" parent="Inside_Walls" unique_id=1611417305 instance=ExtResource("14_kqg47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="WallWindowEnd4" parent="Inside_Walls" unique_id=231106014 instance=ExtResource("13_wg31h")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, 2, 0, 0)
+
+[node name="WallSolid" parent="Inside_Walls" unique_id=2116303784 instance=ExtResource("15_kqg47")]
+transform = Transform3D(18, 0, -4.0602444e-15, 0, 1, 0, 7.30844e-14, 0, 1, 25, 0, 0)
+
+[node name="WallSolid2" parent="Inside_Walls" unique_id=1995351230 instance=ExtResource("15_kqg47")]
 transform = Transform3D(18, 0, -4.0602444e-15, 0, 1, 0, 7.30844e-14, 0, 1, -25, 0, 0)
 
 [node name="Areas" type="Node3D" parent="." unique_id=1607861809]
@@ -286,7 +435,22 @@ collision_layer = 4
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NPCZoneBlocker" unique_id=968719977]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3276367, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3276367, 7)
 shape = SubResource("BoxShape3D_rm3y4")
 
+[node name="FurnitureHolder" type="Node" parent="." unique_id=605675757]
+
+[node name="StorageShelf" parent="FurnitureHolder" unique_id=307143794 instance=ExtResource("18_2yk0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.0887113)
+
+[node name="StackInventory" parent="FurnitureHolder/StorageShelf" index="0" unique_id=212492952]
+_data = SubResource("Resource_8hboa")
+
+[node name="PUT" parent="FurnitureHolder/StorageShelf" index="9" unique_id=15673704]
+texture = SubResource("ViewportTexture_285we")
+
+[node name="TAKE" parent="FurnitureHolder/StorageShelf" index="10" unique_id=1588304790]
+texture = SubResource("ViewportTexture_aaksw")
+
 [editable path="Areas/Area_0_0"]
+[editable path="FurnitureHolder/StorageShelf"]

@@ -3,18 +3,7 @@
 [ext_resource type="Script" uid="uid://d2ir8ieccvme8" path="res://scripts/furniture/shelf/ShelfLogic.cs" id="1_g6k01"]
 [ext_resource type="Texture2D" uid="uid://dijjcg6wkchad" path="res://assets/packs/kenney_mini-market/Models/GLB format/Textures/colormap.png" id="1_oucxj"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="2_27cfk"]
-[ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="3_qu8ce"]
-[ext_resource type="Script" uid="uid://42teiv11ghbh" path="res://data_templates/ShelfData.cs" id="4_4dm70"]
-[ext_resource type="PackedScene" uid="uid://q1mogryf3kqt" path="res://scenes/components/AutoFiller.tscn" id="8_qu8ce"]
-
-[sub_resource type="Resource" id="Resource_ssun1"]
-script = ExtResource("3_qu8ce")
-metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
-
-[sub_resource type="Resource" id="Resource_yt01f"]
-script = ExtResource("4_4dm70")
-contents = SubResource("Resource_ssun1")
-metadata/_custom_type_script = "uid://42teiv11ghbh"
+[ext_resource type="PackedScene" uid="uid://q1mogryf3kqt" path="res://scenes/components/inventory/TriggerAreaItemExchanger.tscn" id="8_qu8ce"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwrpm"]
 size = Vector3(1.59375, 1.9, 0.6876526)
@@ -110,7 +99,6 @@ corner_radius_bottom_left = 6
 
 [node name="Shelf" type="StaticBody3D" unique_id=1864721992 node_paths=PackedStringArray("_visualsRoot") groups=["NavigationCollision"]]
 script = ExtResource("1_g6k01")
-_data = SubResource("Resource_yt01f")
 _visualsRoot = NodePath("Slots")
 
 [node name="Interactive" parent="." unique_id=577866315 node_paths=PackedStringArray("_interactionZone") instance=ExtResource("2_27cfk")]

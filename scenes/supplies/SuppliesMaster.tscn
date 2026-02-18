@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cquf66d7k6evd"]
+
+[ext_resource type="Script" uid="uid://ccrm2fa8t5wxw" path="res://scripts/supplies/SuppliesMaster.cs" id="1_xf5ww"]
+
+[node name="SuppliesMaster" type="Node" unique_id=626827251]
+script = ExtResource("1_xf5ww")

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://br78yggephky7"]
+
+[ext_resource type="Script" uid="uid://eqak54hb4pxx" path="res://scripts/components/inventory/SingleItemInventory.cs" id="1_8ni3d"]
+[ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="2_v5v1a"]
+[ext_resource type="Script" uid="uid://d0cc3ta18h5vh" path="res://data_templates/InventoryData.cs" id="3_11wa8"]
+
+[sub_resource type="Resource" id="Resource_m6lyb"]
+script = ExtResource("3_11wa8")
+metadata/_custom_type_script = "uid://d0cc3ta18h5vh"
+
+[node name="StackInventory" type="Node" unique_id=212492952]
+script = ExtResource("1_8ni3d")
+_data = SubResource("Resource_m6lyb")

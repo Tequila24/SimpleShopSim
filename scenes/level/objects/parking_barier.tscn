@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxnu0futcqu7c"]
 
 [ext_resource type="Material" uid="uid://1ap6q5gk6hik" path="res://assets/materials/OrangeProto.tres" id="1_8oy1d"]
-[ext_resource type="ArrayMesh" uid="uid://3lhehr3htn3s" path="res://assets/models/street assets_Barrier.res" id="1_xvi3e"]
+[ext_resource type="ArrayMesh" uid="uid://cm3wgfvevkoas" path="res://assets/models/street assets_Barrier.res" id="1_xvi3e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8oy1d"]
 size = Vector3(2.9, 1.4, 0.1)

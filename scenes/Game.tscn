@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://d12q15tlutwf3" path="res://scenes/tools/ObjectPlacer.tscn" id="3_bneo8"]
 [ext_resource type="Script" uid="uid://bb2bogqswcxy" path="res://scripts/CameraMaster.cs" id="3_vjgi4"]
 [ext_resource type="Resource" uid="uid://yntdv36d38a0" path="res://data/SaveData.tres" id="5_sv1m6"]
+[ext_resource type="Script" uid="uid://ccrm2fa8t5wxw" path="res://scripts/supplies/SuppliesMaster.cs" id="9_3xj3m"]
 [ext_resource type="PackedScene" uid="uid://dvmwdkqyol4s0" path="res://scenes/Player.tscn" id="9_y5y3l"]
+[ext_resource type="PackedScene" uid="uid://cvrgkvcufqlbn" path="res://scenes/supplies/DeliveryTruck.tscn" id="11_3xj3m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s5hy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,6 +29,220 @@ fog_enabled = true
 fog_mode = 1
 fog_density = 0.4294
 fog_depth_curve = 0.5176333
+
+[sub_resource type="Animation" id="Animation_mcffj"]
+resource_name = "DeliveryArrive"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuppliesMaster/TruckHolder:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(3, 0),
+"points": PackedFloat32Array(0, -0.12595338, 0, 0.12595338, 0, -0.8818364, -0.15367892, 1.3976072, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SuppliesMaster/TruckHolder:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(3, 0),
+"points": PackedFloat32Array(0, -0.12595338, 0, 0.12595338, 0, 0, -0.15367892, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SuppliesMaster/TruckHolder:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(3, 0),
+"points": PackedFloat32Array(60, -0.12595338, 0, 0.12595338, 0, 14.005247, -0.15367892, 0.7066842, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SuppliesMaster/TruckHolder:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(3, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.12595338, 0, 0.12595338, 0, 0, -0.12595338, 0, 0.12595338, 0, 0, -0.14352825, 0, 0.14352825, 0, 0, -0.15367892, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SuppliesMaster/TruckHolder:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(3, 0, 0, 0),
+"points": PackedFloat32Array(2.7430816, -0.12595338, 0, 0.12595338, 0, 2.8994546, -0.12595338, 0, 0.12595338, 0, 3.22, -0.14352825, 0, 0.14352825, 0, 5.934119, -0.15367892, -0.3223532, 0, 0),
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SuppliesMaster/TruckHolder:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(3, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.12595338, 0, 0.12595338, 0, 0, -0.12595338, 0, 0.12595338, 0, 0, -0.14352825, 0, 0.14352825, 0, 0, -0.15367892, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 1)
+}
+
+[sub_resource type="Animation" id="Animation_7ua8r"]
+resource_name = "DeliveryDepart"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuppliesMaster/TruckHolder:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.8818364, -0.15367892, 1.3976072, 0, 0, 0, -0.33333334, -0.13343708, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SuppliesMaster/TruckHolder:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.33333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SuppliesMaster/TruckHolder:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(14.005247, 0, 0, 0.8666667, 3.680149, 60, -0.33333334, -7.607068, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SuppliesMaster/TruckHolder:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.06666668, 0, 0, 0, 0, -0.03333334, 0, 0, 0, 0, -0.26666665, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SuppliesMaster/TruckHolder:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 3, 3, 2),
+"points": PackedFloat32Array(5.934, 0, 0, 0.06666667, 0, 6.287056, -0.041666668, 0, 0.041666668, 0, 6.106689, -0.041666668, 0, 0.041666668, 0, 6.282334, -0.5, 0.0047221184, 0, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SuppliesMaster/TruckHolder:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.06666668, 0, 0, 0, 0, -0.03333334, 0, 0, 0, 0, -0.26666665, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 1)
+}
+
+[sub_resource type="Animation" id="Animation_2rd6h"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuppliesMaster/TruckHolder:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SuppliesMaster/TruckHolder:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SuppliesMaster/TruckHolder:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SuppliesMaster/TruckHolder:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SuppliesMaster/TruckHolder:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.7430816, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SuppliesMaster/TruckHolder:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2rd6h"]
+_data = {
+&"DeliveryArrive": SubResource("Animation_mcffj"),
+&"DeliveryDepart": SubResource("Animation_7ua8r"),
+&"RESET": SubResource("Animation_2rd6h")
+}
 
 [node name="Game" type="Node3D" unique_id=693449353]
 
@@ -66,6 +282,19 @@ transform = Transform3D(0.7071067, -0.61237246, 0.35355335, 0, 0.49999997, 0.866
 [node name="Camera3D" type="Camera3D" parent="CameraMaster/Dolly" unique_id=1680751510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
 fov = 85.0
+
+[node name="SuppliesMaster" type="Node" parent="." unique_id=1810327218 node_paths=PackedStringArray("_truckAnim")]
+script = ExtResource("9_3xj3m")
+_truckAnim = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SuppliesMaster" unique_id=1648399282]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_2rd6h")
+
+[node name="TruckHolder" type="Node3D" parent="SuppliesMaster" unique_id=1041614992]
+transform = Transform3D(-0.9216399, 0, 0.3880466, 0, 1, 0, -0.3880466, 0, -0.9216399, 0, 0, 60)
+
+[node name="DeliveryTruck" parent="SuppliesMaster/TruckHolder" unique_id=749672510 instance=ExtResource("11_3xj3m")]
 
 [node name="LevelScene" parent="." unique_id=1369403572 instance=ExtResource("1_r7sob")]
 

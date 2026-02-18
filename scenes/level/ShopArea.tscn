@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://c6slaklcyorrv" path="res://assets/materials/BlackProto.tres" id="2_elgba"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dfg5a"]
-size = Vector3(14, 1, 14)
+size = Vector3(14, 1.02, 14)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8gwd"]
 size = Vector3(14, 1, 14)

@@ -89,22 +89,22 @@ public partial class LevelMaster : Node3D
 		}
 	}
 
-	public ShelfLogic TryFindShelfWithItem(ItemData searchedItem)
+	public ShelfLogic TryFindShelfWithItem(ItemCountData searchedItem)
 	{
-		if (shelves.Count <= 0)
-			return null;
+		// if (shelves.Count <= 0)
+		// 	return null;
 
-		foreach (var shelf in shelves)
-		{
-			if (shelf.ShelfItem == searchedItem && shelf.Capacity > 0)
-			{
-				return shelf;
-			}
-			else
-			{
-				continue;
-			}
-		}
+		// foreach (var shelf in shelves)
+		// {
+		// 	if (shelf.ShelfItem == searchedItem && shelf.Capacity > 0)
+		// 	{
+		// 		return shelf;
+		// 	}
+		// 	else
+		// 	{
+		// 		continue;
+		// 	}
+		// }
 
 		return null;
 	}

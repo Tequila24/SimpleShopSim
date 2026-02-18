@@ -5,15 +5,14 @@ using Godot;
 public partial class ItemCountData : Resource
 {
 	[Export]
-	public ItemData item;
+	public ItemData item = null;
 	[Export]
-	public int count;
+	public int count = 0;
 
 	
 
 	public ItemCountData()
 	{
-		
 	}
 	
 	public ItemCountData(ItemData newItem, int newCount)

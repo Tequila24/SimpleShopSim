@@ -77,7 +77,7 @@ public partial class BuyerLogic : Node
 		var nextItem = _wantedItems.Last();
 		// GD.Print($"Next searched item: {nextItem.name}");
 
-		var newShelf = LevelMaster.Instance.TryFindShelfWithItem(nextItem);
+		var newShelf = LevelMaster.Instance.TryFindShelfWithItem(new ItemCountData(nextItem, 1));
 		if (newShelf == null)
 		{
 			// GD.Print($"{_npcBody.Name} no shelf with {nextItem.name} found");
@@ -160,7 +160,7 @@ public partial class BuyerLogic : Node
 			return;
 		}
 
-		bool result = _cachedShelf.TryTakeItem();
+		bool result = false;//_cachedShelf.TryTakeItem();
 		// GD.Print($"NPC {_npcBody.Name} took {_wantedItems.Last().name} from {_cachedShelf.Name}");
 		if (result)
 		{

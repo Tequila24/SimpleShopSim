@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dvmwdkqyol4s0"]
 
-[ext_resource type="Script" uid="uid://cxel1rqht611w" path="res://scripts/PickupController.cs" id="1_qu4a1"]
 [ext_resource type="Script" uid="uid://bgxuknd15xwjh" path="res://scripts/PlayerController.cs" id="2_70d11"]
-[ext_resource type="Resource" uid="uid://c5osk2nu8sp4r" path="res://data/test_data/PlayerInv.tres" id="2_cw2d6"]
+[ext_resource type="PackedScene" uid="uid://yx7qeosyanb4" path="res://scenes/components/inventory/BasicInventory.tscn" id="2_qu4a1"]
+[ext_resource type="Resource" uid="uid://d2qvgn11vnbwx" path="res://data/test_data/player_inventory.tres" id="3_70d11"]
 [ext_resource type="Texture2D" uid="uid://busibgl4gn6nu" path="res://assets/packs/kenney_animated-characters-2/Skins/skaterMaleA.png" id="3_cw2d6"]
 [ext_resource type="ArrayMesh" uid="uid://8j8nr1n1bflf" path="res://assets/packs/kenney_animated-characters-2/Model/characterMedium.res" id="4_khinc"]
 [ext_resource type="AnimationLibrary" uid="uid://cjhx1mppa0etn" path="res://assets/animation/Anim_char.res" id="5_bruh7"]
@@ -160,15 +160,13 @@ height = 1.7749023
 [node name="Player" type="CharacterBody3D" unique_id=1259514022 groups=["CharactersGroup", "PlayerGroup"]]
 collision_mask = 3
 
-[node name="PickupController" type="Node" parent="." unique_id=1057939210 node_paths=PackedStringArray("_itemsVisualHolder")]
-script = ExtResource("1_qu4a1")
-_inventory = ExtResource("2_cw2d6")
-_itemsVisualHolder = NodePath("../Picked Item Holder")
-
 [node name="PlayerController" type="Node" parent="." unique_id=1958541553 node_paths=PackedStringArray("_animPlayer")]
 script = ExtResource("2_70d11")
 _maxWalkVelocity = 5.0
 _animPlayer = NodePath("../Root/AnimationPlayer")
+
+[node name="BasicInventory" parent="." unique_id=1025931283 instance=ExtResource("2_qu4a1")]
+_data = ExtResource("3_70d11")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=565013694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22912598, 0)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://q1mogryf3kqt"]
+
+[ext_resource type="Script" uid="uid://cbrux4w1qgpt5" path="res://scripts/components/inventory/TriggerAreaItemExchanger.cs" id="1_ew1rm"]
+
+[node name="TriggerAreaItemExchanger" type="Node" unique_id=1134029518]
+script = ExtResource("1_ew1rm")

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="InventoryData" format=3 uid="uid://d2qvgn11vnbwx"]
+
+[ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="1_yvgah"]
+[ext_resource type="Resource" uid="uid://dqru0nhmdqovd" path="res://data/items/Bread.tres" id="2_0guk6"]
+[ext_resource type="Script" uid="uid://d0cc3ta18h5vh" path="res://data_templates/InventoryData.cs" id="2_7aqc7"]
+[ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="3_0guk6"]
+
+[sub_resource type="Resource" id="Resource_yvgah"]
+script = ExtResource("1_yvgah")
+item = ExtResource("2_0guk6")
+count = 10
+metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
+
+[sub_resource type="Resource" id="Resource_0guk6"]
+script = ExtResource("1_yvgah")
+item = ExtResource("3_0guk6")
+count = 13
+metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
+
+[resource]
+script = ExtResource("2_7aqc7")
+Content = Array[ExtResource("1_yvgah")]([SubResource("Resource_yvgah"), SubResource("Resource_0guk6")])
+metadata/_custom_type_script = "uid://d0cc3ta18h5vh"
