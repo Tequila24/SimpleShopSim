@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://yx7qeosyanb4" path="res://scenes/components/inventory/BasicInventory.tscn" id="2_qu4a1"]
 [ext_resource type="Resource" uid="uid://d2qvgn11vnbwx" path="res://data/test_data/player_inventory.tres" id="3_70d11"]
 [ext_resource type="Texture2D" uid="uid://busibgl4gn6nu" path="res://assets/packs/kenney_animated-characters-2/Skins/skaterMaleA.png" id="3_cw2d6"]
+[ext_resource type="PackedScene" uid="uid://cui8c1hr6lqed" path="res://scenes/components/inventory/TowerInventoryVisualizer.tscn" id="4_cw2d6"]
 [ext_resource type="ArrayMesh" uid="uid://8j8nr1n1bflf" path="res://assets/packs/kenney_animated-characters-2/Model/characterMedium.res" id="4_khinc"]
 [ext_resource type="AnimationLibrary" uid="uid://cjhx1mppa0etn" path="res://assets/animation/Anim_char.res" id="5_bruh7"]
 
@@ -159,6 +160,9 @@ height = 1.7749023
 
 [node name="Player" type="CharacterBody3D" unique_id=1259514022 groups=["CharactersGroup", "PlayerGroup"]]
 collision_mask = 3
+
+[node name="TowerInventoryVisualizer" parent="." unique_id=1518674965 instance=ExtResource("4_cw2d6")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -1.3)
 
 [node name="PlayerController" type="Node" parent="." unique_id=1958541553 node_paths=PackedStringArray("_animPlayer")]
 script = ExtResource("2_70d11")
@@ -598,6 +602,3 @@ libraries/Anim_char = ExtResource("5_bruh7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11254883, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_bneo8")
-
-[node name="Picked Item Holder" type="Node3D" parent="." unique_id=829873719]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)

@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net;
 using Godot;
 
 public partial class TriggerAreaItemExchanger : Node
@@ -10,7 +12,7 @@ public partial class TriggerAreaItemExchanger : Node
 	}
 	[Export]
 	private ExchangeDirection _exchangeDirection = ExchangeDirection.FROM_ATTACHED;
-	
+
 	[Export]
 	private Interactive _interactZone;
 	[Export]
@@ -22,7 +24,7 @@ public partial class TriggerAreaItemExchanger : Node
 	private IAutoExchange _from;
 	private IAutoExchange _to;
 
-	private Godot.Collections.Array<ItemData> _availableItemsFilter;
+	private Godot.Collections.Array<ItemData> _availableItemsToTake;
 
 
 	public override void _Ready()
@@ -59,13 +61,14 @@ public partial class TriggerAreaItemExchanger : Node
 
 	private void InitExchange()
 	{
-		if (_from == null || _to == null) {
+		if (_from == null || _to == null)
+		{
 			GD.Print($"Error starting exchange:\n\t From Exchanger: {(_to as Node3D).Name} \n\t To Exchanger: {(_to as Node3D).Name}");
 			return;
 		}
 
-		_availableItemsFilter = _to.GetAutoAvailableItems();
-		if (_availableItemsFilter.Count == 0 || _availableItemsFilter[0] == null)
+		_availableItemsToTake = _from.GetAutoAvailableItems();
+		if (_availableItemsToTake.Count == 0 || _availableItemsToTake[0] == null)
 			return;
 
 		_exchangeTimer.Start();
@@ -78,25 +81,39 @@ public partial class TriggerAreaItemExchanger : Node
 
 	private void DoTryExchange()
 	{
-		if (_availableItemsFilter.Count == 0)
+		if (_availableItemsToTake.Count == 0) {
 			StopExchange();
+			return;
+		}
 
-		var nextItemType = _availableItemsFilter.First();
-		GD.Print($"next item tpe {nextItemType.name}");
+		GD.Print($"next Index to take {_availableItemsToTake.Count - 1}");
 
-		if (!_from.HasAutoItem(new(nextItemType, 1)))
+		var nextItemToTake = _availableItemsToTake.ElementAt(_availableItemsToTake.Count - 1);
+
+		if (nextItemToTake == null)
+			return;
+
+		if (!_from.HasAutoItem(new(nextItemToTake, 1)))
 		{
-			_availableItemsFilter.Remove(nextItemType);
+			_availableItemsToTake.RemoveAt(_availableItemsToTake.Count - 1);
 			return;
 		}
 
-		if (!_to.TryAutoPutItem(new(nextItemType, 1))) {
-			_availableItemsFilter.Remove(nextItemType);
+
+		if (!_to.TryAutoPutItem(new(nextItemToTake, 1)))
+		{
+			_availableItemsToTake.RemoveAt(_availableItemsToTake.Count - 1);
 			return;
+		} else
+		{
+			GD.Print($"Putting item {1}");
 		}
 
-		_from.TryAutoTakeItem(new(nextItemType, 1));
-
-		return;
+		if (!_from.TryAutoTakeItem(new(nextItemToTake, 1)))
+		{
+			// _to.TryAutoTakeItem(new(nextItemToTake, 1));
+			_availableItemsToTake.RemoveAt(_availableItemsToTake.Count - 1);
+			return;
+		}
 	}
 }

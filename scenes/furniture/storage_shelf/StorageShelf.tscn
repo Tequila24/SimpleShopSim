@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://q1mogryf3kqt" path="res://scenes/components/inventory/TriggerAreaItemExchanger.tscn" id="3_2uluy"]
 [ext_resource type="PackedScene" uid="uid://k48fg0h0wv0i" path="res://scenes/components/Interactive.tscn" id="4_h0a8u"]
 [ext_resource type="Material" uid="uid://cd1vm338y3lmw" path="res://assets/materials/GrayProto.tres" id="5_dgcjs"]
+[ext_resource type="PackedScene" uid="uid://cui8c1hr6lqed" path="res://scenes/components/inventory/TowerInventoryVisualizer.tscn" id="6_2vocq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nssfl"]
 size = Vector3(2, 0.02, 1)
@@ -53,7 +54,6 @@ _checkBodies = true
 _interactionZone = NodePath("../../AREA_TAKE")
 
 [node name="Timer" type="Timer" parent="ZoneItemExchanger_TAKE" unique_id=1759182139]
-wait_time = 0.2
 
 [node name="ZoneItemExchanger_PUT" parent="." unique_id=782157834 node_paths=PackedStringArray("_interactZone", "_exchangeTimer") instance=ExtResource("3_2uluy")]
 _exchangeDirection = 1
@@ -66,7 +66,6 @@ _checkBodies = true
 _interactionZone = NodePath("../../AREA_PUT")
 
 [node name="Timer" type="Timer" parent="ZoneItemExchanger_PUT" unique_id=915303502]
-wait_time = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=160561404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49, -0.5)
@@ -159,3 +158,6 @@ uppercase = true
 
 [node name="VisualHolder" type="Node3D" parent="." unique_id=1463395597]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+
+[node name="TowerInventoryVisualizer" parent="." unique_id=1518674965 instance=ExtResource("6_2vocq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, -0.5)

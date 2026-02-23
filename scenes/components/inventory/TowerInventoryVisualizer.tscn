@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cui8c1hr6lqed"]
+
+[ext_resource type="Script" uid="uid://cmka7g33udf4g" path="res://scripts/components/inventory/TowerInventoryVisualizer.cs" id="1_2qbwi"]
+
+[node name="TowerInventoryVisualizer" type="Node3D" unique_id=1518674965]
+script = ExtResource("1_2qbwi")

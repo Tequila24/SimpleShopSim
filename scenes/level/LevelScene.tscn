@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dxc10pb5ulq1p" path="res://scenes/level/ShopArea.tscn" id="16_rjisx"]
 [ext_resource type="PackedScene" uid="uid://twm443iiagy5" path="res://scenes/furniture/storage_shelf/StorageShelf.tscn" id="18_2yk0u"]
 [ext_resource type="Script" uid="uid://dd8epu7rhwx7p" path="res://data_templates/ItemCountData.cs" id="19_285we"]
+[ext_resource type="Resource" uid="uid://cy3rb6gnmpuvl" path="res://data/items/Soda.tres" id="20_8hboa"]
 [ext_resource type="Script" uid="uid://d0cc3ta18h5vh" path="res://data_templates/InventoryData.cs" id="20_aaksw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_b8l4a"]
@@ -52,14 +53,21 @@ size = Vector3(12, 10, 14)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rm3y4"]
 size = Vector3(9, 3, 7)
 
-[sub_resource type="Resource" id="Resource_8hboa"]
+[sub_resource type="Resource" id="Resource_nyq84"]
+script = ExtResource("19_285we")
+item = ExtResource("20_8hboa")
+count = 2
+metadata/_custom_type_script = "uid://dd8epu7rhwx7p"
+
+[sub_resource type="Resource" id="Resource_fvn6o"]
 script = ExtResource("20_aaksw")
+Content = Array[ExtResource("19_285we")]([SubResource("Resource_nyq84")])
 metadata/_custom_type_script = "uid://d0cc3ta18h5vh"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_285we"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2yk0u"]
 viewport_path = NodePath("PUT/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aaksw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_undt2"]
 viewport_path = NodePath("TAKE/SubViewport")
 
 [node name="LevelScene" type="Node3D" unique_id=1797794574]
@@ -444,13 +452,13 @@ shape = SubResource("BoxShape3D_rm3y4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.0887113)
 
 [node name="StackInventory" parent="FurnitureHolder/StorageShelf" index="0" unique_id=212492952]
-_data = SubResource("Resource_8hboa")
+_data = SubResource("Resource_fvn6o")
 
 [node name="PUT" parent="FurnitureHolder/StorageShelf" index="9" unique_id=15673704]
-texture = SubResource("ViewportTexture_285we")
+texture = SubResource("ViewportTexture_2yk0u")
 
 [node name="TAKE" parent="FurnitureHolder/StorageShelf" index="10" unique_id=1588304790]
-texture = SubResource("ViewportTexture_aaksw")
+texture = SubResource("ViewportTexture_undt2")
 
 [editable path="Areas/Area_0_0"]
 [editable path="FurnitureHolder/StorageShelf"]

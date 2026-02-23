@@ -1,36 +1,37 @@
+using System;
 using System.Linq;
 using Godot;
 
 
-public partial class BasicInventory : Node, IAutoExchange
+public partial class BasicInventory : AInventory, IAutoExchange
 {
-	[Export]
-	private InventoryData _data;
-
-
-
 	public override void _Ready()
 	{
-		_data ??= new();
+		base._Ready();
+
+		InvokeUpdated();
 	}
 
-	public bool AddItem(ItemCountData newItemCount)
+	public override bool TryAddItem(ItemCountData newItemCount)
 	{
-		var existingStack = _data.Content.First(itemCount => itemCount.item == newItemCount.item);
+		var existingStack = _data.Content.FirstOrDefault(itemCount => itemCount.item == newItemCount.item);
 
 		if (existingStack == null)
 		{
-			_data.Content.Add(newItemCount.Duplicate() as ItemCountData);
+			var newEntry = newItemCount.Duplicate() as ItemCountData;
+			_data.Content.Add(newEntry);
+			InvokeItemUpdated(newEntry);
 		}
 		else
 		{
 			existingStack.count += newItemCount.count;
+			InvokeItemUpdated(existingStack);
 		}
 
 		return true;
 	}
 
-	public bool RemoveItem(ItemCountData itemCountToTake)
+	public override bool TryRemoveItem(ItemCountData itemCountToTake)
 	{
 		var existingStack = _data.Content.First(itemCount => itemCount.item == itemCountToTake.item);
 
@@ -49,13 +50,38 @@ public partial class BasicInventory : Node, IAutoExchange
 		if (existingStack.count == 0)
 			_data.Content.Remove(existingStack);
 
+		InvokeItemUpdated(existingStack);
+
 		return true;
+	}
+
+	public override int GetItemCount(ItemData item)
+	{
+		var existingStack = _data.Content.FirstOrDefault<ItemCountData>(nextItem => nextItem.item == item);
+		if (existingStack == null)
+			return 0;
+
+		return existingStack.count;
+	}
+
+	public override Godot.Collections.Array<ItemCountData> GetAllItems()
+	{
+		return _data.Content;
 	}
 
 	/* = = = IAutoExchange = = = */
 	public bool HasAutoItem(ItemCountData itemCountToFind)
 	{
-		var existingStack = _data.Content.First(itemCount => itemCount.item == itemCountToFind.item);
+		if (IsEmpty)
+			return false;
+
+		GD.Print($"Content:");
+		foreach (var stack in _data.Content)
+		{			
+			GD.Print($"\tItem {stack.item} Count {stack.count}");
+		}
+
+		var existingStack = _data.Content.FirstOrDefault(itemCount => itemCount.item == itemCountToFind.item);
 
 		if (existingStack == null)
 			return false;
@@ -72,11 +98,12 @@ public partial class BasicInventory : Node, IAutoExchange
 
 	public bool TryAutoTakeItem(ItemCountData itemCountToTake)
 	{
-		return RemoveItem(itemCountToTake);
+		return TryRemoveItem(itemCountToTake);
 	}
 
 	public bool TryAutoPutItem(ItemCountData newItemCount)
 	{
-		return AddItem(newItemCount);
+		return TryAddItem(newItemCount);
 	}
+
 }

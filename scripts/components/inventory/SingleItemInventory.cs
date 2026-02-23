@@ -1,26 +1,16 @@
-using System.Dynamic;
 using Godot;
+using System.Linq;
 
 
-public partial class SingleItemInventory : Node, IAutoExchange
+public partial class SingleItemInventory : AInventory, IAutoExchange
 {
-	[Export]
-	private InventoryData _data;
-
 	public ItemData CurrentItemFilter => _data.Content.Count == 0 ? null : _data.Content[0].item;
 
-	public int MaxCapacity => _data.MaxCapacity;
+	public new int Count => CurrentItemFilter == null ? 0 : _data.Content[0].count;
 
-	public int Count => CurrentItemFilter == null ? 0 : _data.Content[0].count;
-	
-	public bool IsFull => MaxCapacity > 0 && Count >= MaxCapacity;
-	public bool IsEmpty => CurrentItemFilter == null ? true : _data.Content[0].count == 0;
-	public int AvailableCapacity => MaxCapacity < 0 ? int.MaxValue : MaxCapacity - Count;
-
-	[Signal]
-	public delegate void OnUpdatedEventHandler();
-	public void InvokeUpdated() => EmitSignal(SignalName.OnUpdated);
-
+	public new bool IsFull => MaxCapacity > 0 && Count >= MaxCapacity;
+	public new bool IsEmpty => CurrentItemFilter == null ? true : _data.Content[0].count == 0;
+	public new int AvailableCapacity => MaxCapacity < 0 ? int.MaxValue : MaxCapacity - Count;
 
 
 	public void InitWithData(InventoryData newData)
@@ -30,31 +20,51 @@ public partial class SingleItemInventory : Node, IAutoExchange
 
 	public override void _Ready()
 	{
-		_data ??= new();
+		base._Ready();
+
+		InvokeUpdated();
 	}
 
-	public bool TryPush(ItemCountData newItemCount)
+	public override bool TryAddItem(ItemCountData newItemCount)
 	{
 		if (IsFull)
 			return false;
 
-		if (CurrentItemFilter == null)
+		if (IsEmpty)
 		{
-			_data.Content[0].item = newItemCount.item;	
-		} else
+			if (AvailableCapacity < newItemCount.count)
+				return false;
+
+			_data.Content.Add(newItemCount);
+		}
+		else
 		{
 			if (CurrentItemFilter != newItemCount.item)
 				return false;
+
+			if (AvailableCapacity < newItemCount.count)
+				return false;
+
+			_data.Content[0].count += newItemCount.count;
 		}
 
-		if (AvailableCapacity < newItemCount.count)
-			return false;
-
-		_data.Content[0].count += newItemCount.count;
-
-		GD.Print($"New Item {newItemCount.item.name} Added to {this.Name}");
+		InvokeItemUpdated(_data.Content[0]);
 
 		return true;
+	}
+
+	public override bool TryRemoveItem(ItemCountData itemCountToTake)
+	{
+		return false;
+	}
+
+	public override int GetItemCount(ItemData item)
+	{
+		var existingStack = _data.Content.FirstOrDefault<ItemCountData>(nextItem => nextItem.item == item);
+		if (existingStack == null)
+			return 0;
+
+		return existingStack.count;
 	}
 
 	public bool TryPop()
@@ -63,11 +73,20 @@ public partial class SingleItemInventory : Node, IAutoExchange
 			return false;
 
 		_data.Content[0].count -= 1;
-		
+
+		var updatedItem = _data.Content[0].Duplicate() as ItemCountData;
+
 		if (IsEmpty)
-			_data.Content[0].item = null;
+			_data.Content.RemoveAt(0);
+
+		InvokeItemUpdated(updatedItem);
 
 		return true;
+	}
+
+	public override Godot.Collections.Array<ItemCountData> GetAllItems()
+	{
+		return _data.Content;
 	}
 
 	/* = = = IAutoExchange = = = */
@@ -94,6 +113,6 @@ public partial class SingleItemInventory : Node, IAutoExchange
 
 	public bool TryAutoPutItem(ItemCountData newItemCount)
 	{
-		return TryPush(newItemCount);
+		return TryAddItem(newItemCount);
 	}
 }
